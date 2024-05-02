@@ -124,29 +124,7 @@ install_apt_packages() {
     # apt packages
     # apt-get update -y && apt-get full-upgrade -y
     apt-get update -y
-    apt-get install python3 -y
-    apt-get install virtualenv -y
-    apt-get install python3-distutils python3-virtualenv libssl-dev libffi-dev python-dev-is-python3 build-essential smbclient libpcap-dev -y
-    apt-get install git make gcc -y
-    apt-get install vim-nox htop ncat rlwrap golang feroxbuster silversearcher-ag testssl.sh nmap masscan proxychains4 -y
-    apt-get install python3-venv -y
-    apt-get install pipx -y
-    apt-get install samba onesixtyone snmp-mibs-downloader -y
-    apt-get install libkrb5-dev krb5-config -y
-    # Install latest metasploit
-    gem install bundler
-    apt-get install metasploit-framework -y
-
-    ### My adds
-    apt install -y grc ipcalc ripgrep tmux screen sendemail libxml2-utils libxml2-dev libxslt1-dev
-    apt install -y whatweb smbmap tftp-hpa telnet sqlmap rsh-client rsync inotify-tools dirsearch eyewitness
-    apt install -y remmina remmina-plugin-rdp remmina-plugin-secret
-    apt install -y dnstwist
-    apt install -y httpx-toolkit
-    apt install -y urlcrazy ntpsec
-    apt install -y python3-venv
-    apt install -y dnsrecon gedit 
-    apt install -y jqapt install -y build-essential
+    apt install -y build-essential
     apt install -y dirsearch
     apt install -y dnsrecon gedit
     apt install -y dnstwist
