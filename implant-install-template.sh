@@ -313,13 +313,21 @@ install_ruby_tools() {
     gem install evil-winrm
 }
 
-
 # Download and Install the latest debian10 Nessus amd64
 download_and_install_latest_nessus() {
     NESSUS_LATEST_URL=$(curl -s https://www.tenable.com/downloads/api/v2/pages/nessus --header 'accept: application/json' | jq -r '.releases.latest' | jq -r '.[][].file_url' | grep 'Nessus-latest-debian10_amd64.deb')
     [[ ! -d "${HOME}/Downloads" ]] && mkdir "${HOME}/Downloads"
     cd "${HOME}/Downloads" && wget "$NESSUS_LATEST_URL" -O Nessus-latest-debian10_amd64.deb
     sudo dpkg -i Nessus-latest-debian10_amd64.deb
+}
+
+# Download the latest debian10 Nessus amd64
+download_latest_nessus() {
+    NESSUS_LATEST_URL=$(curl -s https://www.tenable.com/downloads/api/v2/pages/nessus --header 'accept: application/json' | jq -r '.releases.latest' | jq -r '.[][].file_url' | grep 'Nessus-latest-debian10_amd64.deb')
+    [[ ! -d "${HOME}/executables" ]] && mkdir "${HOME}/executables"
+    wget "$NESSUS_LATEST_URL" -O "${HOME}/executables/"Nessus-latest-debian10_amd64.deb
+    # sudo dpkg -i Nessus-latest-debian10_amd64.deb
+    # cd "${HOME}"
 }
 
 #############################
@@ -353,6 +361,8 @@ main() {
 
     install_ruby_tools
     install_eyewitness
+
+    download_latest_nessus
 
     # Check if the $INSTALL_NESSUS flag was set
     if [ $INSTALL_NESSUS -eq 1 ]; then
@@ -393,21 +403,23 @@ gzip -d /usr/share/wordlists/rockyou.txt.gz
 
 ### Create Files and Folders
 # Alais file
-touch /root/.zsh_aliases
-touch /home/kali/.zsh_aliases
+
 
 ### .zshrc Settings ### 
 cat << 'EOF' >> "${HOME}/.zshrc"
 
+# zsh Aliases
 if [ -f ~/.zsh_aliases ]; then
     . ~/.zsh_aliases
 fi
 
-### End of Functions ### 
+
 EOF
 
-
+#### 
 
 echo -e "${BLUE}[+]${RESET}${BOLD} Tools installation script completed. ${RESET}"
 echo -e "${BLUE}[+]${RESET}${BOLD} Remember to source your ~/.zshrc file for latest PATH values to take affect ${RESET}"
 echo -e "source ~/.zshrc"
+
+#### END ####
