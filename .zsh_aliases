@@ -15,7 +15,7 @@ alias update-profilealiases='rm -rf /home/kali/.zsh_aliases;wget https://raw.git
 alias szsh='source ~/.zshrc'
 
 # Navigation
-alias ll='ls -la'
+alias ll='ls -lah'
 #alias ..='cd ..'
 #alias ...='cd ../..'
 # System etc
