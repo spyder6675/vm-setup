@@ -146,7 +146,66 @@ install_apt_packages() {
     apt install -y urlcrazy ntpsec
     apt install -y python3-venv
     apt install -y dnsrecon gedit 
+    apt install -y jqapt install -y build-essential
+    apt install -y dirsearch
+    apt install -y dnsrecon gedit
+    apt install -y dnstwist
+    apt install -y eyewitness
+    apt install -y feroxbuster
+    apt install -y gcc
+    apt install -y gem install bundler
+    apt install -y git
+    apt install -y golang
+    apt install -y grc
+    apt install -y htop
+    apt install -y httpx-toolkit
+    apt install -y inotify-tools
+    apt install -y ipcalc
     apt install -y jq
+    apt install -y krb5-config
+    apt install -y libffi-dev
+    apt install -y libkrb5-dev
+    apt install -y libpcap-dev
+    apt install -y libssl-dev
+    apt install -y libxml2-dev
+    apt install -y libxml2-utils
+    apt install -y libxslt1-dev
+    apt install -y make
+    apt install -y masscan
+    apt install -y metasploit-framework
+    apt install -y ncat
+    apt install -y onesixtyone
+    apt install -y pipx
+    apt install -y proxychains4
+    apt install -y python-dev-is-python3
+    apt install -y python3
+    apt install -y python3-distutils
+    apt install -y python3-venv
+    apt install -y python3-virtualenv
+    apt install -y remmina
+    apt install -y remmina-plugin-rdp
+    apt install -y remmina-plugin-secret
+    apt install -y ripgrep
+    apt install -y rlwrap
+    apt install -y rsh-client
+    apt install -y rsync
+    apt install -y samba
+    apt install -y screen
+    apt install -y sendemail
+    apt install -y silversearcher-ag
+    apt install -y smbclient
+    apt install -y smbmap
+    apt install -y snmp-mibs-downloader
+    apt install -y sqlmap
+    apt install -y telnet
+    apt install -y testssl.sh nmap
+    apt install -y tftp-hpa
+    apt install -y tmux
+    apt install -y urlcrazy ntpsec
+    apt install -y vim-nox
+    apt install -y virtualenv
+    apt install -y whatweb
+    # apt install -y 
 
 
     # remove outdated packages
