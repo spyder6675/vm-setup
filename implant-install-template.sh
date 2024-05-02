@@ -82,11 +82,16 @@ install_apt_packages() {
     apt-get install metasploit-framework -y
 
     ### My adds
-    apt install -y grc ipcalc ntpsec ripgrep tmux screen sendemail urlcrazy libxml2-utils libxml2-dev libxslt1-dev
+    apt install -y grc ipcalc ripgrep tmux screen sendemail libxml2-utils libxml2-dev libxslt1-dev
     apt install -y whatweb smbmap tftp-hpa telnet sqlmap rsh-client rsync inotify-tools dirsearch eyewitness
     apt install -y remmina remmina-plugin-rdp remmina-plugin-secret
     apt install -y dnstwist
     apt install -y httpx-toolkit
+    apt install -y urlcrazy ntpsec
+    apt install -y python3-venv
+    apt install -y dnsrecon gedit 
+    # apt install -y 
+
 
     # remove outdated packages
     apt-get autoremove -y
@@ -160,6 +165,13 @@ clone_git_repos() {
     [[ ! -d /opt/trufflehog ]] && git clone https://github.com/trufflesecurity/trufflehog.git /opt/trufflehog
     [[ ! -d /opt/usernamer ]] &&  git clone https://github.com/jseidl/usernamer.git /opt/usernamer
     [[ ! -d /tmp/testssl.sh ]] &&  git clone https://github.com/drwetter/testssl.sh.git /tmp/testssl.sh
+    [[ ! -d /opt/sslscan ]] &&  git clone https://github.com/rbsec/sslscan.git /opt/sslscan
+    [[ ! -d /opt/winshock-test ]] &&  git clone https://github.com/anexia-it/winshock-test.git /opt/winshock-test
+    [[ ! -d /opt/ike-scan ]] &&  git clone https://github.com/royhills/ike-scan.git /opt/ike-scan
+    [[ ! -d /opt/ikeforce ]] &&  git clone https://github.com/SpiderLabs/ikeforce.git /opt/ikeforce
+    [[ ! -d /opt/wpscan ]] &&  git clone https://github.com/wpscanteam/wpscan.git /opt/wpscan
+    [[ ! -d /opt/pymeta ]] &&  git clone https://github.com/m8r0wn/pymeta.git /opt/pymeta
+    [[ ! -d /opt/ntlmv1-multi ]] &&  git clone https://github.com/evilmog/ntlmv1-multi.git /opt/ntlmv1-multi
     # Needed for GoRecon Modules
     [[ ! -d /tmp/testssl.sh ]] &&  git clone https://github.com/drwetter/testssl.sh.git /tmp/testssl.sh
     [[ ! -d /opt/enum4linux-ng ]] &&  git clone https://github.com/cddmp/enum4linux-ng.git /opt/enum4linux-ng
@@ -354,6 +366,18 @@ main() {
     install_with_virtualenv PXEThief
     install_with_virtualenv pre2k
     install_with_virtualenv ldeep
+    install_with_virtualenv CredMaster
+    install_with_virtualenv PKINITtools
+    install_with_virtualenv WebclientServiceScanner
+    install_with_virtualenv fireprox
+    install_with_virtualenv malwoverview
+    install_with_virtualenv o365spray
+    install_with_virtualenv parsuite
+    install_with_virtualenv pyLAPS
+    # install_with_virtualenv 
+    # install_with_virtualenv 
+    # install_with_virtualenv 
+
 
     install_pipx
     install_netexec
@@ -406,7 +430,7 @@ gzip -d /usr/share/wordlists/rockyou.txt.gz
 
 ### Create Files and Folders
 # Alais file
-
+[[ ! -d /opt/ssh-audit ]] &&  git clone https://github.com/mr-pmillz/ssh-audit.git /opt/ssh-audit
 
 ### .zshrc Settings ### 
 cat << 'EOF' >> "${HOME}/.zshrc"
