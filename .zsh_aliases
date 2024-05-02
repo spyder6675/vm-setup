@@ -1,0 +1,72 @@
+########################
+# Testing Variables
+donode=
+implantip=
+c2=
+
+# Making wordlists easily accessible as variables
+export dirsmall='/usr/share/wordlists/dirbuster/directory-list-2.3-small.txt'
+export dirmed='/usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt'
+export rockyou='/usr/share/wordlists/rockyou.txt'
+
+### Aliases ###
+
+# Navigation
+alias ll='ls -la'
+#alias ..='cd ..'
+#alias ...='cd ../..'
+# System etc
+# alias grep='grep --color=always'
+# alias grep='grep -P'
+alias ls='ls --color=auto'
+alias df='df -h' # 
+alias x='exit' # 
+alias chx='chmod +x ' 
+# 
+alias update='sudo apt update -y && sudo apt upgrade -y'
+alias pyweb='python3 -m http.server 8080'
+# alias nmap="grc nmap" 
+alias my-ip='echo $(ifconfig eth0 | grep "inet " | cut -b 9- | cut -d" " -f2)'
+alias int-ip='ip -br -c a'
+alias ext-ip='curl http://ipecho.net/plain; echo' # Get your external IP address.
+alias speedtest='curl -s https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py | python -'
+alias wtr='curl wttr.in'
+alias i="sudo apt install -y "
+alias e="nano "
+# Nessus 
+alias nessus-start='/bin/systemctl start nessusd.service'
+alias nessus-stop='/bin/systemctl stop nessusd.service'
+alias nessus-restart='/bin/systemctl restart nessusd.service'
+alias nessus-status='/bin/systemctl status nessusd.service'
+# VPN
+alias start-vpn='sudo openvpn /home/kali/Documents/vpn/jasonm@blackhillsinfosec.com.ovpn'
+# Password Crackers
+alias go-loki='ssh bhis@10.10.174.203 -p 8415'
+alias go-logi='ssh bhis@10.10.174.202 -p 8416'
+#  SSH
+alias nessus-ssh='ssh -L 8834:'$implantip':8834 root@'$implantip''  
+alias go-do='ssh root@'$donode'' # Go to Do Node
+alias go-implant='ssh root@'$implantip'' # Go to Implantip
+# Rsync
+alias sync-do='rsync -avz root@'$donode':/root/testing/'*' .'
+alias sync-implant='rsync -avz root@'$implantip':/root/testing/'*' .'
+# Tailscale 
+alias tss='tailscale status'
+alias wtss='watch -n 1 tailscale status'
+alias rtss='sudo systemctl restart tailscaled.service'
+# Nmap
+alias nmap-scripts='ls /usr/share/nmap/scripts |  grep'
+# alias untar='tar -zxvf'
+# alias tar='tar -zcvf'
+alias ns='netstat -tuln'
+alias psg='ps aux | grep'
+alias msf='msfconsole -q'
+# Copy to clipboard
+alias clp='xclip -selection c -r'
+# hash-check
+alias hash-check='cd /opt/Responder/logs && for i in $(cat *-NTLMv2*.txt | cut -d':' -f1 | sort -u) ; do grep --no-filename "$i" *-NTLMv2*.txt | head -n1 ; done > /root/testing/sorted_unique_ntlmv2_hashes.txt ; cat /root/testing/sorted_unique_ntlmv2_hashes.txt | wc ; cd ~/testing'
+#
+# Responder/logs
+alias copy-responderlogs='cp -r /opt/Responder/logs /root/testing/responderlogs'
+
+
