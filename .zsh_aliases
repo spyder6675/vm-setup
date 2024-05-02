@@ -11,7 +11,7 @@ export rockyou='/usr/share/wordlists/rockyou.txt'
 
 ### Aliases ###
 alias update-rootaliases='rm -rf /root/.zsh_aliases;wget https://raw.githubusercontent.com/spyder6675/vm-setup/main/.zsh_aliases -P /root;source ~/.zshrc
-'
+;echo 'Aliases Updated''
 alias update-profilealiases='rm -rf /home/kali/.zsh_aliases;wget https://raw.githubusercontent.com/spyder6675/vm-setup/main/.zsh_aliases -P /home/kali;source ~/.zshrc
 '
 alias update-source='source ~/.zshrc'
