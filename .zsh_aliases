@@ -10,8 +10,8 @@ export dirmed='/usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt'
 export rockyou='/usr/share/wordlists/rockyou.txt'
 
 ### Aliases ###
-alias update-rootaliases='wget https://github.com/spyder6675/vm-setup/blob/main/.zsh_aliases -P /root'
-alias update-profilealiases='wget https://github.com/spyder6675/vm-setup/blob/main/.zsh_aliases -P /home/kali'
+alias update-rootaliases='wget https://raw.githubusercontent.com/spyder6675/vm-setup/main/.zsh_aliases -P /root'
+alias update-profilealiases='wget https://raw.githubusercontent.com/spyder6675/vm-setup/main/.zsh_aliases -P /home/kali'
 alias update-source='source ~/.zshrc'
 
 # Navigation
@@ -59,7 +59,6 @@ alias wtss='watch -n 1 tailscale status'
 alias rtss='sudo systemctl restart tailscaled.service'
 # Nmap
 alias nmap-scripts='ls /usr/share/nmap/scripts | grep'
-
 #
 # alias untar='tar -zxvf'
 # alias tar='tar -zcvf'
@@ -77,7 +76,6 @@ alias hash-check='cd /opt/Responder/logs && for i in $(cat *-NTLMv2*.txt | cut -
 alias copy-responderlogs='cp -r /opt/Responder/logs /root/testing/logs/responderlogs'
 # Copy Resolve.conf
 alias copy-resolvconf='cp /etc/resolv.conf /root/testing/domain-recon/resolv.conf'
-
 
 
 #### Functions ####
