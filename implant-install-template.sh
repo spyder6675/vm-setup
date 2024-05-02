@@ -96,6 +96,8 @@ install_apt_packages() {
     # remove outdated packages
     apt-get autoremove -y
 
+    # update snmp.conf
+    sed -e '/mibs/ s/^#*/#/' -i /etc/snmp/snmp.conf
 }
 
 clone_git_repos() {
