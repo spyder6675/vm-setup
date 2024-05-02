@@ -10,9 +10,9 @@ export dirmed='/usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt'
 export rockyou='/usr/share/wordlists/rockyou.txt'
 
 ### Aliases ###
-alias update-rootaliases='rm -rf /root/.zsh_aliases;wget https://raw.githubusercontent.com/spyder6675/vm-setup/main/.zsh_aliases -P /root;echo -e "AliasesUpdated";source ~/.zshrc'
+alias update-rootaliases='rm -rf /root/.zsh_aliases;wget https://raw.githubusercontent.com/spyder6675/vm-setup/main/.zsh_aliases -P /root;echo -e "Updated";source ~/.zshrc'
 alias update-profilealiases='rm -rf /home/kali/.zsh_aliases;wget https://raw.githubusercontent.com/spyder6675/vm-setup/main/.zsh_aliases -P /home/kali;source ~/.zshrc'
-alias update-source='source ~/.zshrc'
+alias szsh='source ~/.zshrc'
 
 # Navigation
 alias ll='ls -la'
