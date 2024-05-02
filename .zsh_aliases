@@ -192,7 +192,7 @@ install_apt_packages() {
 }
 
 
-create_roottesting-directories() {
+create_roottesting_directories() {
     # Testing Dir
     [[ ! -d "${HOME}/testing" ]] && mkdir "${HOME}/testing"
     # Domain
