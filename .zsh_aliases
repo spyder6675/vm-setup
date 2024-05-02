@@ -192,4 +192,27 @@ install_apt_packages() {
 }
 
 
+create_roottesting-directories() {
+    # Testing Dir
+    [[ ! -d "${HOME}/testing" ]] && mkdir "${HOME}/testing"
+    # Domain
+    [[ ! -d "${HOME}/testing/domain-recon" ]] && mkdir "${HOME}/testing/domain-recon"
+    # Logs
+    [[ ! -d "${HOME}/testing/logs" ]] && mkdir "${HOME}/testing/logs"
+    [[ ! -d "${HOME}/testing/logs/nmap" ]] && mkdir "${HOME}/testing/logs/nmap"
+    [[ ! -d "${HOME}/testing/logs/VirusTotal" ]] && mkdir "${HOME}/testing/logs/VirusTotal"
+    # Reconnaissance
+    [[ ! -d "${HOME}/testing/Reconnaissance" ]] && mkdir "${HOME}/testing/Reconnaissance"
+    [[ ! -d "${HOME}/testing/Reconnaissance/squatting-domains.txt" ]] && touch "${HOME}/testing/Reconnaissance/squatting-domains.txt"
+    [[ ! -d "${HOME}/testing/gorecon-parsed-nessus" ]] && mkdir "${HOME}/testing/gorecon-parsed-nessus"
+    # Masscan
+    [[ ! -d "${HOME}/testing/masscan" ]] && mkdir "${HOME}/testing/masscan"
+    [[ ! -d "${HOME}/testing/masscan/externalscope" ]] && touch "${HOME}/testing/masscan/externalscope"
+    [[ ! -d "${HOME}/testing/masscan/internalscope" ]] && touch "${HOME}/testing/masscan/internalscope"
+
+}
+
+
+
+
 ### End of Functions ### 
