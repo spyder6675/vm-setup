@@ -107,6 +107,7 @@ download_and_install_latest_nessus() {
     [[ ! -d "${HOME}/executables" ]] && mkdir "${HOME}/executables"
     cd "${HOME}/executables" && wget "$NESSUS_LATEST_URL" -O "${HOME}/executables/"Nessus-latest-debian10_amd64.deb
     sudo dpkg -i Nessus-latest-debian10_amd64.deb
+    cd "${HOME}"
 }
 
 # Download the latest debian10 Nessus amd64
