@@ -55,18 +55,70 @@ alias tss='tailscale status'
 alias wtss='watch -n 1 tailscale status'
 alias rtss='sudo systemctl restart tailscaled.service'
 # Nmap
-alias nmap-scripts='ls /usr/share/nmap/scripts |  grep'
+alias nmap-scripts='ls /usr/share/nmap/scripts | grep'
+
+#
 # alias untar='tar -zxvf'
 # alias tar='tar -zcvf'
 alias ns='netstat -tuln'
 alias psg='ps aux | grep'
 alias msf='msfconsole -q'
+
 # Copy to clipboard
 alias clp='xclip -selection c -r'
+
 # hash-check
 alias hash-check='cd /opt/Responder/logs && for i in $(cat *-NTLMv2*.txt | cut -d':' -f1 | sort -u) ; do grep --no-filename "$i" *-NTLMv2*.txt | head -n1 ; done > /root/testing/sorted_unique_ntlmv2_hashes.txt ; cat /root/testing/sorted_unique_ntlmv2_hashes.txt | wc ; cd ~/testing'
 #
 # Responder/logs
-alias copy-responderlogs='cp -r /opt/Responder/logs /root/testing/responderlogs'
+alias copy-responderlogs='cp -r /opt/Responder/logs /root/testing/logs/responderlogs'
+# Copy Resolve.conf
+alias copy-resolvconf='cp /etc/resolv.conf /root/testing/domain-recon/resolv.conf'
 
 
+
+#### Functions ####
+
+# Install in Python Virtualenv
+install_with_virtualenv() {
+    REPO_NAME="$1"
+    PYENV="${HOME}/pyenv"
+    if [ -d "/opt/${REPO_NAME}" ]; then
+        cd "/opt/${REPO_NAME}" || exit 1
+        virtualenv -p python3 "${PYENV}/${REPO_NAME}"
+        . "${PYENV}/${REPO_NAME}/bin/activate"
+        python3 -m pip install -U wheel setuptools
+        # first, ensure that requirements.txt deps are installed.
+        [[ -f requirements.txt ]] && python3 -m pip install -r requirements.txt
+        # python3 setup.py install is deprecated in versions >= python3.9.X
+        # python3 -m pip install . will handle the setup.py file for you.
+        [[ -f setup.py || -f pyproject.toml ]] && python3 -m pip install .
+        deactivate
+        cd - &>/dev/null || exit 1
+    else
+        echo -e "${REPO_NAME} does not exist."
+    fi
+}
+
+# Download and Install the latest debian10 Nessus amd64
+download_and_install_latest_nessus() {
+    NESSUS_LATEST_URL=$(curl -s https://www.tenable.com/downloads/api/v2/pages/nessus --header 'accept: application/json' | jq -r '.releases.latest' | jq -r '.[][].file_url' | grep 'Nessus-latest-debian10_amd64.deb')
+    [[ ! -d "${HOME}/Downloads" ]] && mkdir "${HOME}/Downloads"
+    cd "${HOME}/Downloads" && wget "$NESSUS_LATEST_URL" -O "${HOME}/executables/"Nessus-latest-debian10_amd64.deb
+    sudo dpkg -i Nessus-latest-debian10_amd64.deb
+}
+
+# Download the latest debian10 Nessus amd64
+download_latest_nessus() {
+    NESSUS_LATEST_URL=$(curl -s https://www.tenable.com/downloads/api/v2/pages/nessus --header 'accept: application/json' | jq -r '.releases.latest' | jq -r '.[][].file_url' | grep 'Nessus-latest-debian10_amd64.deb')
+    [[ ! -d "${HOME}/executables" ]] && mkdir "${HOME}/executables"
+    wget "$NESSUS_LATEST_URL" -O "${HOME}/executables/"Nessus-latest-debian10_amd64.deb
+    # sudo dpkg -i Nessus-latest-debian10_amd64.deb
+    # cd "${HOME}"
+}
+
+
+
+
+
+### End of Functions ### 
