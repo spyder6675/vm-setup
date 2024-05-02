@@ -72,7 +72,7 @@ install_apt_packages() {
     apt-get install virtualenv -y
     apt-get install python3-distutils python3-virtualenv libssl-dev libffi-dev python-dev-is-python3 build-essential smbclient libpcap-dev -y
     apt-get install git make gcc -y
-    apt-get install vim-nox htop ncat rlwrap golang jq feroxbuster silversearcher-ag testssl.sh nmap masscan proxychains4 -y
+    apt-get install vim-nox htop ncat rlwrap golang feroxbuster silversearcher-ag testssl.sh nmap masscan proxychains4 -y
     apt-get install python3-venv -y
     apt-get install pipx -y
     apt-get install samba onesixtyone snmp-mibs-downloader -y
@@ -90,14 +90,12 @@ install_apt_packages() {
     apt install -y urlcrazy ntpsec
     apt install -y python3-venv
     apt install -y dnsrecon gedit 
-    # apt install -y 
+    apt install -y jq
 
 
     # remove outdated packages
     apt-get autoremove -y
 
-    # update snmp.conf
-    sed -e '/mibs/ s/^#*/#/' -i /etc/snmp/snmp.conf
 }
 
 clone_git_repos() {
