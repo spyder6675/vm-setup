@@ -435,10 +435,7 @@ alias nessus-stop='/bin/systemctl stop nessusd.service'
 alias nessus-restart='/bin/systemctl restart nessusd.service'
 alias nessus-status='/bin/systemctl status nessusd.service'
 # VPN
-alias start-vpn='sudo openvpn /home/kali/Documents/vpn/jasonm@blackhillsinfosec.com.ovpn'
-# Password Crackers
-alias go-loki='ssh bhis@10.10.174.203 -p 8415'
-alias go-logi='ssh bhis@10.10.174.202 -p 8416'
+#
 #  SSH
 alias nessus='ssh -L 8834:'$implantip':8834 root@'$implantip''  
 alias go-do='ssh root@'$donode'' # Go to Do Node
