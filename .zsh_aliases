@@ -127,7 +127,6 @@ install_apt_packages() {
     apt install -y eyewitness
     apt install -y feroxbuster
     apt install -y gcc
-    apt install -y gem install bundler
     apt install -y git
     apt install -y golang
     apt install -y grc
@@ -156,6 +155,7 @@ install_apt_packages() {
     apt install -y python3-distutils
     apt install -y python3-venv
     apt install -y python3-virtualenv
+    apt install -y python3-pip
     apt install -y remmina
     apt install -y remmina-plugin-rdp
     apt install -y remmina-plugin-secret
@@ -181,6 +181,12 @@ install_apt_packages() {
     apt install -y whatweb
     # apt install -y 
 
+    # Bundler Install
+    gem install bundler
+
+    # Python packages
+    python3 -m pip install Cython
+    python3 -m pip install python-libpcap
 
     # remove outdated packages
     apt-get autoremove -y
