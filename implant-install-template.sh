@@ -172,6 +172,7 @@ clone_git_repos() {
     [[ ! -d /opt/wpscan ]] &&  git clone https://github.com/wpscanteam/wpscan.git /opt/wpscan
     [[ ! -d /opt/pymeta ]] &&  git clone https://github.com/m8r0wn/pymeta.git /opt/pymeta
     [[ ! -d /opt/ntlmv1-multi ]] &&  git clone https://github.com/evilmog/ntlmv1-multi.git /opt/ntlmv1-multi
+    [[ ! -d /opt/SIET ]] &&  git clone https://github.com/frostbits-security/SIET.git /opt/SIET
     # Needed for GoRecon Modules
     [[ ! -d /tmp/testssl.sh ]] &&  git clone https://github.com/drwetter/testssl.sh.git /tmp/testssl.sh
     [[ ! -d /opt/enum4linux-ng ]] &&  git clone https://github.com/cddmp/enum4linux-ng.git /opt/enum4linux-ng
