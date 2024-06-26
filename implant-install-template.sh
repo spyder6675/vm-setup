@@ -406,6 +406,9 @@ main
 ##### My adds ######
 ####################
 
+### Tmux Settings
+echo "set -g mouse on" >> ~/.tmux.conf
+
 # wget EXEs
 mkdir /root/executables
 wget https://github.com/clymb3r/PowerShell/blob/master/Invoke-Mimikatz/Invoke-Mimikatz.ps1 -P /root/executables
@@ -415,9 +418,6 @@ tar -xvf /root/executables/hoardd-client_Linux_x86_64.tar.gz -C /root/executable
 wget https://github.com/ropnop/kerbrute/releases/download/v1.0.3/kerbrute_linux_amd64 -P /root/executables
 
 
-### Tmux Settings
-echo "set -g mouse on" >> ~/.tmux.conf
-
 # Nmap Scripts
 mkdir /root/nmap-scripts
 wget https://github.com/nmap/nmap/blob/master/scripts/http-apache-server-status.nse -P /root/nmap-scripts
@@ -425,6 +425,10 @@ wget https://raw.githubusercontent.com/richlamdev/ssh-default-banners/master/ssh
 wget https://raw.githubusercontent.com/RootUp/PersonalStuff/master/http-vuln-cve2020-3452.nse -P /root/nmap-scripts
 wget https://github.com/bongbongco/CVE-2012-1675/blob/master/oracle-tns-poison.nse -P /root/nmap-scripts
 # nmap --script-updatedb
+
+# VPN IKE Wordlist
+mkdir vpn-wordlists
+wget https://raw.githubusercontent.com/spyder6675/vm-setup/main/vpnIDs.txt -P /root/vpn-wordlists
 
 ### Unzip Rockyou ###
 gzip -d /usr/share/wordlists/rockyou.txt.gz
