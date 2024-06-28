@@ -156,6 +156,8 @@ install_apt_packages() {
     apt install -y python3-venv
     apt install -y python3-virtualenv
     apt install -y python3-pip
+    apt install -y python3-netifaces
+    apt install -y python3-twisted
     apt install -y remmina
     apt install -y remmina-plugin-rdp
     apt install -y remmina-plugin-secret
@@ -188,6 +190,10 @@ install_apt_packages() {
     # Python packages
     python3 -m pip install Cython
     python3 -m pip install python-libpcap
+    python3 -m pip install netaddr
+    python3 -m pip install fuzzywuzzy
+    python3 -m pip install levenshtein
+    python3 -m pip install pyvirtualdisplay
 
     # remove outdated packages
     apt-get autoremove -y
