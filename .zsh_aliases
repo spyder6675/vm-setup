@@ -179,6 +179,7 @@ install_apt_packages() {
     apt install -y vim-nox
     apt install -y virtualenv
     apt install -y whatweb
+    apt install -y leafpad
     # apt install -y 
 
     # Bundler Install
