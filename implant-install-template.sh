@@ -417,6 +417,10 @@ wget https://github.com/hoardd/hoardd-client/releases/download/v0.6.0/hoardd-cli
 tar -xvf /root/executables/hoardd-client_Linux_x86_64.tar.gz -C /root/executables/
 wget https://github.com/ropnop/kerbrute/releases/download/v1.0.3/kerbrute_linux_amd64 -P /root/executables
 
+# ADD 
+# wget https://raw.githubusercontent.com/immunityinc/bravestarr/master/bravestarr.py
+
+
 
 # Nmap Scripts
 mkdir /root/nmap-scripts
