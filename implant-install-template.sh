@@ -179,7 +179,7 @@ clone_git_repos() {
     [[ ! -d /opt/ssh-audit ]] &&  git clone https://github.com/mr-pmillz/ssh-audit.git /opt/ssh-audit
     ### pr_SystemDPAPIdump
     wget https://codeload.github.com/clavoillotte/impacket/zip/refs/heads/pr_SystemDPAPIdump -P /opt/pr_SystemDPAPIdump
-
+    
 }
 
 configure_terminal() {
@@ -357,7 +357,7 @@ main() {
     # create virtualenv dir.
     [[ ! -d "${HOME}/pyenv" ]] && mkdir "${HOME}/pyenv"
 
-    install_with_virtualenv Responder
+    # install_with_virtualenv Responder
     install_with_virtualenv impacket
     install_with_virtualenv BloodHound.py
     install_with_virtualenv Certipy
