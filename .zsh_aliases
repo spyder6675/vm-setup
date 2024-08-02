@@ -61,18 +61,28 @@ alias nmap-scripts='ls /usr/share/nmap/scripts | grep'
 alias ns='netstat -tuln'
 alias psg='ps aux | grep'
 alias msf='msfconsole -q'
-
+#
 # Copy to clipboard
 alias clp='xclip -selection c -r'
-
+#
 # hash-check
 alias hash-check='cd /opt/Responder/logs && for i in $(cat *-NTLMv2*.txt | cut -d':' -f1 | sort -u) ; do grep --no-filename "$i" *-NTLMv2*.txt | head -n1 ; done > /root/testing/sorted_unique_ntlmv2_hashes.txt ; cat /root/testing/sorted_unique_ntlmv2_hashes.txt | wc ; cd ~/testing'
 #
 # Responder/logs
 alias copy-responderlogs='cp -r /opt/Responder/logs /root/testing/logs/responderlogs'
+#
 # Copy Resolve.conf
 alias copy-resolvconf='cp /etc/resolv.conf /root/testing/domain-recon/resolv.conf'
+# 
+# Activate pyenv software 
 
+alias go-mitm6='source /root/pyenv/mitm6/bin/activate;cd /opt/mitm6'
+alias go-webclientServiceScanner='source /root/pyenv/WebclientServiceScanner/bin/activate;cd /opt/WebclientServiceScanner'
+#
+# source /root/pyenv/impacket/bin/activate;cd /opt/impacket/examples/
+# source /root/pyenv/BloodHound.py/bin/activate;cd /opt/BloodHound.py
+# source /root/pyenv/Certipy/bin/activate;cd /opt/Certipy/
+# source /root/pyenv/pre2k/bin/activate;cd /opt/pre2k
 
 #### Functions ####
 
