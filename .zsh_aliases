@@ -81,72 +81,61 @@ alias go-impacket='source /root/pyenv/impacket/bin/activate;cd /opt/impacket/exa
 alias go-BloodHoundpy='source /root/pyenv/BloodHound.py/bin/activate;cd /opt/BloodHound.py'
 alias go-Certipy='source /root/pyenv/Certipy/bin/activate;cd /opt/Certipy/'
 alias go-pre2k='source /root/pyenv/pre2k/bin/activate;cd /opt/pre2k'
-
-
-# alias go-AADInternals=
-# alias go-ADCSync=
-# go-Aug
-# go-BloodHound.py
-# go-BruteLoops
-# go-CeWL
-# go-Certipy
-# go-Coercer
-# go-CredMaster
-# go-DPAT
-# go-DomainPasswordSpray
-# go-DonPAPI
-# go-EyeWitness
-# go-Go365
-# go-KrbRelayUp
-# go-LdapRelayScan
-# go-MFASweep
-# go-MSOLSpray
-# go-MailSniper
-# go-PCredz
-# go-PKINITtools
-# go-PXEThief
-# go-PetitPotam
-# go-PowerUpSQL
-# go-SIET
-# go-SIGIT
-# go-SQLAutoPwn
-# go-Spray365
-# go-SprayingToolkit
-# go-certsync
-# go-ciscot7
-# go-containerd
-# go-dnstwist
-# go-docker-python3.9
-# go-eavesarp
-# go-enum4linux-ng
-# go-fireprox
-# go-hardcidr
-# go-ikeforce
-# go-ike-scan
-# go-impacket
-# go-kerbrute
-# go-krbrelayx
-# go-ldeep
-# go-malwoverview
-# go-microsoft
-# go-mitm6
-# go-nessus
-# go-ntlmv1-multi
-# go-o365spray
-# go-parsuite
-# go-pre2k
-# go-pr_SystemDPAPIdump
-# go-pyLAPS
-# go-pymeta
-# go-rdp-sec-check
-# go-saltstack
-# go-sccmhunter
-# go-ssh-audit
-# go-sslscan
-# go-testssl.sh
-# go-usernamer
-# go-winshock-test
-# go-wpscan
+# alias go-Coercer=''
+# alias go-CredMaster=''
+# alias go-DPAT=''
+# alias go-DomainPasswordSpray=''
+# alias go-DonPAPI=''
+# alias go-EyeWitness=''
+# alias go-Go365=''
+# alias go-KrbRelayUp=''
+# alias go-LdapRelayScan=''
+# alias go-MFASweep=''
+# alias go-MSOLSpray=''
+# alias go-MailSniper=''
+# alias go-PCredz=''
+# alias go-PKINITtools=''
+# alias go-PXEThief=''
+# alias go-PetitPotam=''
+# alias go-PowerUpSQL=''
+# alias go-SIET=''
+# alias go-SIGIT=''
+# alias go-SQLAutoPwn=''
+# alias go-Spray365=''
+# alias go-SprayingToolkit=''
+# alias go-certsync=''
+# alias go-ciscot7=''
+# alias go-containerd=''
+# alias go-dnstwist=''
+# alias go-docker-python3.9=''
+# alias go-eavesarp=''
+# alias go-enum4linux-ng=''
+# alias go-fireprox=''
+# alias go-hardcidr=''
+# alias go-ikeforce=''
+# alias go-ike-scan=''
+# alias go-kerbrute=''
+# alias go-krbrelayx=''
+# alias go-ldeep=''
+# alias go-malwoverview=''
+# alias go-microsoft=''
+# alias go-mitm6=''
+# alias go-nessus=''
+# alias go-ntlmv1-multi=''
+# alias go-o365spray=''
+# alias go-parsuite=''
+# alias go-pr_SystemDPAPIdump=''
+# alias go-pyLAPS=''
+# alias go-pymeta=''
+# alias go-rdp-sec-check=''
+# alias go-saltstack=''
+# alias go-sccmhunter=''
+# alias go-ssh-audit=''
+# alias go-sslscan=''
+# alias go-testssl.sh=''
+# alias go-usernamer=''
+# alias go-winshock-test=''
+# alias go-wpscan=''
 
 
 #### Functions ####
@@ -296,6 +285,8 @@ create_roottestingdirectories() {
 }
 
 #
-
-
 ### End of Functions ### 
+
+#
+
+## END SCRIPT ##
