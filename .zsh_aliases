@@ -78,14 +78,78 @@ alias copy-resolvconf='cp /etc/resolv.conf /root/testing/domain-recon/resolv.con
 
 alias go-mitm6='source /root/pyenv/mitm6/bin/activate;cd /opt/mitm6'
 alias go-webclientServiceScanner='source /root/pyenv/WebclientServiceScanner/bin/activate;cd /opt/WebclientServiceScanner'
-#
-# source /root/pyenv/impacket/bin/activate;cd /opt/impacket/examples/
-# source /root/pyenv/BloodHound.py/bin/activate;cd /opt/BloodHound.py
-# source /root/pyenv/Certipy/bin/activate;cd /opt/Certipy/
-# source /root/pyenv/pre2k/bin/activate;cd /opt/pre2k
+alias go-impacket='source /root/pyenv/impacket/bin/activate;cd /opt/impacket/examples/'
+alias go-BloodHoundpy='source /root/pyenv/BloodHound.py/bin/activate;cd /opt/BloodHound.py'
+alias go-Certipy='source /root/pyenv/Certipy/bin/activate;cd /opt/Certipy/'
+# alias 'source /root/pyenv/pre2k/bin/activate;cd /opt/pre2k'
+
+# alias go-AADInternals=
+# alias go-ADCSync=
+# go-Aug
+# go-BloodHound.py
+# go-BruteLoops
+# go-CeWL
+# go-Certipy
+# go-Coercer
+# go-CredMaster
+# go-DPAT
+# go-DomainPasswordSpray
+# go-DonPAPI
+# go-EyeWitness
+# go-Go365
+# go-KrbRelayUp
+# go-LdapRelayScan
+# go-MFASweep
+# go-MSOLSpray
+# go-MailSniper
+# go-PCredz
+# go-PKINITtools
+# go-PXEThief
+# go-PetitPotam
+# go-PowerUpSQL
+# go-SIET
+# go-SIGIT
+# go-SQLAutoPwn
+# go-Spray365
+# go-SprayingToolkit
+# go-certsync
+# go-ciscot7
+# go-containerd
+# go-dnstwist
+# go-docker-python3.9
+# go-eavesarp
+# go-enum4linux-ng
+# go-fireprox
+# go-hardcidr
+# go-ikeforce
+# go-ike-scan
+# go-impacket
+# go-kerbrute
+# go-krbrelayx
+# go-ldeep
+# go-malwoverview
+# go-microsoft
+# go-mitm6
+# go-nessus
+# go-ntlmv1-multi
+# go-o365spray
+# go-parsuite
+# go-pre2k
+# go-pr_SystemDPAPIdump
+# go-pyLAPS
+# go-pymeta
+# go-rdp-sec-check
+# go-saltstack
+# go-sccmhunter
+# go-ssh-audit
+# go-sslscan
+# go-testssl.sh
+# go-usernamer
+# go-winshock-test
+# go-wpscan
+
 
 #### Functions ####
-
 # Install in Python Virtualenv
 install_with_virtualenv() {
     REPO_NAME="$1"
