@@ -75,13 +75,13 @@ alias copy-responderlogs='cp -r /opt/Responder/logs /root/testing/logs/responder
 alias copy-resolvconf='cp /etc/resolv.conf /root/testing/domain-recon/resolv.conf'
 # 
 # Activate pyenv software 
-
 alias go-mitm6='source /root/pyenv/mitm6/bin/activate;cd /opt/mitm6'
 alias go-webclientServiceScanner='source /root/pyenv/WebclientServiceScanner/bin/activate;cd /opt/WebclientServiceScanner'
 alias go-impacket='source /root/pyenv/impacket/bin/activate;cd /opt/impacket/examples/'
 alias go-BloodHoundpy='source /root/pyenv/BloodHound.py/bin/activate;cd /opt/BloodHound.py'
 alias go-Certipy='source /root/pyenv/Certipy/bin/activate;cd /opt/Certipy/'
-# alias 'source /root/pyenv/pre2k/bin/activate;cd /opt/pre2k'
+alias go-pre2k='source /root/pyenv/pre2k/bin/activate;cd /opt/pre2k'
+
 
 # alias go-AADInternals=
 # alias go-ADCSync=
