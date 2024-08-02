@@ -178,7 +178,6 @@ download_latest_nessus() {
     # cd "${HOME}"
 }
 
-
 install_apt_packages() {
     # apt packages
     # apt-get update -y && apt-get full-upgrade -y
