@@ -5,8 +5,10 @@ implantip=
 c2=
 
 # Making wordlists easily accessible as variables
-export dirsmall='/usr/share/wordlists/dirbuster/directory-list-2.3-small.txt'
-export dirmed='/usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt'
+export raftmediumdir='/usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt'
+export raftmediumfiles='/usr/share/seclists/Discovery/Web-Content/raft-medium-files.txt'
+
+#
 export rockyou='/usr/share/wordlists/rockyou.txt'
 
 ### Aliases ###
@@ -49,6 +51,9 @@ alias go-implant='ssh root@'$implantip'' # Go to Implantip
 # Rsync
 alias sync-do='rsync -avz root@'$donode':/root/testing/'*' .'
 alias sync-implant='rsync -avz root@'$implantip':/root/testing/'*' .'
+alias sync-implant03='rsync -avz root@100.64.0.3:/root/testing/'*' .'
+alias sync-implant04='rsync -avz root@100.64.0.4:/root/testing/'*' .'
+alias sync-implant05='rsync -avz root@100.64.0.5:/root/testing/'*' .'
 # Tailscale 
 alias tss='tailscale status'
 alias wtss='watch -n 1 tailscale status'
