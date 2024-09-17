@@ -31,7 +31,7 @@ alias df='df -h' #
 alias x='exit' # 
 alias chx='chmod +x ' 
 # 
-alias update='sudo apt update -y && sudo apt upgrade -y'
+alias upgrade='sudo apt update -y && sudo apt upgrade -y'
 alias pyweb='python3 -m http.server 8080'
 # alias nmap="grc nmap" 
 alias my-ip='echo $(ifconfig eth0 | grep "inet " | cut -b 9- | cut -d" " -f2)'
