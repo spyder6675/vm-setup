@@ -165,7 +165,7 @@ alias go-wpscan='source /root/pyenv/wpscan/bin/activate;cd /opt/wpscan'
 install_with_virtualenv() {
     REPO_NAME="$1"
     PYENV="${HOME}/pyenv"
-    LOG_FILE="/root/testing/logs/install.log"
+    LOG_FILE="/root/testing/logs/install-with-virtualenv-install.log"
 
     log_message() {
         echo "$(date +'%Y-%m-%d %H:%M:%S') - $1" >> "$LOG_FILE"
