@@ -148,25 +148,69 @@ alias go-wpscan='source /root/pyenv/wpscan/bin/activate;cd /opt/wpscan'
 
 #### Functions ####
 # Install in Python Virtualenv
+#
+# Function Name: install_with_virtualenv
+# Description: This script sets up a Python virtual environment for a given repository,
+#              installs required dependencies, and logs the process to a specified log file.
+# Author: [Your Name]
+# Date: [Current Date]
+# Version: 1.0
+# Usage: install_with_virtualenv <repository_name>
+# Notes: Ensure that the /root/testing/logs/ directory exists and the script has appropriate permissions.
+#        Virtualenv and Python 3 must be installed on the system.
+#
+# Log Location: /root/testing/logs/install.log
+#
+
 install_with_virtualenv() {
     REPO_NAME="$1"
     PYENV="${HOME}/pyenv"
+    LOG_FILE="/root/testing/logs/install.log"
+
+    log_message() {
+        echo "$(date +'%Y-%m-%d %H:%M:%S') - $1" >> "$LOG_FILE"
+    }
+
+    log_message "INFO: Starting installation for repository ${REPO_NAME}"
+
     if [ -d "/opt/${REPO_NAME}" ]; then
-        cd "/opt/${REPO_NAME}" || exit 1
+        log_message "INFO: Found repository directory /opt/${REPO_NAME}"
+
+        cd "/opt/${REPO_NAME}" || { log_message "ERROR: Failed to change directory to /opt/${REPO_NAME}"; exit 1; }
+
+        log_message "INFO: Creating virtual environment at ${PYENV}/${REPO_NAME}"
         virtualenv -p python3 "${PYENV}/${REPO_NAME}"
+
+        log_message "INFO: Activating virtual environment"
         . "${PYENV}/${REPO_NAME}/bin/activate"
+
+        log_message "INFO: Installing wheel and setuptools"
         python3 -m pip install -U wheel setuptools
-        # first, ensure that requirements.txt deps are installed.
-        [[ -f requirements.txt ]] && python3 -m pip install -r requirements.txt
-        # python3 setup.py install is deprecated in versions >= python3.9.X
-        # python3 -m pip install . will handle the setup.py file for you.
-        [[ -f setup.py || -f pyproject.toml ]] && python3 -m pip install .
+
+        # Ensure that requirements.txt deps are installed.
+        if [[ -f requirements.txt ]]; then
+            log_message "INFO: Installing dependencies from requirements.txt"
+            python3 -m pip install -r requirements.txt
+        fi
+
+        # Install from setup.py or pyproject.toml if available
+        if [[ -f setup.py || -f pyproject.toml ]]; then
+            log_message "INFO: Installing package from setup.py or pyproject.toml"
+            python3 -m pip install .
+        fi
+
+        log_message "INFO: Deactivating virtual environment"
         deactivate
-        cd - &>/dev/null || exit 1
+
+        cd - &>/dev/null || { log_message "ERROR: Failed to change directory back"; exit 1; }
     else
+        log_message "ERROR: ${REPO_NAME} does not exist."
         echo -e "${REPO_NAME} does not exist."
     fi
+
+    log_message "INFO: Completed installation for repository ${REPO_NAME}"
 }
+
 
 # Download and Install the latest debian10 Nessus amd64
 download_and_install_latest_nessus() {
