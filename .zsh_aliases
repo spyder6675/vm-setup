@@ -349,6 +349,7 @@ check-system() {
 
     # Test cloning a GitHub repository
     echo "Checking if Git can clone repositories..."
+    rm -rf CeWL
     TEST_REPO="https://github.com/digininja/CeWL.git"
     CLONE_DIR="test_clone"
     git clone "$TEST_REPO" > /dev/null 2>&1
