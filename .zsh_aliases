@@ -359,6 +359,24 @@ check-system() {
         echo "Git clone failed: Unable to clone repository."
         return 1
     fi
+    
+    # Check if Go is installed
+    echo "Checking if Go is installed..."
+    if ! command -v go > /dev/null 2>&1; then
+        echo "Go is not installed. Installing Go..."
+        
+        # Install Go using apt
+        sudo apt install -y golang > /dev/null 2>&1
+        
+        if [ $? -eq 0 ]; then
+            echo "Go installed successfully."
+        else
+            echo "Go installation failed."
+            return 1
+        fi
+    else
+        echo "Go is already installed."
+    fi
 
     # Test installing a Go package
     echo "Checking if Go can install packages..."
