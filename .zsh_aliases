@@ -336,7 +336,7 @@ create_roottestingdirectories() {
 }
 
 # Function to check system capabilities
-check_system() {
+check-system() {
     # Check for apt updates
     echo "Checking if apt can update the package repository..."
     sudo apt update > /dev/null 2>&1
@@ -376,7 +376,7 @@ check_system() {
 }
 
 # Call the function
-# check_system
+# check-system
 
 
 
