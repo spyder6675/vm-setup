@@ -354,12 +354,12 @@ check-system() {
     git clone "$TEST_REPO" > /dev/null 2>&1
     if [ $? -eq 0 ]; then
         echo "Git is working: Repository cloned successfully."
-        rm -rf "CeWl"
+        rm -rf "CeWL"
     else
         echo "Git clone failed: Unable to clone repository."
-        return 1
+        exit 1
     fi
-    
+
     # Check if Go is installed
     echo "Checking if Go is installed..."
     if ! command -v go > /dev/null 2>&1; then
