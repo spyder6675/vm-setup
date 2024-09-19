@@ -314,7 +314,6 @@ install_apt_packages() {
 
 }
 
-
 create_roottestingdirectories() {
     # Testing Dir
     [[ ! -d "${HOME}/testing" ]] && mkdir "${HOME}/testing"
