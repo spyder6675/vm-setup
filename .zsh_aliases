@@ -354,7 +354,7 @@ check-system() {
     git clone "$TEST_REPO" > /dev/null 2>&1
     if [ $? -eq 0 ]; then
         echo "Git is working: Repository cloned successfully."
-        rm -rf "CeWL"
+        rm -rf CeWL
     else
         echo "Git clone failed: Unable to clone repository."
         exit 1
