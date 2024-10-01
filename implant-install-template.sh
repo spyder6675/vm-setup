@@ -91,6 +91,8 @@ install_apt_packages() {
     apt install -y python3-venv
     apt install -y dnsrecon gedit 
     apt install -y jq
+    apt install -y syncthing
+    apt install -y apt-transport-https
 
 
     # remove outdated packages
