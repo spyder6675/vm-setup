@@ -296,7 +296,7 @@ install_apt_packages() {
     apt install -y virtualenv
     apt install -y whatweb
     apt install -y leafpad
-    apt install -y syncthing
+    # apt install -y syncthing
     apt install -y apt-transport-https
     # apt install -y 
 
