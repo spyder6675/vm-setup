@@ -441,9 +441,6 @@ gzip -d /usr/share/wordlists/rockyou.txt.gz
 
 ### Create Files and Folders
 # Alais file
-[[ ! -d /opt/ssh-audit ]] &&  git clone https://github.com/mr-pmillz/ssh-audit.git /opt/ssh-audit
-
-### .zshrc Settings ### 
 cat << 'EOF' >> "${HOME}/.zshrc"
 
 # zsh Aliases
