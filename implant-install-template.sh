@@ -433,7 +433,7 @@ wget https://github.com/bongbongco/CVE-2012-1675/blob/master/oracle-tns-poison.n
 # nmap --script-updatedb
 
 # VPN IKE Wordlist
-mkdir vpn-wordlists
+mkdir /root/vpn-wordlists
 wget https://raw.githubusercontent.com/spyder6675/vm-setup/main/vpnIDs.txt -P /root/vpn-wordlists
 
 ### Unzip Rockyou ###
