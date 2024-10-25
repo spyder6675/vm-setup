@@ -425,12 +425,13 @@ wget https://github.com/ropnop/kerbrute/releases/download/v1.0.3/kerbrute_linux_
 
 
 # Nmap Scripts
-mkdir /root/nmap-scripts
-wget https://github.com/nmap/nmap/blob/master/scripts/http-apache-server-status.nse -P /root/nmap-scripts
-wget https://raw.githubusercontent.com/richlamdev/ssh-default-banners/master/ssh-os.nse -P /root/nmap-scripts
-wget https://raw.githubusercontent.com/RootUp/PersonalStuff/master/http-vuln-cve2020-3452.nse -P /root/nmap-scripts
-wget https://github.com/bongbongco/CVE-2012-1675/blob/master/oracle-tns-poison.nse -P /root/nmap-scripts
-# nmap --script-updatedb
+# mkdir /root/nmap-scripts
+wget https://raw.githubusercontent.com/nmap/nmap/refs/heads/master/scripts/http-apache-server-status.nse -P /usr/share/nmap/scripts
+wget https://raw.githubusercontent.com/richlamdev/ssh-default-banners/master/ssh-os.nse -P /usr/share/nmap/scripts
+wget https://raw.githubusercontent.com/RootUp/PersonalStuff/master/http-vuln-cve2020-3452.nse -P /usr/share/nmap/scripts
+wget https://raw.githubusercontent.com/bongbongco/CVE-2012-1675/refs/heads/master/oracle-tns-poison.nse -P /usr/share/nmap/scripts
+wget https://raw.githubusercontent.com/frostbits-security/SIET/refs/heads/master/cisco-siet.nse -P /usr/share/nmap/scripts
+nmap --script-updatedb
 
 # VPN IKE Wordlist
 mkdir /root/vpn-wordlists
