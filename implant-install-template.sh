@@ -416,7 +416,7 @@ mkdir /root/tools
 wget https://github.com/clymb3r/PowerShell/blob/master/Invoke-Mimikatz/Invoke-Mimikatz.ps1 -P /root/tools
 wget https://github.com/SnaffCon/Snaffler/releases/download/1.0.146/Snaffler.exe -P /root/executables
 wget https://github.com/hoardd/hoardd-client/releases/download/v0.6.0/hoardd-client_Linux_x86_64.tar.gz -P /root/tools
-tar -xvf /root/executables/hoardd-client_Linux_x86_64.tar.gz -C /root/tools/
+tar -xvf /root/tools/hoardd-client_Linux_x86_64.tar.gz -C /root/tools/
 wget https://github.com/ropnop/kerbrute/releases/download/v1.0.3/kerbrute_linux_amd64 -P /root/tools
 
 # ADD 
