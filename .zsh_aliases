@@ -12,7 +12,7 @@ export raftmediumfiles='/usr/share/seclists/Discovery/Web-Content/raft-medium-fi
 export rockyou='/usr/share/wordlists/rockyou.txt'
 
 # User Agent 
-export useragent='Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:123.0) Gecko/20100101 Firefox/130.0'
+export useragent='Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:123.0) Gecko/20100101 Firefox/131.0'
 
 ### Aliases ###
 alias update-rootaliases='rm -rf /root/.zsh_aliases;wget https://raw.githubusercontent.com/spyder6675/vm-setup/main/.zsh_aliases -P /root;echo -e "Updated-Aliases"'
