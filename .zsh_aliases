@@ -401,7 +401,7 @@ check-system() {
 }
 
 
-check_hardware_requirements() {
+check-hardware() {
     ALL_GOOD=true
 
     echo -e "${PURPLE}[*]${RESET} Checking implant system requirements:\nCPU >= 4\tRAM >= 8 GB\n"
