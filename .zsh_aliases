@@ -148,6 +148,7 @@ alias go-trufflehog='source /root/pyenv/trufflehog/bin/activate;cd /opt/truffleh
 
 #
 alias start-neo4j='cd /usr/bin; ./neo4j console'
+alias check-terminal='grep "colorScheme\|TerminalMargin\|TerminalTransparency\|fontFamily\|fontSize" ~/.config/qterminal.org/qterminal.ini'
 
 
 #### Functions ####
