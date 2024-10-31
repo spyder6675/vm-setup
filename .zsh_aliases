@@ -146,6 +146,9 @@ alias go-winshock-test='source /root/pyenv/winshock-test/bin/activate;cd /opt/wi
 alias go-wpscan='source /root/pyenv/wpscan/bin/activate;cd /opt/wpscan'
 alias go-trufflehog='source /root/pyenv/trufflehog/bin/activate;cd /opt/trufflehog'
 
+#
+alias start-neo4j='cd /usr/bin; ./neo4j console'
+
 
 #### Functions ####
 # Install in Python Virtualenv
