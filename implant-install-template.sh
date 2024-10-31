@@ -332,16 +332,16 @@ install_ruby_tools() {
 # Download and Install the latest debian10 Nessus amd64
 download_and_install_latest_nessus() {
     NESSUS_LATEST_URL=$(curl -s https://www.tenable.com/downloads/api/v2/pages/nessus --header 'accept: application/json' | jq -r '.releases.latest' | jq -r '.[][].file_url' | grep 'Nessus-latest-debian10_amd64.deb')
-    [[ ! -d "${HOME}/Downloads" ]] && mkdir "${HOME}/Downloads"
-    cd "${HOME}/Downloads" && wget "$NESSUS_LATEST_URL" -O Nessus-latest-debian10_amd64.deb
+    [[ ! -d "${HOME}/tools" ]] && mkdir "${HOME}/tools"
+    cd "${HOME}/tools" && wget "$NESSUS_LATEST_URL" -O Nessus-latest-debian10_amd64.deb
     sudo dpkg -i Nessus-latest-debian10_amd64.deb
 }
 
 # Download the latest debian10 Nessus amd64
 download_latest_nessus() {
     NESSUS_LATEST_URL=$(curl -s https://www.tenable.com/downloads/api/v2/pages/nessus --header 'accept: application/json' | jq -r '.releases.latest' | jq -r '.[][].file_url' | grep 'Nessus-latest-debian10_amd64.deb')
-    [[ ! -d "${HOME}/executables" ]] && mkdir "${HOME}/executables"
-    wget "$NESSUS_LATEST_URL" -O "${HOME}/executables/"Nessus-latest-debian10_amd64.deb
+    [[ ! -d "${HOME}/tools" ]] && mkdir "${HOME}/tools"
+    wget "$NESSUS_LATEST_URL" -O "${HOME}/tools/"Nessus-latest-debian10_amd64.deb
     # sudo dpkg -i Nessus-latest-debian10_amd64.deb
     # cd "${HOME}"
 }
@@ -414,7 +414,7 @@ echo "set -g mouse on" >> ~/.tmux.conf
 # wget EXEs
 mkdir /root/tools
 wget https://github.com/clymb3r/PowerShell/blob/master/Invoke-Mimikatz/Invoke-Mimikatz.ps1 -P /root/tools
-wget https://github.com/SnaffCon/Snaffler/releases/download/1.0.146/Snaffler.exe -P /root/executables
+wget https://github.com/SnaffCon/Snaffler/releases/download/1.0.146/Snaffler.exe -P /root/tools
 wget https://github.com/hoardd/hoardd-client/releases/download/v0.6.0/hoardd-client_Linux_x86_64.tar.gz -P /root/tools
 tar -xvf /root/tools/hoardd-client_Linux_x86_64.tar.gz -C /root/tools/
 wget https://github.com/ropnop/kerbrute/releases/download/v1.0.3/kerbrute_linux_amd64 -P /root/tools
