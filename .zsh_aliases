@@ -144,6 +144,7 @@ alias go-testsslsh='source /root/pyenv/testssl.sh/bin/activate;cd /opt/testssl.s
 alias go-usernamer='source /root/pyenv/usernamer/bin/activate;cd /opt/usernamer'
 alias go-winshock-test='source /root/pyenv/winshock-test/bin/activate;cd /opt/winshock-test'
 alias go-wpscan='source /root/pyenv/wpscan/bin/activate;cd /opt/wpscan'
+alias go-trufflehog='source /root/pyenv/trufflehog/bin/activate;cd /opt/trufflehog'
 
 
 #### Functions ####
@@ -394,6 +395,12 @@ check-system() {
     echo "All checks passed!"
     return 0
 }
+
+# Terminal Setup
+
+
+
+
 
 # Call the function
 # check-system
