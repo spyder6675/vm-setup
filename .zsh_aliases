@@ -400,6 +400,40 @@ check-system() {
     return 0
 }
 
+
+check_hardware_requirements() {
+    ALL_GOOD=true
+
+    echo -e "${PURPLE}[*]${RESET} Checking implant system requirements:\nCPU >= 4\tRAM >= 8 GB\n"
+
+    NUM_CPUS=$(lscpu | grep 'CPU(s):' | head -n 1 | awk '{print $NF}')
+    if (( "$NUM_CPUS" < 4 )); then
+        ALL_GOOD=false
+        echo -e "${RED}[-]${RESET}${BOLD} Implant has INSUFFICIENT CPUs! CPU(s): ${NUM_CPUS} REACH OUT TO CUSTOMER ${RESET}"
+    else
+        echo -e "${GREEN}[+]${RESET}${BOLD} CPU(s): ${NUM_CPUS} ${RESET}"
+    fi
+
+    TOTAL_RAM=$(grep MemTotal /proc/meminfo | awk '{print $2}')
+    if (( "$TOTAL_RAM" < 8000000 )); then
+        ALL_GOOD=false
+        echo -e "${RED}[-]${RESET}${BOLD} Implant has INSUFFICIENT MEMORY.. Total Ram: ${TOTAL_RAM} kB. REACH OUT TO CUSTOMER ${RESET}"
+    else
+        echo -e "${GREEN}[+]${RESET}${BOLD} Total RAM: ${TOTAL_RAM} kB ${RESET}"
+    fi
+
+    if ! $ALL_GOOD ; then
+        echo -e "${ORANGE}[!]${RESET}${BOLD} You must construct additional pylons ${RESET}"
+    else
+        echo -e "${BLUE}[+]${RESET}${BOLD} All systems good to go! ${RESET}"
+    fi
+}
+
+
+
+
+
+
 # Terminal Setup
 
 
