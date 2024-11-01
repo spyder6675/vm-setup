@@ -221,8 +221,8 @@ install_with_virtualenv() {
 # Download and Install the latest debian10 Nessus amd64
 download_and_install_latest_nessus() {
     NESSUS_LATEST_URL=$(curl -s https://www.tenable.com/downloads/api/v2/pages/nessus --header 'accept: application/json' | jq -r '.releases.latest' | jq -r '.[][].file_url' | grep 'Nessus-latest-debian10_amd64.deb')
-    [[ ! -d "${HOME}/executables" ]] && mkdir "${HOME}/executables"
-    cd "${HOME}/executables" && wget "$NESSUS_LATEST_URL" -O "${HOME}/executables/"Nessus-latest-debian10_amd64.deb
+    [[ ! -d "${HOME}/tools" ]] && mkdir "${HOME}/tools"
+    cd "${HOME}/tools" && wget "$NESSUS_LATEST_URL" -O "${HOME}/tools/"Nessus-latest-debian10_amd64.deb
     sudo dpkg -i Nessus-latest-debian10_amd64.deb
     cd "${HOME}"
 }
@@ -230,8 +230,8 @@ download_and_install_latest_nessus() {
 # Download the latest debian10 Nessus amd64
 download_latest_nessus() {
     NESSUS_LATEST_URL=$(curl -s https://www.tenable.com/downloads/api/v2/pages/nessus --header 'accept: application/json' | jq -r '.releases.latest' | jq -r '.[][].file_url' | grep 'Nessus-latest-debian10_amd64.deb')
-    [[ ! -d "${HOME}/executables" ]] && mkdir "${HOME}/executables"
-    wget "$NESSUS_LATEST_URL" -O "${HOME}/executables/"Nessus-latest-debian10_amd64.deb
+    [[ ! -d "${HOME}/tools" ]] && mkdir "${HOME}/tools"
+    wget "$NESSUS_LATEST_URL" -O "${HOME}/tools/"Nessus-latest-debian10_amd64.deb
     # sudo dpkg -i Nessus-latest-debian10_amd64.deb
     # cd "${HOME}"
 }
