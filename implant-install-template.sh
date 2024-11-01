@@ -68,47 +68,100 @@ install_apt_packages() {
     # apt packages
     # apt-get update -y && apt-get full-upgrade -y
     apt-get update -y
-    apt-get install python3 -y
-    apt-get install virtualenv -y
-    apt-get install python3-distutils python3-virtualenv libssl-dev libffi-dev python-dev-is-python3 build-essential smbclient libpcap-dev -y
-    apt-get install git make gcc -y
-    apt-get install vim-nox htop ncat rlwrap golang feroxbuster silversearcher-ag testssl.sh nmap masscan proxychains4 -y
-    apt-get install python3-venv -y
-    apt-get install pipx -y
-    apt-get install samba onesixtyone snmp-mibs-downloader -y
-    apt-get install libkrb5-dev krb5-config -y
-    # Install latest metasploit
-    gem install bundler
-    apt-get install metasploit-framework -y
-
-    ### My adds
-    apt install -y grc ipcalc ripgrep tmux screen sendemail libxml2-utils libxml2-dev libxslt1-dev
-    apt install -y whatweb smbmap tftp-hpa telnet sqlmap rsh-client rsync inotify-tools dirsearch eyewitness
-    apt install -y remmina remmina-plugin-rdp remmina-plugin-secret
+    apt install -y build-essential
+    apt install -y dirsearch
+    apt install -y dnsrecon 
+    apt install -y gedit
     apt install -y dnstwist
+    apt install -y eyewitness
+    apt install -y feroxbuster
+    apt install -y gcc
+    apt install -y git
+    apt install -y golang
+    apt install -y grc
+    apt install -y htop
     apt install -y httpx-toolkit
-    apt install -y urlcrazy ntpsec
-    apt install -y python3-venv
-    apt install -y dnsrecon gedit 
+    apt install -y inotify-tools
+    apt install -y ipcalc
     apt install -y jq
+    apt install -y krb5-config
+    apt install -y libffi-dev
+    apt install -y libkrb5-dev
+    apt install -y libpcap-dev
+    apt install -y libssl-dev
+    apt install -y libxml2-dev
+    apt install -y libxml2-utils
+    apt install -y libxslt1-dev
+    apt install -y make
+    apt install -y masscan
+    apt install -y metasploit-framework
+    apt install -y ncat
+    apt install -y onesixtyone
+    apt install -y pipx
+    apt install -y proxychains4
+    apt install -y python-dev-is-python3
+    apt install -y python3
+    # apt install -y python3-distutils
+    apt install -y python3-venv
+    apt install -y python3-virtualenv
+    apt install -y python3-pip
+    apt install -y python3-netifaces
+    apt install -y python3-twisted
+    apt install -y remmina
+    apt install -y remmina-plugin-rdp
+    apt install -y remmina-plugin-secret
+    apt install -y ripgrep
+    apt install -y rlwrap
+    apt install -y rsh-client
+    apt install -y rsync
+    apt install -y samba
+    apt install -y screen
+    apt install -y sendemail
+    apt install -y silversearcher-ag
+    apt install -y smbclient
+    apt install -y smbmap
+    apt install -y snmp-mibs-downloader
+    apt install -y sqlmap
+    apt install -y telnet
+    apt install -y testssl.sh nmap
+    apt install -y tftp-hpa
+    apt install -y tmux
+    apt install -y urlcrazy ntpsec
+    apt install -y vim-nox
+    apt install -y virtualenv
+    apt install -y whatweb
+    apt install -y leafpad
     # apt install -y syncthing
     apt install -y apt-transport-https
+    apt install -y prips
+    # apt install -y 
+    # apt install -y 
+    # apt install -y 
+    # apt install -y 
 
+    # Bundler Install
+    gem install bundler
+
+    # Python packages
+    python3 -m pip install Cython
+    python3 -m pip install python-libpcap
+    python3 -m pip install netaddr
+    python3 -m pip install fuzzywuzzy
+    python3 -m pip install levenshtein
+    python3 -m pip install pyvirtualdisplay
 
     # remove outdated packages
     apt-get autoremove -y
 
-    # update snmp.conf
-    sed -e '/mibs/ s/^#*/#/' -i /etc/snmp/snmp.conf
 }
 
 clone_git_repos() {
     # Repos
     # Needed for GoRecon Modules
+    # [[ ! -d /opt/TODO ]] &&  git clone TODO /opt/TODO
     # [[ ! -d /opt/BloodHound.py ]] && git clone https://github.com/dirkjanm/bloodhound.py /opt/BloodHound.py
     # [[ ! -d /opt/CrackMapExec ]] && git clone https://github.com/byt3bl33d3r/CrackMapExec.git /opt/CrackMapExec
     # [[ ! -d /opt/SecLists ]] && git clone https://github.com/danielmiessler/SecLists.git /opt/SecLists
-    # [[ ! -d /opt/TODO ]] &&  git clone TODO /opt/TODO
     # [[ ! -d /opt/testssl.sh ]] && git clone https://github.com/drwetter/testssl.sh.git /opt/testssl.sh
     [[ ! -d /opt/AADInternals ]] &&  git clone https://github.com/Gerenios/AADInternals.git /opt/AADInternals
     [[ ! -d /opt/ADCSync ]] && git clone https://github.com/JPG0mez/ADCSync.git /opt/ADCSync
@@ -346,6 +399,13 @@ download_latest_nessus() {
     # cd "${HOME}"
 }
 
+
+update_snmp() {
+    sed -e '/mibs/ s/^#*/#/' -i /etc/snmp/snmp.conf
+}
+
+
+
 #############################
 # MAIN ######################
 #############################
@@ -355,6 +415,7 @@ main() {
     clone_git_repos
     configure_terminal
     install_go_tools
+    update_snmp
 
     # create virtualenv dir.
     [[ ! -d "${HOME}/pyenv" ]] && mkdir "${HOME}/pyenv"
