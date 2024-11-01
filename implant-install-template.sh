@@ -375,7 +375,7 @@ main() {
     install_with_virtualenv fireprox
     install_with_virtualenv malwoverview
     install_with_virtualenv o365spray
-    install_with_virtualenv parsuite
+    #install_with_virtualenv parsuite
     install_with_virtualenv pyLAPS
     # install_with_virtualenv 
     # install_with_virtualenv 
