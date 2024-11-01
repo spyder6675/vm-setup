@@ -17,6 +17,7 @@ export useragent='Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:123.0) Gecko/2010
 ### Aliases ###
 alias update-rootaliases='rm -rf /root/.zsh_aliases;wget https://raw.githubusercontent.com/spyder6675/vm-setup/main/.zsh_aliases -P /root;echo -e "Updated-Aliases"'
 alias update-profilealiases='rm -rf /home/kali/.zsh_aliases;wget https://raw.githubusercontent.com/spyder6675/vm-setup/main/.zsh_aliases -P /home/kali;echo -e "Updated-Aliases"'
+alias update-alias='rm -rf "${HOME}/.zsh_aliases"; wget https://raw.githubusercontent.com/spyder6675/vm-setup/main/.zsh_aliases -P "${HOME}";echo -e "Updated-Aliases"'
 alias szsh='source ~/.zshrc'
 
 # Navigation
