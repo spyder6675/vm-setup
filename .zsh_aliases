@@ -27,7 +27,7 @@ alias ll='ls -lah'
 # System etc
 # alias grep='grep --color=always'
 # alias grep='grep -P'
-alias ls='ls --color=auto'
+# alias ls='ls --color=auto'
 alias df='df -h' # 
 alias x='exit' # 
 alias chx='chmod +x ' 
