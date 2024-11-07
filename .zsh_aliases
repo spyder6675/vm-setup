@@ -15,9 +15,9 @@ export rockyou='/usr/share/wordlists/rockyou.txt'
 export useragent='Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:123.0) Gecko/20100101 Firefox/132.0'
 
 ### Aliases ###
-alias update-rootaliases='rm -rf /root/.zsh_aliases;wget https://raw.githubusercontent.com/spyder6675/vm-setup/main/.zsh_aliases -P /root;echo -e "Updated-Aliases"'
-alias update-profilealiases='rm -rf /home/kali/.zsh_aliases;wget https://raw.githubusercontent.com/spyder6675/vm-setup/main/.zsh_aliases -P /home/kali;echo -e "Updated-Aliases"'
-alias update-alias='rm -rf "${HOME}/.zsh_aliases"; wget https://raw.githubusercontent.com/spyder6675/vm-setup/main/.zsh_aliases -P "${HOME}";echo -e "Updated-Aliases"'
+# alias update-rootaliases='rm -rf /root/.zsh_aliases;wget https://raw.githubusercontent.com/spyder6675/vm-setup/main/.zsh_aliases -P /root;echo -e "Updated-Aliases"'
+# alias update-profilealiases='rm -rf /home/kali/.zsh_aliases;wget https://raw.githubusercontent.com/spyder6675/vm-setup/main/.zsh_aliases -P /home/kali;echo -e "Updated-Aliases"'
+alias update-alias='rm -rf ${HOME}/.zsh_aliases; wget https://raw.githubusercontent.com/spyder6675/vm-setup/main/.zsh_aliases -P ${HOME};echo -e "Updated-Aliases"'
 alias szsh='source ~/.zshrc'
 
 # Navigation
@@ -27,7 +27,7 @@ alias ll='ls -lah'
 # System etc
 # alias grep='grep --color=always'
 # alias grep='grep -P'
-alias ls='ls --color=auto'
+# alias ls='ls --color=auto'
 alias df='df -h' # 
 alias x='exit' # 
 alias chx='chmod +x ' 
@@ -82,7 +82,91 @@ alias copy-responderlogs='cp -r /opt/Responder/logs /root/testing/logs/responder
 #
 # Copy Resolve.conf
 alias copy-resolvconf='cp /etc/resolv.conf /root/testing/domain-recon/resolv.conf'
-# 
+#
+
+clone_git_repos() {
+    # Repos
+    # Needed for GoRecon Modules
+    # [[ ! -d /opt/TODO ]] &&  git clone TODO /opt/TODO
+    # [[ ! -d /opt/BloodHound.py ]] && git clone https://github.com/dirkjanm/bloodhound.py /opt/BloodHound.py
+    # [[ ! -d /opt/CrackMapExec ]] && git clone https://github.com/byt3bl33d3r/CrackMapExec.git /opt/CrackMapExec
+    # [[ ! -d /opt/SecLists ]] && git clone https://github.com/danielmiessler/SecLists.git /opt/SecLists
+    # [[ ! -d /opt/testssl.sh ]] && git clone https://github.com/drwetter/testssl.sh.git /opt/testssl.sh
+    [[ ! -d /opt/AADInternals ]] &&  git clone https://github.com/Gerenios/AADInternals.git /opt/AADInternals
+    [[ ! -d /opt/ADCSync ]] && git clone https://github.com/JPG0mez/ADCSync.git /opt/ADCSync
+    [[ ! -d /opt/BloodHound.py ]] && git clone https://github.com/fox-it/BloodHound.py.git /opt/BloodHound.py
+    [[ ! -d /opt/BruteLoops ]] &&  git clone https://github.com/arch4ngel/BruteLoops.git /opt/BruteLoops
+    [[ ! -d /opt/CeWL ]] && git clone https://github.com/digininja/CeWL.git /opt/CeWL
+    [[ ! -d /opt/Certipy ]] && git clone https://github.com/ly4k/Certipy.git /opt/Certipy
+    [[ ! -d /opt/Coercer ]] && git clone https://github.com/p0dalirius/Coercer.git /opt/Coercer
+    [[ ! -d /opt/CredMaster ]] && git clone https://github.com/knavesec/CredMaster.git /opt/CredMaster
+    [[ ! -d /opt/DPAT ]] &&  git clone https://github.com/clr2of8/DPAT.git /opt/DPAT
+    [[ ! -d /opt/DomainPasswordSpray ]] &&  git clone https://github.com/dafthack/DomainPasswordSpray.git /opt/DomainPasswordSpray
+    [[ ! -d /opt/DonPAPI ]] && git clone https://github.com/login-securite/DonPAPI.git /opt/DonPAPI
+    [[ ! -d /opt/EyeWitness ]] && git clone https://github.com/RedSiege/EyeWitness.git /opt/EyeWitness
+    [[ ! -d /opt/Go365 ]] &&  git clone https://github.com/optiv/Go365.git /opt/Go365
+    [[ ! -d /opt/KrbRelayUp ]] &&  git clone https://github.com/Dec0ne/KrbRelayUp.git /opt/KrbRelayUp
+    [[ ! -d /opt/LdapRelayScan ]] &&  git clone https://github.com/zyn3rgy/LdapRelayScan.git /opt/LdapRelayScan
+    [[ ! -d /opt/MFASweep ]] && git clone https://github.com/dafthack/MFASweep.git /opt/MFASweep
+    [[ ! -d /opt/MSOLSpray ]] && git clone https://github.com/dafthack/MSOLSpray.git /opt/MSOLSpray
+    [[ ! -d /opt/MailSniper ]] &&  git clone https://github.com/dafthack/MailSniper.git /opt/MailSniper
+    [[ ! -d /opt/NetExec ]] && git clone https://github.com/Pennyw0rth/NetExec.git /opt/NetExec
+    [[ ! -d /opt/PCredz ]] && git clone https://github.com/lgandx/PCredz.git /opt/PCredz
+    [[ ! -d /opt/PKINITtools ]] && git clone https://github.com/dirkjanm/PKINITtools.git /opt/PKINITtools
+    [[ ! -d /opt/PXEThief ]] && git clone https://github.com/MWR-CyberSec/PXEThief.git /opt/PXEThief
+    [[ ! -d /opt/PetitPotam ]] && git clone https://github.com/topotam/PetitPotam.git /opt/PetitPotam
+    [[ ! -d /opt/PlumHound ]] && git clone https://github.com/PlumHound/PlumHound.git /opt/PlumHound
+    [[ ! -d /opt/PowerUpSQL ]] &&  git clone https://github.com/NetSPI/PowerUpSQL.git /opt/PowerUpSQL
+    [[ ! -d /opt/Responder ]] && git clone https://github.com/lgandx/Responder.git /opt/Responder
+    [[ ! -d /opt/SIGIT ]] &&  git clone https://github.com/termuxhackers-id/SIGIT.git /opt/SIGIT
+    [[ ! -d /opt/SQLAutoPwn ]] &&  git clone https://github.com/Wh1t3Rh1n0/SQLAutoPwn.git /opt/SQLAutoPwn
+    [[ ! -d /opt/Spray365 ]] &&  git clone https://github.com/MarkoH17/Spray365.git /opt/Spray365
+    [[ ! -d /opt/SprayingToolkit ]] &&  git clone https://github.com/byt3bl33d3r/SprayingToolkit.git /opt/SprayingToolkit
+    [[ ! -d /opt/WebclientServiceScanner ]] && git clone https://github.com/Hackndo/WebclientServiceScanner.git /opt/WebclientServiceScanner
+    [[ ! -d /opt/certsync ]] && git clone https://github.com/zblurx/certsync.git /opt/certsync
+    [[ ! -d /opt/ciscot7 ]] && git clone https://github.com/theevilbit/ciscot7.git /opt/ciscot7
+    [[ ! -d /opt/dnstwist ]] && git clone https://github.com/elceef/dnstwist.git /opt/dnstwist
+    [[ ! -d /opt/eavesarp ]] && git clone https://github.com/ImpostorKeanu/eavesarp.git /opt/eavesarp
+    [[ ! -d /opt/enum4linux-ng ]] &&  git clone https://github.com/cddmp/enum4linux-ng.git /opt/enum4linux-ng
+    [[ ! -d /opt/fireprox ]] && git clone https://github.com/ustayready/fireprox.git /opt/fireprox
+    [[ ! -d /opt/gitleaks ]] && git clone https://github.com/gitleaks/gitleaks.git /opt/gitleaks
+    [[ ! -d /opt/hardcidr ]] && git clone https://github.com/trustedsec/hardcidr.git /opt/hardcidr
+    [[ ! -d /opt/impacket ]] && git clone https://github.com/fortra/impacket.git /opt/impacket
+    [[ ! -d /opt/kerbrute ]] && git clone https://github.com/ropnop/kerbrute.git /opt/kerbrute
+    [[ ! -d /opt/krbrelayx ]] && git clone https://github.com/dirkjanm/krbrelayx.git /opt/krbrelayx
+    [[ ! -d /opt/ldeep ]] && git clone https://github.com/franc-pentest/ldeep /opt/ldeep
+    [[ ! -d /opt/malwoverview ]] && git clone https://github.com/alexandreborges/malwoverview.git /opt/malwoverview
+    [[ ! -d /opt/masscan ]] && git clone https://github.com/robertdavidgraham/masscan.git /opt/masscan
+    [[ ! -d /opt/mitm6 ]] && git clone https://github.com/dirkjanm/mitm6.git /opt/mitm6
+    [[ ! -d /opt/o365spray ]] && git clone https://github.com/0xZDH/o365spray.git /opt/o365spray
+    [[ ! -d /opt/parsuite ]] &&  git clone https://github.com/arch4ngel/parsuite.git /opt/parsuite
+    [[ ! -d /opt/pre2k ]] && git clone https://github.com/garrettfoster13/pre2k.git /opt/pre2k
+    [[ ! -d /opt/pyLAPS ]] && git clone https://github.com/p0dalirius/pyLAPS.git /opt/pyLAPS
+    [[ ! -d /opt/rdp-sec-check ]] && git clone https://github.com/CiscoCXSecurity/rdp-sec-check.git /opt/rdp-sec-check
+    [[ ! -d /opt/sccmhunter ]] && git clone https://github.com/garrettfoster13/sccmhunter.git /opt/sccmhunter
+    [[ ! -d /opt/ssh-audit ]] &&  git clone https://github.com/mr-pmillz/ssh-audit.git /opt/ssh-audit
+    [[ ! -d /opt/testssl.sh ]] && git clone --depth 1 https://github.com/drwetter/testssl.sh.git /opt/testssl.sh
+    [[ ! -d /opt/trufflehog ]] && git clone https://github.com/trufflesecurity/trufflehog.git /opt/trufflehog
+    [[ ! -d /opt/usernamer ]] &&  git clone https://github.com/jseidl/usernamer.git /opt/usernamer
+    [[ ! -d /tmp/testssl.sh ]] &&  git clone https://github.com/drwetter/testssl.sh.git /tmp/testssl.sh
+    [[ ! -d /opt/sslscan ]] &&  git clone https://github.com/rbsec/sslscan.git /opt/sslscan
+    [[ ! -d /opt/winshock-test ]] &&  git clone https://github.com/anexia-it/winshock-test.git /opt/winshock-test
+    [[ ! -d /opt/ike-scan ]] &&  git clone https://github.com/royhills/ike-scan.git /opt/ike-scan
+    [[ ! -d /opt/ikeforce ]] &&  git clone https://github.com/SpiderLabs/ikeforce.git /opt/ikeforce
+    [[ ! -d /opt/wpscan ]] &&  git clone https://github.com/wpscanteam/wpscan.git /opt/wpscan
+    [[ ! -d /opt/pymeta ]] &&  git clone https://github.com/m8r0wn/pymeta.git /opt/pymeta
+    [[ ! -d /opt/ntlmv1-multi ]] &&  git clone https://github.com/evilmog/ntlmv1-multi.git /opt/ntlmv1-multi
+    [[ ! -d /opt/SIET ]] &&  git clone https://github.com/frostbits-security/SIET.git /opt/SIET
+    # Needed for GoRecon Modules
+    [[ ! -d /tmp/testssl.sh ]] &&  git clone https://github.com/drwetter/testssl.sh.git /tmp/testssl.sh
+    [[ ! -d /opt/enum4linux-ng ]] &&  git clone https://github.com/cddmp/enum4linux-ng.git /opt/enum4linux-ng
+    [[ ! -d /opt/ssh-audit ]] &&  git clone https://github.com/mr-pmillz/ssh-audit.git /opt/ssh-audit
+    ### pr_SystemDPAPIdump
+    wget https://codeload.github.com/clavoillotte/impacket/zip/refs/heads/pr_SystemDPAPIdump -P /opt/pr_SystemDPAPIdump
+    
+}
+
+
 # Activate pyenv software 
 alias go-mitm6='source /root/pyenv/mitm6/bin/activate;cd /opt/mitm6'
 alias go-webclientServiceScanner='source /root/pyenv/WebclientServiceScanner/bin/activate;cd /opt/WebclientServiceScanner'
@@ -221,8 +305,8 @@ install_with_virtualenv() {
 # Download and Install the latest debian10 Nessus amd64
 download_and_install_latest_nessus() {
     NESSUS_LATEST_URL=$(curl -s https://www.tenable.com/downloads/api/v2/pages/nessus --header 'accept: application/json' | jq -r '.releases.latest' | jq -r '.[][].file_url' | grep 'Nessus-latest-debian10_amd64.deb')
-    [[ ! -d "${HOME}/executables" ]] && mkdir "${HOME}/executables"
-    cd "${HOME}/executables" && wget "$NESSUS_LATEST_URL" -O "${HOME}/executables/"Nessus-latest-debian10_amd64.deb
+    [[ ! -d "${HOME}/tools" ]] && mkdir "${HOME}/tools"
+    cd "${HOME}/tools" && wget "$NESSUS_LATEST_URL" -O "${HOME}/tools/"Nessus-latest-debian10_amd64.deb
     sudo dpkg -i Nessus-latest-debian10_amd64.deb
     cd "${HOME}"
 }
@@ -230,8 +314,8 @@ download_and_install_latest_nessus() {
 # Download the latest debian10 Nessus amd64
 download_latest_nessus() {
     NESSUS_LATEST_URL=$(curl -s https://www.tenable.com/downloads/api/v2/pages/nessus --header 'accept: application/json' | jq -r '.releases.latest' | jq -r '.[][].file_url' | grep 'Nessus-latest-debian10_amd64.deb')
-    [[ ! -d "${HOME}/executables" ]] && mkdir "${HOME}/executables"
-    wget "$NESSUS_LATEST_URL" -O "${HOME}/executables/"Nessus-latest-debian10_amd64.deb
+    [[ ! -d "${HOME}/tools" ]] && mkdir "${HOME}/tools"
+    wget "$NESSUS_LATEST_URL" -O "${HOME}/tools/"Nessus-latest-debian10_amd64.deb
     # sudo dpkg -i Nessus-latest-debian10_amd64.deb
     # cd "${HOME}"
 }
@@ -242,7 +326,8 @@ install_apt_packages() {
     apt-get update -y
     apt install -y build-essential
     apt install -y dirsearch
-    apt install -y dnsrecon gedit
+    apt install -y dnsrecon 
+    apt install -y gedit
     apt install -y dnstwist
     apt install -y eyewitness
     apt install -y feroxbuster
@@ -272,7 +357,7 @@ install_apt_packages() {
     apt install -y proxychains4
     apt install -y python-dev-is-python3
     apt install -y python3
-    apt install -y python3-distutils
+    # apt install -y python3-distutils
     apt install -y python3-venv
     apt install -y python3-virtualenv
     apt install -y python3-pip
@@ -304,6 +389,7 @@ install_apt_packages() {
     apt install -y leafpad
     # apt install -y syncthing
     apt install -y apt-transport-https
+    apt install -y prips
     # apt install -y 
 
     # Bundler Install
