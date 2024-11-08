@@ -176,6 +176,14 @@ clone_git_repos() {
     ### pr_SystemDPAPIdump
     wget https://codeload.github.com/clavoillotte/impacket/zip/refs/heads/pr_SystemDPAPIdump -P /opt/pr_SystemDPAPIdump
     
+    #
+    # New Adds
+    [[ ! -d /opt/redis-rogue-server ]] &&  git clone https://github.com/n0b0dyCN/redis-rogue-server.git /opt/redis-rogue-server
+    [[ ! -d /opt/hakrevdns ]] &&  git clone https://github.com/hakluke/hakrevdns.git /opt/hakrevdns
+    [[ ! -d /opt/ccat ]] &&  git clone https://github.com/frostbits-security/ccat.git /opt/ccat
+    [[ ! -d /opt/SeeYouCM-Thief ]] &&  git clone https://github.com/trustedsec/SeeYouCM-Thief.git /opt/SeeYouCM-Thief
+    [[ ! -d /opt/onedrive_user_enum ]] && git clone https://github.com/nyxgeek/onedrive_user_enum.git /opt/onedrive_user_enum
+
 }
 
 
@@ -275,7 +283,7 @@ alias check-terminal='grep "colorScheme\|TerminalMargin\|TerminalTransparency\|f
 # Log Location: /root/testing/logs/install.log
 #
 
-install_with_virtualenv() {
+install-with-virtualenv() {
     REPO_NAME="$1"
     PYENV="${HOME}/pyenv"
     LOG_FILE="/root/testing/logs/install-with-virtualenv-install.log"
