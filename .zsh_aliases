@@ -96,7 +96,7 @@ alias copy-responderlogs='cp -r /opt/Responder/logs /root/testing/logs/responder
 alias copy-resolvconf='cp /etc/resolv.conf /root/testing/domain-recon/resolv.conf'
 #
 
-clone_git_repos() {
+clone-git-repos() {
     # Repos
     # Needed for GoRecon Modules
     # [[ ! -d /opt/TODO ]] &&  git clone TODO /opt/TODO
