@@ -435,7 +435,7 @@ create_roottestingdirectories() {
     # Reconnaissance
     [[ ! -d "${HOME}/testing/Reconnaissance" ]] && mkdir "${HOME}/testing/Reconnaissance"
     [[ ! -d "${HOME}/testing/Reconnaissance/squatting-domains.txt" ]] && touch "${HOME}/testing/Reconnaissance/squatting-domains.txt"
-    [[ ! -d "${HOME}/testing/gorecon-parsed-nessus" ]] && mkdir "${HOME}/testing/gorecon-parsed-nessus"
+    [[ ! -d "${HOME}/testing/parsed-nessus" ]] && mkdir "${HOME}/testing/parsed-nessus"
     # Masscan
     [[ ! -d "${HOME}/testing/masscan" ]] && mkdir "${HOME}/testing/masscan"
     [[ ! -d "${HOME}/testing/masscan/externalscope" ]] && touch "${HOME}/testing/masscan/externalscope"
