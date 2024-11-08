@@ -393,6 +393,13 @@ install_apt_packages() {
     # apt install -y syncthing
     apt install -y apt-transport-https
     apt install -y prips
+    
+    # GPS Modules 
+    apt install -y gpsd
+    apt install -y gpsd-clients
+    apt install -y gpsd-tools
+    apt install -y python3-gps
+
     # apt install -y 
 
     # Bundler Install
