@@ -74,9 +74,21 @@ alias msf='msfconsole -q'
 # Copy to clipboard
 alias clp='xclip -selection c -r'
 #
-# hash-check
-alias hash-check='cd /opt/Responder/logs && for i in $(cat *-NTLMv2*.txt | cut -d':' -f1 | sort -u) ; do grep --no-filename "$i" *-NTLMv2*.txt | head -n1 ; done > /root/testing/sorted_unique_ntlmv2_hashes.txt ; cat /root/testing/sorted_unique_ntlmv2_hashes.txt | wc ; cd ~/testing'
+# hash-checks
+alias hash-check-opt='cd /opt/Responder/logs && for i in $(cat *-NTLMv2*.txt | cut -d':' -f1 | sort -u) ; do grep --no-filename "$i" *-NTLMv2*.txt | head -n1 ; done > /root/testing/sorted_unique_ntlmv2_hashes.txt ; cat /root/testing/sorted_unique_ntlmv2_hashes.txt | wc ; cd ~/testing'
 #
+# NTLMv1
+alias hash-check-ntlmv1='cd /usr/share/responder/logs && for i in $(cat *-NTLMv1*.txt | cut -d':' -f1 | sort -u) ; do grep --no-filename "$i" *-NTLMv1*.txt | head -n1 ; done > /root/testing/sorted_unique_ntlmv1_hashes.txt ; cat /root/testing/sorted_unique_ntlmv1_hashes.txt | wc ; cd ~/testing'
+#
+# NTLMv2
+alias hash-check='cd /usr/share/responder/logs && for i in $(cat *-NTLMv2*.txt | cut -d':' -f1 | sort -u) ; do grep --no-filename "$i" *-NTLMv2*.txt | head -n1 ; done > /root/testing/sorted_unique_ntlmv2_hashes.txt ; cat /root/testing/sorted_unique_ntlmv2_hashes.txt | wc ; cd ~/testing'
+#
+# MSSQL 
+alias hash-check-MSSQL='cd /usr/share/responder/logs && for i in $(cat *MSSQL-*.txt | cut -d':' -f1 | sort -u) ; do grep --no-filename "$i" *MSSQL-*.txt | head -n1 ; done > /root/testing/sorted_unique_MSSQL-CLEARTEXT_hashes.txt ; cat /root/testing/sorted_unique_MSSQL-CLEARTEXT_hashes.txt | wc ; cd ~/testing'
+#
+
+
+
 # Responder/logs
 alias copy-responderlogs='cp -r /opt/Responder/logs /root/testing/logs/responderlogs'
 #
@@ -230,9 +242,17 @@ alias go-usernamer='source /root/pyenv/usernamer/bin/activate;cd /opt/usernamer'
 alias go-winshock-test='source /root/pyenv/winshock-test/bin/activate;cd /opt/winshock-test'
 alias go-wpscan='source /root/pyenv/wpscan/bin/activate;cd /opt/wpscan'
 alias go-trufflehog='source /root/pyenv/trufflehog/bin/activate;cd /opt/trufflehog'
+alias go-redis-rogue-server='source /root/pyenv/redis-rogue-server/bin/activate;cd /opt/redis-rogue-server'
+alias go-hakrevdns='source /root/pyenv/hakrevdns/bin/activate;cd /opt/hakrevdns'
+alias go-ccat='source /root/pyenv/ccat/bin/activate;cd /opt/ccat'
+alias go-SeeYouCM-Thief='source /root/pyenv/SeeYouCM-Thief/bin/activate;cd /opt/SeeYouCM-Thief'
+alias go-onedrive_user_enum='source /root/pyenv/onedrive_user_enum/bin/activate;cd /opt/onedrive_user_enum'
 
 # Deactivate pyenv software
 alias da='deactivate;cd ~/testing'
+
+# Log iptable 
+alias log-iptables='iptables -L OUTPUT | tee -a /root/testing/logs/$(date '+%Y_%m_%d_%H_%M_%S')-IPTables-implant-.log'
 
 #
 alias start-neo4j='cd /usr/bin; ./neo4j console'
