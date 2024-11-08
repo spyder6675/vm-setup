@@ -400,6 +400,11 @@ install_apt_packages() {
     apt install -y gpsd-tools
     apt install -y python3-gps
 
+    # WiFi 
+    apt install -y aircrack-ng
+    
+
+
     # apt install -y 
 
     # Bundler Install
