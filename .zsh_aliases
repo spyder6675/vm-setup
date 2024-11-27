@@ -125,7 +125,9 @@ clone-git-repos() {
     [[ ! -d /opt/NetExec ]] && git clone https://github.com/Pennyw0rth/NetExec.git /opt/NetExec
     [[ ! -d /opt/PCredz ]] && git clone https://github.com/lgandx/PCredz.git /opt/PCredz
     [[ ! -d /opt/PKINITtools ]] && git clone https://github.com/dirkjanm/PKINITtools.git /opt/PKINITtools
-    [[ ! -d /opt/PXEThief ]] && git clone https://github.com/MWR-CyberSec/PXEThief.git /opt/PXEThief
+    # [[ ! -d /opt/PXEThief ]] && git clone https://github.com/MWR-CyberSec/PXEThief.git /opt/PXEThief
+    # PXEThief is Windows only. We want the Linux version
+    [[ ! -d /opt/pxethiefy ]] && git clone https://github.com/csandker/pxethiefy.git /opt/pxethiefy
     [[ ! -d /opt/PetitPotam ]] && git clone https://github.com/topotam/PetitPotam.git /opt/PetitPotam
     [[ ! -d /opt/PlumHound ]] && git clone https://github.com/PlumHound/PlumHound.git /opt/PlumHound
     [[ ! -d /opt/PowerUpSQL ]] &&  git clone https://github.com/NetSPI/PowerUpSQL.git /opt/PowerUpSQL
@@ -212,7 +214,7 @@ alias go-MSOLSpray='source /root/pyenv/MSOLSpray/bin/activate;cd /opt/MSOLSpray'
 alias go-MailSniper='source /root/pyenv/MailSniper/bin/activate;cd /opt/MailSniper'
 alias go-PCredz='source /root/pyenv/PCredz/bin/activate;cd /opt/PCredz'
 alias go-PKINITtools='source /root/pyenv/PKINITtools/bin/activate;cd /opt/PKINITtools'
-alias go-PXEThief='source /root/pyenv/PXEThief/bin/activate;cd /opt/PXEThief'
+alias go-pxethiefy='source /root/pyenv/pxethiefy/bin/activate;cd /opt/pxethiefy'
 alias go-PetitPotam='cd /opt/PetitPotam'
 alias go-PowerUpSQL='source /root/pyenv/PowerUpSQL/bin/activate;cd /opt/PowerUpSQL'
 alias go-SIET='source /root/pyenv/SIET/bin/activate;cd /opt/SIET'
