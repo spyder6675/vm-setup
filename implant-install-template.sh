@@ -484,6 +484,7 @@ wget https://github.com/ropnop/kerbrute/releases/download/v1.0.3/kerbrute_linux_
 
 # ADD 
 wget https://raw.githubusercontent.com/immunityinc/bravestarr/master/bravestarr.py -P /root/tools
+wget https://raw.githubusercontent.com/spyder6675/vm-setup/main/calculate-time.py -P /root/tools
 
 
 # Nmap Scripts
