@@ -257,6 +257,8 @@ alias go-hakrevdns='source /root/pyenv/hakrevdns/bin/activate;cd /opt/hakrevdns'
 alias go-ccat='source /root/pyenv/ccat/bin/activate;cd /opt/ccat'
 alias go-SeeYouCM-Thief='source /root/pyenv/SeeYouCM-Thief/bin/activate;cd /opt/SeeYouCM-Thief'
 alias go-onedrive_user_enum='source /root/pyenv/onedrive_user_enum/bin/activate;cd /opt/onedrive_user_enum'
+alias go-CVE-2018-10933='source /root/pyenv/CVE-2018-10933/bin/activate;cd /opt/CVE-2018-10933'
+
 
 # Deactivate pyenv software
 alias da='deactivate;cd ~/testing'
