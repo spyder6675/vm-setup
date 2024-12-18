@@ -184,9 +184,6 @@ clone_git_repos() {
     [[ ! -d /opt/NetExec ]] && git clone https://github.com/Pennyw0rth/NetExec.git /opt/NetExec
     [[ ! -d /opt/PCredz ]] && git clone https://github.com/lgandx/PCredz.git /opt/PCredz
     [[ ! -d /opt/PKINITtools ]] && git clone https://github.com/dirkjanm/PKINITtools.git /opt/PKINITtools
-    # [[ ! -d /opt/PXEThief ]] && git clone https://github.com/MWR-CyberSec/PXEThief.git /opt/PXEThief
-    # PXEThief is Windows only. We want the Linux version
-    [[ ! -d /opt/pxethiefy ]] && git clone https://github.com/csandker/pxethiefy.git /opt/pxethiefy
     [[ ! -d /opt/PetitPotam ]] && git clone https://github.com/topotam/PetitPotam.git /opt/PetitPotam
     [[ ! -d /opt/PlumHound ]] && git clone https://github.com/PlumHound/PlumHound.git /opt/PlumHound
     [[ ! -d /opt/PowerUpSQL ]] &&  git clone https://github.com/NetSPI/PowerUpSQL.git /opt/PowerUpSQL
@@ -237,6 +234,16 @@ clone_git_repos() {
     ### pr_SystemDPAPIdump
     wget https://codeload.github.com/clavoillotte/impacket/zip/refs/heads/pr_SystemDPAPIdump -P /opt/pr_SystemDPAPIdump
     
+    # New Adds
+    [[ ! -d /opt/redis-rogue-server ]] &&  git clone https://github.com/n0b0dyCN/redis-rogue-server.git /opt/redis-rogue-server
+    [[ ! -d /opt/hakrevdns ]] &&  git clone https://github.com/hakluke/hakrevdns.git /opt/hakrevdns
+    [[ ! -d /opt/ccat ]] &&  git clone https://github.com/frostbits-security/ccat.git /opt/ccat
+    [[ ! -d /opt/SeeYouCM-Thief ]] &&  git clone https://github.com/trustedsec/SeeYouCM-Thief.git /opt/SeeYouCM-Thief
+    [[ ! -d /opt/onedrive_user_enum ]] && git clone https://github.com/nyxgeek/onedrive_user_enum.git /opt/onedrive_user_enum
+    [[ ! -d /opt/CVE-2017-12542 ]] && git clone https://github.com/skelsec/CVE-2017-12542.git /opt/CVE-2017-12542
+    [[ ! -d /opt/Active-Directory-Spotlights ]] && git clone https://github.com/sse-secure-systems/Active-Directory-Spotlights.git /opt/Active-Directory-Spotlights
+
+
 }
 
 configure_terminal() {
