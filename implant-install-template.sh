@@ -294,6 +294,7 @@ install_go_tools() {
     [[ -f "${HOME}/go/bin/nuclei" ]] && nuclei -ut || echo "nuclei not in ${HOME}/go/bin/"
 }
 
+
 # ignore shellcheck warnings for source commands
 # shellcheck source=/dev/null
 install_with_virtualenv() {
@@ -436,10 +437,10 @@ main() {
     install_with_virtualenv Coercer
     install_with_virtualenv mitm6
     install_with_virtualenv sccmhunter
-    install_with_virtualenv PXEThief
+    # install_with_virtualenv PXEThief
     install_with_virtualenv pre2k
     install_with_virtualenv ldeep
-    install_with_virtualenv CredMaster
+    # install_with_virtualenv CredMaster
     install_with_virtualenv PKINITtools
     install_with_virtualenv WebclientServiceScanner
     install_with_virtualenv fireprox
@@ -495,7 +496,6 @@ wget https://raw.githubusercontent.com/spyder6675/vm-setup/main/calculate-time.p
 
 
 # Nmap Scripts
-# mkdir /root/nmap-scripts
 wget https://raw.githubusercontent.com/nmap/nmap/refs/heads/master/scripts/http-apache-server-status.nse -P /usr/share/nmap/scripts
 wget https://raw.githubusercontent.com/richlamdev/ssh-default-banners/master/ssh-os.nse -P /usr/share/nmap/scripts
 wget https://raw.githubusercontent.com/RootUp/PersonalStuff/master/http-vuln-cve2020-3452.nse -P /usr/share/nmap/scripts
@@ -511,17 +511,6 @@ wget https://raw.githubusercontent.com/spyder6675/vm-setup/main/vpnIDs.txt -P /r
 
 ### Unzip Rockyou ###
 gzip -d /usr/share/wordlists/rockyou.txt.gz
-
-### Create Files and Folders
-# Alais file
-cat << 'EOF' >> "${HOME}/.zshrc"
-
-# zsh Aliases
-if [ -f ~/.zsh_aliases ]; then
-    . ~/.zsh_aliases
-fi
-
-EOF
 
 #### 
 
