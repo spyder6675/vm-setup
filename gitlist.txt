@@ -50,7 +50,7 @@
 [[ ! -d /opt/rdp-sec-check ]] && git clone https://github.com/CiscoCXSecurity/rdp-sec-check.git /opt/rdp-sec-check
 [[ ! -d /opt/sccmhunter ]] && git clone https://github.com/garrettfoster13/sccmhunter.git /opt/sccmhunter
 [[ ! -d /opt/ssh-audit ]] && git clone https://github.com/mr-pmillz/ssh-audit.git /opt/ssh-audit
-[[ ! -d /opt/testssl.sh ]] && git clone --depth 1 https://github.com/drwetter/testssl.sh.git /opt/testssl.sh
+[[ ! -d /opt/testssl.sh ]] && git clone https://github.com/drwetter/testssl.sh.git /opt/testssl.sh
 [[ ! -d /opt/trufflehog ]] && git clone https://github.com/trufflesecurity/trufflehog.git /opt/trufflehog
 [[ ! -d /opt/usernamer ]] && git clone https://github.com/jseidl/usernamer.git /opt/usernamer
 [[ ! -d /tmp/testssl.sh ]] && git clone https://github.com/drwetter/testssl.sh.git /tmp/testssl.sh
@@ -66,8 +66,6 @@
 [[ ! -d /tmp/testssl.sh ]] && git clone https://github.com/drwetter/testssl.sh.git /tmp/testssl.sh
 [[ ! -d /opt/enum4linux-ng ]] && git clone https://github.com/cddmp/enum4linux-ng.git /opt/enum4linux-ng
 [[ ! -d /opt/ssh-audit ]] && git clone https://github.com/mr-pmillz/ssh-audit.git /opt/ssh-audit
-### pr_SystemDPAPIdump
-wget https://codeload.github.com/clavoillotte/impacket/zip/refs/heads/pr_SystemDPAPIdump -P /opt/pr_SystemDPAPIdump
 # New Adds
 [[ ! -d /opt/redis-rogue-server ]] && git clone https://github.com/n0b0dyCN/redis-rogue-server.git /opt/redis-rogue-server
 [[ ! -d /opt/hakrevdns ]] && git clone https://github.com/hakluke/hakrevdns.git /opt/hakrevdns
