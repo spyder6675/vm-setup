@@ -720,9 +720,9 @@ set_local_terminal_settings() {
 
 test_install_apt_packages_fromfile () {
     # Path to the file containing the list of packages to install
-    local package_file="/path/to/your/packages.txt"
+    local package_file="https://raw.githubusercontent.com/spyder6675/vm-setup/refs/heads/main/aptlist.txt"
     # Path to the log file
-    local log_file="/path/to/your/install_log.txt"
+    local log_file="$HOME/apt_install_log.txt"
 
     # Check if the package file exists
     if [ ! -f "$package_file" ]; then
