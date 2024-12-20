@@ -629,13 +629,6 @@ check_ssh_setup() {
         echo -e "${ORANGE}[!]${RESET} Password authentication setting not found, might be using defaults"
     fi
 
-    # Check if root can SSH into this machine with password
-    if ssh -o PasswordAuthentication=yes -o BatchMode=no -o StrictHostKeyChecking=no localhost exit 2>/dev/null; then
-        echo -e "${GREEN}[+]${RESET} Root can SSH into this machine with a password"
-    else
-        echo -e "${RED}[-]${RESET} Root cannot SSH into this machine with a password"
-    fi
-
     # Check SSH permissions for the current user and root
     users=("$HOME" "/root")
     for user_home in "${users[@]}"; do
