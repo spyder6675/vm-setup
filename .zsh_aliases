@@ -676,6 +676,20 @@ start-sshd () {
 	sudo systemctl enable ssh
 	sudo systemctl restart ssh
 	echo "SSH Service Enabled and Started."
+    
+    # Check if SSH is enabled (checking if sshd_config exists)
+    if [ -f /etc/ssh/sshd_config ]; then
+        echo -e "${GREEN}[+]${RESET} SSH is enabled"
+    else
+        echo -e "${RED}[-]${RESET} SSH might not be enabled (no sshd_config found)"
+    fi
+
+    # Check if SSH is running
+    if pgrep sshd >/dev/null; then
+        echo -e "${GREEN}[+]${RESET} SSH is running"
+    else
+        echo -e "${RED}[-]${RESET} SSH is not running"
+    fi
 }
 
 
