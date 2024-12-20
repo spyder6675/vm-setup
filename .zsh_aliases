@@ -568,6 +568,43 @@ check-hardware() {
 check-hardware-requirements() {
     ALL_GOOD=true
 
+    echo -e "${PURPLE}[*]${RESET} Checking implant system requirements:\nCPU >= 4\tRAM >= 8 GB\tDisk >= 100 GB\n"
+
+    NUM_CPUS=$(lscpu | grep 'CPU(s):' | head -n 1 | awk '{print $NF}')
+    if (( "$NUM_CPUS" < 4 )); then
+        ALL_GOOD=false
+        echo -e "${RED}[-]${RESET}${BOLD} Implant has INSUFFICIENT CPUs! CPU(s): ${NUM_CPUS} REACH OUT TO CUSTOMER ${RESET}"
+    else
+        echo -e "${GREEN}[+]${RESET}${BOLD} CPU(s): ${NUM_CPUS} ${RESET}"
+    fi
+
+    TOTAL_RAM=$(grep MemTotal /proc/meminfo | awk '{print $2}')
+    TOTAL_RAM_GB=$((TOTAL_RAM / 1048576)) # Integer division to get GB
+    if [ "$TOTAL_RAM_GB" -lt 8 ]; then
+        ALL_GOOD=false
+        echo -e "${RED}[-]${RESET}${BOLD} Implant has INSUFFICIENT MEMORY.. Total Ram: ${TOTAL_RAM_GB} GB. REACH OUT TO CUSTOMER ${RESET}"
+    else
+        echo -e "${GREEN}[+]${RESET}${BOLD} Total RAM: ${TOTAL_RAM_GB} GB ${RESET}"
+    fi
+
+    # Get disk size in bytes for the primary disk (assuming /dev/sda)
+    TOTAL_DISK=$(lsblk -b -n -d -o SIZE /dev/sda)
+    TOTAL_DISK_GB=$((TOTAL_DISK / 1073741824)) # Convert bytes to GB
+    if [ "$TOTAL_DISK_GB" -lt 100 ]; then
+        ALL_GOOD=false
+        echo -e "${RED}[-]${RESET}${BOLD} Implant has INSUFFICIENT DISK SPACE! Total Disk: ${TOTAL_DISK_GB} GB. REACH OUT TO CUSTOMER ${RESET}"
+    else
+        echo -e "${GREEN}[+]${RESET}${BOLD} Total Disk: ${TOTAL_DISK_GB} GB ${RESET}"
+    fi
+
+    if ! $ALL_GOOD ; then
+        echo -e "${ORANGE}[!]${RESET}${BOLD} You must construct additional pylons ${RESET}"
+    else
+        echo -e "${BLUE}[+]${RESET}${BOLD} All systems good to go! ${RESET}"
+    fi
+}check-hardware-requirements() {
+    ALL_GOOD=true
+
     echo -e "${PURPLE}[*]${RESET} Checking implant system requirements:\nCPU >= 4\tRAM >= 8 GB\n"
 
     NUM_CPUS=$(lscpu | grep 'CPU(s):' | head -n 1 | awk '{print $NF}')
