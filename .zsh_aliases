@@ -567,7 +567,7 @@ check-hardware() {
 check-hardware-requirements() {
     ALL_GOOD=true
 
-    echo -e "${PURPLE}[*]${RESET} Checking implant system requirements:\nCPU >= 4\tRAM >= 8 GB\nDisk Drives:\n"
+    echo -e "${PURPLE}[*]${RESET} Checking implant system requirements:\nCPU >= 4\tRAM >= 8 GB\tDisk >= 100 GB\n"
 
     NUM_CPUS=$(lscpu | grep 'CPU(s):' | head -n 1 | awk '{print $NF}')
     if (( "$NUM_CPUS" < 4 )); then
@@ -586,25 +586,25 @@ check-hardware-requirements() {
         echo -e "${GREEN}[+]${RESET}${BOLD} Total RAM: ${TOTAL_RAM_GB} GB ${RESET}"
     fi
 
-    # List all available disk drives in GB
-    echo -e "\nChecking disk drives:"
-    while IFS= read -r line; do
-        # Extract drive name and size in bytes
-        DRIVE=$(echo "$line" | awk '{print $1}')
-        SIZE_BYTES=$(echo "$line" | awk '{print $4}')
-        
-        # Convert size to GB, using floating-point arithmetic for better precision
-        SIZE_GB=$(echo "scale=2; $SIZE_BYTES / 1073741824" | awk '{printf "%.2f", $1}')
-
-        echo -e "${GREEN}[+]${RESET}${BOLD} Drive: ${DRIVE}\tTotal Size: ${SIZE_GB} GB ${RESET}"
-    done < <(lsblk -b -n -d -o NAME,SIZE)
+    # Get disk size in bytes for the primary disk (assuming /dev/sda)
+    TOTAL_DISK=$(lsblk -b -n -d -o SIZE /dev/sda)
+    TOTAL_DISK_GB=$((TOTAL_DISK / 1073741824)) # Convert bytes to GB
+    if [ "$TOTAL_DISK_GB" -lt 100 ]; then
+        ALL_GOOD=false
+        echo -e "${RED}[-]${RESET}${BOLD} Implant has INSUFFICIENT DISK SPACE! Total Disk: ${TOTAL_DISK_GB} GB. REACH OUT TO CUSTOMER ${RESET}"
+    else
+        echo -e "${GREEN}[+]${RESET}${BOLD} Total Disk: ${TOTAL_DISK_GB} GB ${RESET}"
+    fi
 
     if ! $ALL_GOOD ; then
-        echo -e "\n${ORANGE}[!]${RESET}${BOLD} You must construct additional pylons ${RESET}"
+        echo -e "${ORANGE}[!]${RESET}${BOLD} You must construct additional pylons ${RESET}"
     else
-        echo -e "\n${BLUE}[+]${RESET}${BOLD} All systems good to go! ${RESET}"
+        echo -e "${BLUE}[+]${RESET}${BOLD} All systems good to go! ${RESET}"
     fi
 }
+
+
+
 
 # Terminal Setup
 # Call the function
