@@ -12,6 +12,8 @@ fi
 
 # Initialize a variable to track the flag status
 INSTALL_NESSUS=0
+USE_OPERATOR_PROXY=0
+UPDATE_APT_SOURCES=0
 
 # Loop through all the arguments
 for arg in "$@"
@@ -19,13 +21,19 @@ do
   case $arg in
     --install-nessus)
       INSTALL_NESSUS=1
-      break # No need to continue loop if the flag is found
+      ;;
+    --use-proxy)
+      USE_OPERATOR_PROXY=1
+      ;;
+    --update-apt-sources)
+      UPDATE_APT_SOURCES=1
       ;;
     *)
       # Handle or ignore other arguments
       ;;
   esac
 done
+
 
 #####[ Colors ]######
 RED='\033[1;38;5;196m'
@@ -36,10 +44,11 @@ GREEN='\033[1;92m'
 BOLD='\033[1m'
 RESET='\033[0m'
 
+
 check_hardware_requirements() {
     ALL_GOOD=true
 
-    echo -e "${PURPLE}[*]${RESET} Checking implant system requirements:\nCPU >= 4\tRAM >= 8 GB\n"
+    echo -e "${PURPLE}[*]${RESET} Checking if implant system requirements meet the following criteria:\nCPU >= 4\tRAM >= 8 GB\tDisk Space >= 40GB\n"
 
     NUM_CPUS=$(lscpu | grep 'CPU(s):' | head -n 1 | awk '{print $NF}')
     if (( "$NUM_CPUS" < 4 )); then
@@ -57,12 +66,25 @@ check_hardware_requirements() {
         echo -e "${GREEN}[+]${RESET}${BOLD} Total RAM: ${TOTAL_RAM} kB ${RESET}"
     fi
 
+    # Get total available disk space in kB
+    TOTAL_AVAILABLE_DISKSPACE=$(df --total | grep 'total' | awk '{print $4}')
+
+    if (( TOTAL_AVAILABLE_DISKSPACE < 40000000 )); then
+        ALL_GOOD=false
+        echo -e "${RED}[-]${RESET}${BOLD} Implant has INSUFFICIENT Disk space.. Available Storage: ${TOTAL_AVAILABLE_DISKSPACE} kB. REACH OUT TO CUSTOMER ${RESET}"
+    else
+        echo -e "${GREEN}[+]${RESET}${BOLD} Available Storage: ${TOTAL_AVAILABLE_DISKSPACE} kB. ${RESET}"
+    fi
+
     if ! $ALL_GOOD ; then
         echo -e "${ORANGE}[!]${RESET}${BOLD} You must construct additional pylons ${RESET}"
+        echo -e "${RED}[-]${RESET}${BOLD} Exiting with non-zero status code ${RESET}"
+        exit 1
     else
         echo -e "${BLUE}[+]${RESET}${BOLD} All systems good to go! ${RESET}"
     fi
 }
+
 
 install_apt_packages() {
     # apt packages
@@ -234,7 +256,6 @@ clone-git-repos() {
     [[ ! -d /opt/ssh-audit ]] &&  git clone https://github.com/mr-pmillz/ssh-audit.git /opt/ssh-audit
     ### pr_SystemDPAPIdump
     wget https://codeload.github.com/clavoillotte/impacket/zip/refs/heads/pr_SystemDPAPIdump -P /opt/pr_SystemDPAPIdump
-    
     #
     # New Adds
     [[ ! -d /opt/redis-rogue-server ]] &&  git clone https://github.com/n0b0dyCN/redis-rogue-server.git /opt/redis-rogue-server
@@ -270,6 +291,9 @@ startup_message off
 defscrollback 1000000
 EOF
 
+# Ensure that shell is set to /bin/zsh
+chsh -s /usr/bin/zsh || echo -e "[-] Failed to change shell to /usr/bin/zsh"
+
 # fix ~/.zshrc bind keys for HOME and END keys
 sed -i -e 's/bindkey '\''\^\[\[H'\'' beginning-of-line/bindkey "\\e[1~" beginning-of-line/' \
 -e 's/bindkey '\''\^\[\[F'\'' end-of-line/bindkey "\\e[4~" end-of-line/' ~/.zshrc || echo -e "[-] failed to update ~/.zshrc bind keys"
@@ -304,6 +328,8 @@ install_go_tools() {
     GO111MODULE=on go install -v github.com/projectdiscovery/dnsx/cmd/dnsx@latest
     GO111MODULE=on go install -v github.com/OJ/gobuster/v3@latest
     GO111MODULE=on go install github.com/lkarlslund/ldapnomnom@latest
+    GO111MODULE=on go install github.com/zricethezav/gitleaks/v8@latest
+    GO111MODULE=on go install -v github.com/projectdiscovery/naabu/v2/cmd/naabu@latest
     GO111MODULE=on go install -v github.com/projectdiscovery/nuclei/v3/cmd/nuclei@latest
     [[ -f "${HOME}/go/bin/nuclei" ]] && nuclei -ut || echo "nuclei not in ${HOME}/go/bin/"
 }
