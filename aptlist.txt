@@ -5,3 +5,17 @@ gedit
 dnstwist
 eyewitness
 feroxbuster
+
+whatweb
+leafpad
+apt-transport-https
+prips
+
+# GPS Modules 
+gpsd
+gpsd-clients
+gpsd-tools
+python3-gps
+
+# WiFi 
+aircrack-ng
