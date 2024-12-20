@@ -640,9 +640,9 @@ check-hardware-requirements() {
     done < <(lsblk -b -n -d -o NAME,SIZE)
 
     if ! $ALL_GOOD ; then
-        echo -e "\n${ORANGE}[!]${RESET}${BOLD} You must construct additional pylons ${RESET}"
+        echo -e "${ORANGE}[!]${RESET}${BOLD} You must construct additional pylons ${RESET}"
     else
-        echo -e "\n${BLUE}[+]${RESET}${BOLD} All systems good to go! ${RESET}"
+        echo -e "${BLUE}[+]${RESET}${BOLD} All systems good to go! ${RESET}"
     fi
 }
 
