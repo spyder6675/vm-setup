@@ -101,13 +101,13 @@ clone-git-repos() {
     # Repos
     # Needed for GoRecon Modules
     # [[ ! -d /opt/TODO ]] &&  git clone TODO /opt/TODO
-    # [[ ! -d /opt/BloodHound.py ]] && git clone https://github.com/dirkjanm/bloodhound.py /opt/BloodHound.py
+    [[ ! -d /opt/BloodHound.py ]] && git clone https://github.com/dirkjanm/bloodhound.py /opt/BloodHound.py
     # [[ ! -d /opt/CrackMapExec ]] && git clone https://github.com/byt3bl33d3r/CrackMapExec.git /opt/CrackMapExec
     # [[ ! -d /opt/SecLists ]] && git clone https://github.com/danielmiessler/SecLists.git /opt/SecLists
     # [[ ! -d /opt/testssl.sh ]] && git clone https://github.com/drwetter/testssl.sh.git /opt/testssl.sh
     [[ ! -d /opt/AADInternals ]] &&  git clone https://github.com/Gerenios/AADInternals.git /opt/AADInternals
     [[ ! -d /opt/ADCSync ]] && git clone https://github.com/JPG0mez/ADCSync.git /opt/ADCSync
-    [[ ! -d /opt/BloodHound.py ]] && git clone https://github.com/fox-it/BloodHound.py.git /opt/BloodHound.py
+    # [[ ! -d /opt/BloodHound.py ]] && git clone https://github.com/fox-it/BloodHound.py.git /opt/BloodHound.py
     [[ ! -d /opt/BruteLoops ]] &&  git clone https://github.com/arch4ngel/BruteLoops.git /opt/BruteLoops
     [[ ! -d /opt/CeWL ]] && git clone https://github.com/digininja/CeWL.git /opt/CeWL
     [[ ! -d /opt/Certipy ]] && git clone https://github.com/ly4k/Certipy.git /opt/Certipy
@@ -185,6 +185,20 @@ clone-git-repos() {
     [[ ! -d /opt/onedrive_user_enum ]] && git clone https://github.com/nyxgeek/onedrive_user_enum.git /opt/onedrive_user_enum
     [[ ! -d /opt/CVE-2017-12542 ]] && git clone https://github.com/skelsec/CVE-2017-12542.git /opt/CVE-2017-12542
     [[ ! -d /opt/Active-Directory-Spotlights ]] && git clone https://github.com/sse-secure-systems/Active-Directory-Spotlights.git /opt/Active-Directory-Spotlights
+    [[ ! -d /opt/impacket ]] && git clone https://github.com/ThePorgs/impacket.git /opt/ThePorgs-impacket
+    [[ ! -d /opt/pywhisker ]] && git clone https://github.com/ShutdownRepo/pywhisker.git /opt/pywhisker
+    [[ ! -d /opt/pyGPOAbuse ]] && git clone https://github.com/Hackndo/pyGPOAbuse.git /opt/pyGPOAbuse
+    [[ ! -d /opt/GPOddity ]] && git clone https://github.com/synacktiv/GPOddity.git /opt/GPOddity
+    [[ ! -d /opt/bloodyAD ]] && git clone https://github.com/CravateRouge/bloodyAD.git /opt/bloodyAD
+    [[ ! -d /opt/dploot ]] && git clone https://github.com/zblurx/dploot.git /opt/dploot
+    [[ ! -d /opt/ccmpwn ]] && git clone https://github.com/mandiant/ccmpwn.git /opt/ccmpwn
+    [[ ! -d /opt/ldeep ]] && git clone https://github.com/franc-pentest/ldeep /opt/ldeep
+    [[ ! -d /opt/RustHound ]] && git clone https://github.com/OPENCYBER-FR/RustHound /opt/RustHound
+    [[ ! -d /opt/adidnsdump ]] && git clone https://github.com/dirkjanm/adidnsdump.git /opt/adidnsdump
+    [[ ! -d /opt/MANSPIDER ]] && git clone https://github.com/blacklanternsecurity/MANSPIDER.git /opt/MANSPIDER
+    # [[ ! -d /opt/PXEThief ]] && git clone https://github.com/MWR-CyberSec/PXEThief.git /opt/PXEThief
+    # PXEThief is Windows only. We want the Linux version
+    [[ ! -d /opt/pxethiefy ]] && git clone https://github.com/csandker/pxethiefy.git /opt/pxethiefy
 
 
 
