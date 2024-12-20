@@ -439,6 +439,7 @@ install_apt_packages() {
     )
 
     # Update package index
+    export DEBIAN_FRONTEND=noninteractive
     apt-get update -y
 
     # Install each package in the list
@@ -729,6 +730,7 @@ test_install_apt_packages_fromfile () {
     local package_file="$HOME/aptlist.txt"
     # Path to the log file
     local log_file="$HOME/log_apt_install.log"
+    export DEBIAN_FRONTEND=noninteractive
 
     # Check if the package file exists
     if [ ! -f "$package_file" ]; then
