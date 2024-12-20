@@ -589,7 +589,7 @@ check-hardware-requirements() {
     # Get disk size in bytes for the primary disk (assuming /dev/sda)
     TOTAL_DISK=$(lsblk -b -n -d -o SIZE /dev/sda)
     TOTAL_DISK_GB=$((TOTAL_DISK / 1073741824)) # Convert bytes to GB
-    if [ "$TOTAL_DISK_GB" -lt 100 ]; then
+    if [ "$TOTAL_DISK_GB" -lt 60 ]; then
         ALL_GOOD=false
         echo -e "${RED}[-]${RESET}${BOLD} Implant has INSUFFICIENT DISK SPACE! Total Disk: ${TOTAL_DISK_GB} GB. REACH OUT TO CUSTOMER ${RESET}"
     else
