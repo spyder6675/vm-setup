@@ -357,7 +357,7 @@ download_latest_nessus() {
 }
 
 
-install_apt_packages() {
+install-apt-packages() {
     # List of packages to install
     local packages=(
         "build-essential"
