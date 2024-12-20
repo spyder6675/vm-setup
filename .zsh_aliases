@@ -291,7 +291,7 @@ alias check-terminal='grep "colorScheme\|TerminalMargin\|TerminalTransparency\|f
 install-with-virtualenv() {
     REPO_NAME="$1"
     PYENV="${HOME}/pyenv"
-    LOG_FILE="/root/testing/logs/install-with-virtualenv-install.log"
+    LOG_FILE="${REPO_NAME}/install-with-virtualenv-install-${REPO_NAME}.log"
 
     log_message() {
         echo "$(date +'%Y-%m-%d %H:%M:%S') - $1" >> "$LOG_FILE"
@@ -661,7 +661,6 @@ set-sshpermissions () {
 	  chmod 700 "$HOME/.ssh"
 	  chmod 600 "$HOME/.ssh"/*
 	  chmod 644 "$HOME/.ssh"/known_hosts
-	  chmod 644 "$HOME/.ssh"/authorized_keys
 	  chmod 644 "$HOME/.ssh"/*.pub
 	  echo "SSH permissions set."
 	else
@@ -670,6 +669,13 @@ set-sshpermissions () {
 }
 
 
+# Enable SSH service
+start-sshd () {
+	echo "Enabling and Starting SSH service..."
+	sudo systemctl enable ssh
+	sudo systemctl restart ssh
+	echo "SSH Service Enabled and Started."
+}
 
 
 # Terminal Setup
