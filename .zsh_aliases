@@ -603,36 +603,37 @@ check-hardware-requirements() {
     fi
 }
 
-check_ssh_permissions() {
-    echo -e "${PURPLE}[*]${RESET} Checking SSH permissions for current user and root:\n"
+check_ssh_setup() {
+    echo -e "${PURPLE}[*]${RESET} Checking SSH setup:\n"
 
-    # Check permissions for current user
-    CURRENT_USER=$(whoami)
-    echo -e "${BLUE}[*]${RESET} Current User: ${CURRENT_USER}"
-    if [ -r ~/.ssh/authorized_keys ]; then
-        echo -e "${GREEN}[+]${RESET} ${CURRENT_USER} has read access to ~/.ssh/authorized_keys"
+    # Check if SSH is enabled (checking if sshd_config exists)
+    if [ -f /etc/ssh/sshd_config ]; then
+        echo -e "${GREEN}[+]${RESET} SSH is enabled"
     else
-        echo -e "${RED}[-]${RESET} ${CURRENT_USER} does not have read access to ~/.ssh/authorized_keys"
+        echo -e "${RED}[-]${RESET} SSH might not be enabled (no sshd_config found)"
     fi
 
-    if [ -w ~/.ssh/authorized_keys ]; then
-        echo -e "${GREEN}[+]${RESET} ${CURRENT_USER} has write access to ~/.ssh/authorized_keys"
+    # Check if SSH is running
+    if pgrep sshd >/dev/null; then
+        echo -e "${GREEN}[+]${RESET} SSH is running"
     else
-        echo -e "${RED}[-]${RESET} ${CURRENT_USER} does not have write access to ~/.ssh/authorized_keys"
+        echo -e "${RED}[-]${RESET} SSH is not running"
     fi
 
-    # Check permissions for root
-    echo -e "\n${BLUE}[*]${RESET} Root User:"
-    if [ -r /root/.ssh/authorized_keys ]; then
-        echo -e "${GREEN}[+]${RESET} Root has read access to /root/.ssh/authorized_keys"
+    # Check if password authentication is enabled
+    if grep -q "^PasswordAuthentication yes" /etc/ssh/sshd_config; then
+        echo -e "${GREEN}[+]${RESET} Password authentication is enabled"
+    elif grep -q "^PasswordAuthentication no" /etc/ssh/sshd_config; then
+        echo -e "${RED}[-]${RESET} Password authentication is disabled"
     else
-        echo -e "${RED}[-]${RESET} Root does not have read access to /root/.ssh/authorized_keys"
+        echo -e "${ORANGE}[!]${RESET} Password authentication setting not found, might be using defaults"
     fi
 
-    if [ -w /root/.ssh/authorized_keys ]; then
-        echo -e "${GREEN}[+]${RESET} Root has write access to /root/.ssh/authorized_keys"
+    # Check if root can SSH into this machine with password
+    if ssh -o PasswordAuthentication=yes -o BatchMode=no -o StrictHostKeyChecking=no localhost exit 2>/dev/null; then
+        echo -e "${GREEN}[+]${RESET} Root can SSH into this machine with a password"
     else
-        echo -e "${RED}[-]${RESET} Root does not have write access to /root/.ssh/authorized_keys"
+        echo -e "${RED}[-]${RESET} Root cannot SSH into this machine with a password"
     fi
 
     # Check if root can SSH into this machine without password
@@ -641,8 +642,51 @@ check_ssh_permissions() {
     else
         echo -e "${RED}[-]${RESET} Root cannot SSH into this machine without a password"
     fi
-}
 
+    # Check SSH permissions for the current user and root
+    users=("$HOME" "/root")
+    for user_home in "${users[@]}"; do
+        if [ "$user_home" == "$HOME" ]; then
+            user="Current User"
+        else
+            user="Root"
+        fi
+
+        echo -e "\n${BLUE}[*]${RESET} Checking permissions for ${user}:"
+
+        ssh_dir="$user_home/.ssh"
+
+        # Check .ssh directory permissions
+        if [ -d "$ssh_dir" ]; then
+            if [ "$(stat -c %a "$ssh_dir")" == "700" ]; then
+                echo -e "${GREEN}[+]${RESET} $ssh_dir has correct permissions (700)"
+            else
+                echo -e "${RED}[-]${RESET} $ssh_dir permissions are not set to 700 (current: $(stat -c %a "$ssh_dir"))"
+            fi
+
+            # Check private key files in .ssh directory
+            for file in "$ssh_dir"/*; do
+                if [ -f "$file" ]; then
+                    if [[ "$file" == *.pub ]]; then
+                        if [ "$(stat -c %a "$file")" == "644" ]; then
+                            echo -e "${GREEN}[+]${RESET} $file has correct permissions (644)"
+                        else
+                            echo -e "${RED}[-]${RESET} $file permissions are not set to 644 (current: $(stat -c %a "$file"))"
+                        fi
+                    else
+                        if [ "$(stat -c %a "$file")" == "600" ]; then
+                            echo -e "${GREEN}[+]${RESET} $file has correct permissions (600)"
+                        else
+                            echo -e "${RED}[-]${RESET} $file permissions are not set to 600 (current: $(stat -c %a "$file"))"
+                        fi
+                    fi
+                fi
+            done
+        else
+            echo -e "${ORANGE}[!]${RESET} $ssh_dir does not exist"
+        fi
+    done
+}
 
 
 # Terminal Setup
