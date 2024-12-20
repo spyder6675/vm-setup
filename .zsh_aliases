@@ -758,9 +758,7 @@ test_install_apt_packages_fromfile () {
 
 
 
-# Terminal Setup
-# Call the function
-# check-system
+
 #
 ### End of Functions ### 
 #
