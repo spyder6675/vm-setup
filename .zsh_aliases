@@ -31,6 +31,8 @@ alias ll='ls -lah'
 alias df='df -h' # 
 alias x='exit' # 
 alias chx='chmod +x ' 
+#
+alias list-files='ls -p tasks | grep -v /'
 # 
 alias upgrade='sudo apt update -y && sudo apt upgrade -y'
 alias pyweb='python3 -m http.server 8080'
@@ -38,6 +40,7 @@ alias pyweb='python3 -m http.server 8080'
 alias my-ip='echo $(ifconfig eth0 | grep "inet " | cut -b 9- | cut -d" " -f2)'
 alias int-ip='ip -br -c a'
 alias ext-ip='curl http://ipecho.net/plain; echo' # Get your external IP address.
+alias wtf-ip="curl wtfismyip.com/json"
 alias speedtest='curl -s https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py | python -'
 alias wtr='curl wttr.in'
 alias i="sudo apt install -y "
@@ -86,15 +89,13 @@ alias hash-check='cd /usr/share/responder/logs && for i in $(cat *-NTLMv2*.txt |
 # MSSQL 
 alias hash-check-MSSQL='cd /usr/share/responder/logs && for i in $(cat *MSSQL-*.txt | cut -d':' -f1 | sort -u) ; do grep --no-filename "$i" *MSSQL-*.txt | head -n1 ; done > /root/testing/sorted_unique_MSSQL-CLEARTEXT_hashes.txt ; cat /root/testing/sorted_unique_MSSQL-CLEARTEXT_hashes.txt | wc ; cd ~/testing'
 #
-
-
-
-# Responder/logs
-alias copy-responderlogs='cp -r /opt/Responder/logs /root/testing/logs/responderlogs'
-#
 # Copy Resolve.conf
 alias copy-resolvconf='cp /etc/resolv.conf /root/testing/domain-recon/resolv.conf'
 #
+# Watch Passwd Spray
+alias watch-pwspray="watch -n 1 'cat *-kerbrute-passwordspray.log| grep '+''"
+#
+
 
 clone-git-repos() {
     # Repos
@@ -271,6 +272,9 @@ alias log-iptables='iptables -L OUTPUT | tee -a /root/testing/logs/$(date '+%Y_%
 alias start-neo4j='cd /usr/bin; ./neo4j console'
 alias check-terminal='grep "colorScheme\|TerminalMargin\|TerminalTransparency\|fontFamily\|fontSize" ~/.config/qterminal.org/qterminal.ini'
 alias get-aliasfunctions="cat .zsh_aliases | grep ') {' | grep -v log_ | cut -d '(' -f1 | sort"
+
+
+
 
 #### Functions ####
 # Install in Python Virtualenv
@@ -724,7 +728,7 @@ test_install_apt_packages_fromfile () {
     wget https://raw.githubusercontent.com/spyder6675/vm-setup/refs/heads/main/aptlist.txt
     local package_file="$HOME/aptlist.txt"
     # Path to the log file
-    local log_file="$HOME/apt_install_log.txt"
+    local log_file="$HOME/log_apt_install.log"
 
     # Check if the package file exists
     if [ ! -f "$package_file" ]; then
@@ -754,6 +758,7 @@ test_install_apt_packages_fromfile () {
         fi
     done < "$package_file"
     rm -rf "$HOME/aptlist.txt"
+    cat apt_install_log.txt | grep -i succ
 }
 
 
