@@ -270,7 +270,7 @@ alias log-iptables='iptables -L OUTPUT | tee -a /root/testing/logs/$(date '+%Y_%
 #
 alias start-neo4j='cd /usr/bin; ./neo4j console'
 alias check-terminal='grep "colorScheme\|TerminalMargin\|TerminalTransparency\|fontFamily\|fontSize" ~/.config/qterminal.org/qterminal.ini'
-
+alias get-aliasfunctions="cat .zsh_aliases | grep ') {' | grep -v log_ | cut -d '(' -f1 | sort"
 
 #### Functions ####
 # Install in Python Virtualenv
@@ -288,12 +288,12 @@ alias check-terminal='grep "colorScheme\|TerminalMargin\|TerminalTransparency\|f
 # Log Location: /root/testing/logs/install.log
 #
 
-install-with-virtualenv() {
+install-with-virtualenv () {
     REPO_NAME="$1"
     PYENV="${HOME}/pyenv"
     LOG_FILE="${REPO_NAME}/install-with-virtualenv-install-${REPO_NAME}.log"
 
-    log_message() {
+    log_message () {
         echo "$(date +'%Y-%m-%d %H:%M:%S') - $1" >> "$LOG_FILE"
     }
 
