@@ -616,9 +616,21 @@ check_ssh_setup() {
             echo -e "${RED}[-]${RESET} $ssh_dir permissions are not set to 700 (current: $(stat -c %a "$ssh_dir"))"
         fi
 
+        # Check known_hosts file permissions
+        known_hosts_file="$ssh_dir/known_hosts"
+        if [ -f "$known_hosts_file" ]; then
+            if [ "$(stat -c %a "$known_hosts_file")" == "644" ]; then
+                echo -e "${GREEN}[+]${RESET} $known_hosts_file has correct permissions (644)"
+            else
+                echo -e "${RED}[-]${RESET} $known_hosts_file permissions are not set to 644 (current: $(stat -c %a "$known_hosts_file"))"
+            fi
+        else
+            echo -e "${ORANGE}[!]${RESET} $known_hosts_file does not exist"
+        fi
+
         # Check private key files in .ssh directory
         for file in "$ssh_dir"/*; do
-            if [ -f "$file" ]; then
+            if [ -f "$file" ] && [ "$file" != "$known_hosts_file" ]; then
                 if [[ "$file" == *.pub ]]; then
                     if [ "$(stat -c %a "$file")" == "644" ]; then
                         echo -e "${GREEN}[+]${RESET} $file has correct permissions (644)"
@@ -642,8 +654,6 @@ check_ssh_setup() {
     echo -e "\n${BLUE}[*]${RESET} Non-commented settings in sshd_config:"
     cat /etc/ssh/sshd_config | grep -v '#' | grep -v '^$'
 }
-
-
 
 
 # Terminal Setup
