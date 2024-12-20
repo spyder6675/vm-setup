@@ -1,76 +1,78 @@
-https://github.com/Gerenios/AADInternals.git /opt/AADInternals
-https://github.com/JPG0mez/ADCSync.git /opt/ADCSync
-https://github.com/fox-it/BloodHound.py.git /opt/BloodHound.py
-https://github.com/arch4ngel/BruteLoops.git /opt/BruteLoops
-https://github.com/digininja/CeWL.git /opt/CeWL
-https://github.com/ly4k/Certipy.git /opt/Certipy
-https://github.com/p0dalirius/Coercer.git /opt/Coercer
-https://github.com/knavesec/CredMaster.git /opt/CredMaster
-https://github.com/clr2of8/DPAT.git /opt/DPAT
-https://github.com/dafthack/DomainPasswordSpray.git /opt/DomainPasswordSpray
-https://github.com/login-securite/DonPAPI.git /opt/DonPAPI
-https://github.com/RedSiege/EyeWitness.git /opt/EyeWitness
-https://github.com/optiv/Go365.git /opt/Go365
-https://github.com/Dec0ne/KrbRelayUp.git /opt/KrbRelayUp
-https://github.com/zyn3rgy/LdapRelayScan.git /opt/LdapRelayScan
-https://github.com/dafthack/MFASweep.git /opt/MFASweep
-https://github.com/dafthack/MSOLSpray.git /opt/MSOLSpray
-https://github.com/dafthack/MailSniper.git /opt/MailSniper
-https://github.com/Pennyw0rth/NetExec.git /opt/NetExec
-https://github.com/lgandx/PCredz.git /opt/PCredz
-https://github.com/dirkjanm/PKINITtools.git /opt/PKINITtools
-https://github.com/topotam/PetitPotam.git /opt/PetitPotam
-https://github.com/PlumHound/PlumHound.git /opt/PlumHound
-https://github.com/NetSPI/PowerUpSQL.git /opt/PowerUpSQL
-https://github.com/lgandx/Responder.git /opt/Responder
-https://github.com/termuxhackers-id/SIGIT.git /opt/SIGIT
-https://github.com/Wh1t3Rh1n0/SQLAutoPwn.git /opt/SQLAutoPwn
-https://github.com/MarkoH17/Spray365.git /opt/Spray365
-https://github.com/byt3bl33d3r/SprayingToolkit.git /opt/SprayingToolkit
-https://github.com/Hackndo/WebclientServiceScanner.git /opt/WebclientServiceScanner
-https://github.com/zblurx/certsync.git /opt/certsync
-https://github.com/theevilbit/ciscot7.git /opt/ciscot7
-https://github.com/elceef/dnstwist.git /opt/dnstwist
-https://github.com/ImpostorKeanu/eavesarp.git /opt/eavesarp
-https://github.com/cddmp/enum4linux-ng.git /opt/enum4linux-ng
-https://github.com/ustayready/fireprox.git /opt/fireprox
-https://github.com/gitleaks/gitleaks.git /opt/gitleaks
-https://github.com/trustedsec/hardcidr.git /opt/hardcidr
-https://github.com/fortra/impacket.git /opt/impacket
-https://github.com/ropnop/kerbrute.git /opt/kerbrute
-https://github.com/dirkjanm/krbrelayx.git /opt/krbrelayx
-https://github.com/franc-pentest/ldeep /opt/ldeep
-https://github.com/alexandreborges/malwoverview.git /opt/malwoverview
-https://github.com/robertdavidgraham/masscan.git /opt/masscan
-https://github.com/dirkjanm/mitm6.git /opt/mitm6
-https://github.com/0xZDH/o365spray.git /opt/o365spray
-https://github.com/arch4ngel/parsuite.git /opt/parsuite
-https://github.com/garrettfoster13/pre2k.git /opt/pre2k
-https://github.com/p0dalirius/pyLAPS.git /opt/pyLAPS
-https://github.com/CiscoCXSecurity/rdp-sec-check.git /opt/rdp-sec-check
-https://github.com/garrettfoster13/sccmhunter.git /opt/sccmhunter
-https://github.com/mr-pmillz/ssh-audit.git /opt/ssh-audit
-https://github.com/drwetter/testssl.sh.git /opt/testssl.sh
-https://github.com/trufflesecurity/trufflehog.git /opt/trufflehog
-https://github.com/jseidl/usernamer.git /opt/usernamer
-https://github.com/drwetter/testssl.sh.git /tmp/testssl.sh
-https://github.com/rbsec/sslscan.git /opt/sslscan
-https://github.com/anexia-it/winshock-test.git /opt/winshock-test
-https://github.com/royhills/ike-scan.git /opt/ike-scan
-https://github.com/SpiderLabs/ikeforce.git /opt/ikeforce
-https://github.com/wpscanteam/wpscan.git /opt/wpscan
-https://github.com/m8r0wn/pymeta.git /opt/pymeta
-https://github.com/evilmog/ntlmv1-multi.git /opt/ntlmv1-multi
-https://github.com/frostbits-security/SIET.git /opt/SIET
+https://github.com/Gerenios/AADInternals.git
+https://github.com/JPG0mez/ADCSync.git
+https://github.com/fox-it/BloodHound.py.git
+https://github.com/arch4ngel/BruteLoops.git
+https://github.com/digininja/CeWL.git
+https://github.com/ly4k/Certipy.git
+https://github.com/p0dalirius/Coercer.git
+https://github.com/knavesec/CredMaster.git
+https://github.com/clr2of8/DPAT.git
+https://github.com/dafthack/DomainPasswordSpray.git
+https://github.com/login-securite/DonPAPI.git
+https://github.com/RedSiege/EyeWitness.git
+https://github.com/optiv/Go365.git
+https://github.com/Dec0ne/KrbRelayUp.git
+https://github.com/zyn3rgy/LdapRelayScan.git
+https://github.com/dafthack/MFASweep.git
+https://github.com/dafthack/MSOLSpray.git
+https://github.com/dafthack/MailSniper.git
+https://github.com/Pennyw0rth/NetExec.git
+https://github.com/lgandx/PCredz.git
+https://github.com/dirkjanm/PKINITtools.git
+https://github.com/topotam/PetitPotam.git
+https://github.com/PlumHound/PlumHound.git
+https://github.com/NetSPI/PowerUpSQL.git
+https://github.com/lgandx/Responder.git
+https://github.com/termuxhackers-id/SIGIT.git
+https://github.com/Wh1t3Rh1n0/SQLAutoPwn.git
+https://github.com/MarkoH17/Spray365.git
+https://github.com/byt3bl33d3r/SprayingToolkit.git
+https://github.com/Hackndo/WebclientServiceScanner.git
+https://github.com/zblurx/certsync.git
+https://github.com/theevilbit/ciscot7.git
+https://github.com/elceef/dnstwist.git
+https://github.com/ImpostorKeanu/eavesarp.git
+https://github.com/cddmp/enum4linux-ng.git
+https://github.com/ustayready/fireprox.git
+https://github.com/gitleaks/gitleaks.git
+https://github.com/trustedsec/hardcidr.git
+https://github.com/fortra/impacket.git
+https://github.com/ropnop/kerbrute.git
+https://github.com/dirkjanm/krbrelayx.git
+https://github.com/franc-pentest/ldeep
+https://github.com/alexandreborges/malwoverview.git
+https://github.com/robertdavidgraham/masscan.git
+https://github.com/dirkjanm/mitm6.git
+https://github.com/0xZDH/o365spray.git
+https://github.com/arch4ngel/parsuite.git
+https://github.com/garrettfoster13/pre2k.git
+https://github.com/p0dalirius/pyLAPS.git
+https://github.com/CiscoCXSecurity/rdp-sec-check.git
+https://github.com/garrettfoster13/sccmhunter.git
+https://github.com/mr-pmillz/ssh-audit.git
+https://github.com/drwetter/testssl.sh.git
+https://github.com/trufflesecurity/trufflehog.git
+https://github.com/jseidl/usernamer.git
+https://github.com/drwetter/testssl.sh.git
+https://github.com/rbsec/sslscan.git
+https://github.com/anexia-it/winshock-test.git
+https://github.com/royhills/ike-scan.git
+https://github.com/SpiderLabs/ikeforce.git
+https://github.com/wpscanteam/wpscan.git
+https://github.com/m8r0wn/pymeta.git
+https://github.com/evilmog/ntlmv1-multi.git
+https://github.com/frostbits-security/SIET.git
 # Needed for GoRecon Modules
-https://github.com/drwetter/testssl.sh.git /tmp/testssl.sh
-https://github.com/cddmp/enum4linux-ng.git /opt/enum4linux-ng
-https://github.com/mr-pmillz/ssh-audit.git /opt/ssh-audit
+https://github.com/drwetter/testssl.sh.git
+https://github.com/cddmp/enum4linux-ng.git
+https://github.com/mr-pmillz/ssh-audit.git
 # New Adds
-https://github.com/n0b0dyCN/redis-rogue-server.git /opt/redis-rogue-server
-https://github.com/hakluke/hakrevdns.git /opt/hakrevdns
-https://github.com/frostbits-security/ccat.git /opt/ccat
-https://github.com/trustedsec/SeeYouCM-Thief.git /opt/SeeYouCM-Thief
-https://github.com/nyxgeek/onedrive_user_enum.git /opt/onedrive_user_enum
-https://github.com/skelsec/CVE-2017-12542.git /opt/CVE-2017-12542
-https://github.com/sse-secure-systems/Active-Directory-Spotlights.git /opt/Active-Directory-Spotlights
+https://github.com/n0b0dyCN/redis-rogue-server.git
+https://github.com/hakluke/hakrevdns.git
+https://github.com/frostbits-security/ccat.git
+https://github.com/trustedsec/SeeYouCM-Thief.git
+https://github.com/nyxgeek/onedrive_user_enum.git
+https://github.com/skelsec/CVE-2017-12542.git
+https://github.com/sse-secure-systems/Active-Directory-Spotlights.git
+
+
