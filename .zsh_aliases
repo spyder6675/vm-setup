@@ -576,8 +576,7 @@ check-hardware() {
 }
 
 # Cheching SSH Setup
-
-check_ssh_setup() {
+check-ssh-setup() {
     echo -e "${PURPLE}[*]${RESET} Checking SSH setup:\n"
 
     # Check if SSH is enabled (checking if sshd_config exists)
@@ -654,6 +653,23 @@ check_ssh_setup() {
     echo -e "\n${BLUE}[*]${RESET} Non-commented settings in sshd_config:"
     cat /etc/ssh/sshd_config | grep -v '#' | grep -v '^$'
 }
+
+# Set SSH Folder and File Permissions
+set-sshpermissions () {
+	if [ -d "$HOME/.ssh" ]; then
+	  echo "Setting SSH permissions on .ssh folder..."
+	  chmod 700 "$HOME/.ssh"
+	  chmod 600 "$HOME/.ssh"/*
+	  chmod 644 "$HOME/.ssh"/known_hosts
+	  chmod 644 "$HOME/.ssh"/authorized_keys
+	  chmod 644 "$HOME/.ssh"/*.pub
+	  echo "SSH permissions set."
+	else
+	  echo "No .ssh folder found. Skipping permission adjustment."
+	fi
+}
+
+
 
 
 # Terminal Setup
