@@ -583,9 +583,9 @@ check-hardware-requirements() {
     TOTAL_RAM_GB=$(echo "scale=2; $TOTAL_RAM / 1048576" | bc)
     if (( $(echo "$TOTAL_RAM_GB < 8" | bc -l) )); then
         ALL_GOOD=false
-        echo -e "${RED}[-]${RESET}${BOLD} Implant has INSUFFICIENT MEMORY.. Total Ram: ${TOTAL_RAM} kB. REACH OUT TO CUSTOMER ${RESET}"
+        echo -e "${RED}[-]${RESET}${BOLD} Implant has INSUFFICIENT MEMORY.. Total Ram: ${TOTAL_RAM_GB} GB. REACH OUT TO CUSTOMER ${RESET}"
     else
-        echo -e "${GREEN}[+]${RESET}${BOLD} Total RAM: ${TOTAL_RAM} kB ${RESET}"
+        echo -e "${GREEN}[+]${RESET}${BOLD} Total RAM: ${TOTAL_RAM_GB} GB ${RESET}"
     fi
 
     if ! $ALL_GOOD ; then
