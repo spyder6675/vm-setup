@@ -672,6 +672,10 @@ check_ssh_setup() {
             echo -e "${ORANGE}[!]${RESET} $ssh_dir does not exist"
         fi
     done
+
+    # Display non-commented, non-empty lines from sshd_config
+    echo -e "\n${BLUE}[*]${RESET} Non-commented settings in sshd_config:"
+    cat /etc/ssh/sshd_config | grep -v '#' | grep -v '^$'
 }
 
 
