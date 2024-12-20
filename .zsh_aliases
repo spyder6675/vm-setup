@@ -643,21 +643,10 @@ check-hardware-requirements() {
     fi
 }
 
-
 # Terminal Setup
-
-
-
-
-
 # Call the function
 # check-system
-
-
-
 #
 ### End of Functions ### 
-
 #
-
 ## END SCRIPT ##
