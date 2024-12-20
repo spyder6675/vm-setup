@@ -564,8 +564,6 @@ check-hardware() {
     fi
 }
 
-
-
 check-hardware-requirements() {
     ALL_GOOD=true
 
@@ -588,23 +586,23 @@ check-hardware-requirements() {
         echo -e "${GREEN}[+]${RESET}${BOLD} Total RAM: ${TOTAL_RAM_GB} GB ${RESET}"
     fi
 
-    # List all available disk drives
-    echo -e "Checking disk drives:"
+    # List all available disk drives in GB
+    echo -e "\nChecking disk drives:"
     while IFS= read -r line; do
         # Extract drive name and size in bytes
         DRIVE=$(echo "$line" | awk '{print $1}')
         SIZE_BYTES=$(echo "$line" | awk '{print $4}')
         
-        # Convert size to GB, rounding down due to integer division
-        SIZE_GB=$((SIZE_BYTES / 1073741824))
+        # Convert size to GB, using floating-point arithmetic for better precision
+        SIZE_GB=$(echo "scale=2; $SIZE_BYTES / 1073741824" | awk '{printf "%.2f", $1}')
 
-        echo -e "${GREEN}[+]${RESET}${BOLD} Drive: ${DRIVE}\t Total Size: ${SIZE_GB} GB ${RESET}"
+        echo -e "${GREEN}[+]${RESET}${BOLD} Drive: ${DRIVE}\tTotal Size: ${SIZE_GB} GB ${RESET}"
     done < <(lsblk -b -n -d -o NAME,SIZE)
 
     if ! $ALL_GOOD ; then
-        echo -e "${ORANGE}[!]${RESET}${BOLD} You must construct additional pylons ${RESET}"
+        echo -e "\n${ORANGE}[!]${RESET}${BOLD} You must construct additional pylons ${RESET}"
     else
-        echo -e "${BLUE}[+]${RESET}${BOLD} All systems good to go! ${RESET}"
+        echo -e "\n${BLUE}[+]${RESET}${BOLD} All systems good to go! ${RESET}"
     fi
 }
 
