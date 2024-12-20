@@ -720,6 +720,7 @@ set_local_terminal_settings() {
 
 test_install_apt_packages_fromfile () {
     # Path to the file containing the list of packages to install
+    "$HOME/aptlist.txt"
     wget https://raw.githubusercontent.com/spyder6675/vm-setup/refs/heads/main/aptlist.txt
     local package_file="$HOME/aptlist.txt"
     # Path to the log file
