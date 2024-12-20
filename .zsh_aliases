@@ -539,34 +539,6 @@ check-system() {
 check-hardware() {
     ALL_GOOD=true
 
-    echo -e "${PURPLE}[*]${RESET} Checking implant system requirements:\nCPU >= 4\tRAM >= 8 GB\n"
-
-    NUM_CPUS=$(lscpu | grep 'CPU(s):' | head -n 1 | awk '{print $NF}')
-    if (( "$NUM_CPUS" < 4 )); then
-        ALL_GOOD=false
-        echo -e "${RED}[-]${RESET}${BOLD} Implant has INSUFFICIENT CPUs! CPU(s): ${NUM_CPUS} REACH OUT TO CUSTOMER ${RESET}"
-    else
-        echo -e "${GREEN}[+]${RESET}${BOLD} CPU(s): ${NUM_CPUS} ${RESET}"
-    fi
-
-    TOTAL_RAM=$(grep MemTotal /proc/meminfo | awk '{print $2}')
-    if (( "$TOTAL_RAM" < 8000000 )); then
-        ALL_GOOD=false
-        echo -e "${RED}[-]${RESET}${BOLD} Implant has INSUFFICIENT MEMORY.. Total Ram: ${TOTAL_RAM} kB. REACH OUT TO CUSTOMER ${RESET}"
-    else
-        echo -e "${GREEN}[+]${RESET}${BOLD} Total RAM: ${TOTAL_RAM} kB ${RESET}"
-    fi
-
-    if ! $ALL_GOOD ; then
-        echo -e "${ORANGE}[!]${RESET}${BOLD} You must construct additional pylons ${RESET}"
-    else
-        echo -e "${BLUE}[+]${RESET}${BOLD} All systems good to go! ${RESET}"
-    fi
-}
-
-check-hardware-requirements() {
-    ALL_GOOD=true
-
     echo -e "${PURPLE}[*]${RESET} Checking implant system requirements:\nCPU >= 4\tRAM >= 8 GB\tDisk >= 60 GB\n"
 
     NUM_CPUS=$(lscpu | grep 'CPU(s):' | head -n 1 | awk '{print $NF}')
@@ -604,6 +576,7 @@ check-hardware-requirements() {
 }
 
 # Cheching SSH Setup
+
 check_ssh_setup() {
     echo -e "${PURPLE}[*]${RESET} Checking SSH setup:\n"
 
@@ -630,54 +603,46 @@ check_ssh_setup() {
         echo -e "${ORANGE}[!]${RESET} Password authentication setting not found, might be using defaults"
     fi
 
-    # Check SSH permissions for the current user and root
-    users=("$HOME" "/root")
-    for user_home in "${users[@]}"; do
-        if [ "$user_home" == "$HOME" ]; then
-            user="Current User"
+    # Check SSH permissions for the current user
+    echo -e "\n${BLUE}[*]${RESET} Checking permissions for Current User:"
+
+    ssh_dir="$HOME/.ssh"
+
+    # Check .ssh directory permissions
+    if [ -d "$ssh_dir" ]; then
+        if [ "$(stat -c %a "$ssh_dir")" == "700" ]; then
+            echo -e "${GREEN}[+]${RESET} $ssh_dir has correct permissions (700)"
         else
-            user="Root"
+            echo -e "${RED}[-]${RESET} $ssh_dir permissions are not set to 700 (current: $(stat -c %a "$ssh_dir"))"
         fi
 
-        echo -e "\n${BLUE}[*]${RESET} Checking permissions for ${user}:"
-
-        ssh_dir="$user_home/.ssh"
-
-        # Check .ssh directory permissions
-        if [ -d "$ssh_dir" ]; then
-            if [ "$(stat -c %a "$ssh_dir")" == "700" ]; then
-                echo -e "${GREEN}[+]${RESET} $ssh_dir has correct permissions (700)"
-            else
-                echo -e "${RED}[-]${RESET} $ssh_dir permissions are not set to 700 (current: $(stat -c %a "$ssh_dir"))"
-            fi
-
-            # Check private key files in .ssh directory
-            for file in "$ssh_dir"/*; do
-                if [ -f "$file" ]; then
-                    if [[ "$file" == *.pub ]]; then
-                        if [ "$(stat -c %a "$file")" == "644" ]; then
-                            echo -e "${GREEN}[+]${RESET} $file has correct permissions (644)"
-                        else
-                            echo -e "${RED}[-]${RESET} $file permissions are not set to 644 (current: $(stat -c %a "$file"))"
-                        fi
+        # Check private key files in .ssh directory
+        for file in "$ssh_dir"/*; do
+            if [ -f "$file" ]; then
+                if [[ "$file" == *.pub ]]; then
+                    if [ "$(stat -c %a "$file")" == "644" ]; then
+                        echo -e "${GREEN}[+]${RESET} $file has correct permissions (644)"
                     else
-                        if [ "$(stat -c %a "$file")" == "600" ]; then
-                            echo -e "${GREEN}[+]${RESET} $file has correct permissions (600)"
-                        else
-                            echo -e "${RED}[-]${RESET} $file permissions are not set to 600 (current: $(stat -c %a "$file"))"
-                        fi
+                        echo -e "${RED}[-]${RESET} $file permissions are not set to 644 (current: $(stat -c %a "$file"))"
+                    fi
+                else
+                    if [ "$(stat -c %a "$file")" == "600" ]; then
+                        echo -e "${GREEN}[+]${RESET} $file has correct permissions (600)"
+                    else
+                        echo -e "${RED}[-]${RESET} $file permissions are not set to 600 (current: $(stat -c %a "$file"))"
                     fi
                 fi
-            done
-        else
-            echo -e "${ORANGE}[!]${RESET} $ssh_dir does not exist"
-        fi
-    done
+            fi
+        done
+    else
+        echo -e "${ORANGE}[!]${RESET} $ssh_dir does not exist"
+    fi
 
     # Display non-commented, non-empty lines from sshd_config
     echo -e "\n${BLUE}[*]${RESET} Non-commented settings in sshd_config:"
     cat /etc/ssh/sshd_config | grep -v '#' | grep -v '^$'
 }
+
 
 
 
