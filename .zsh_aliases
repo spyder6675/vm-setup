@@ -357,7 +357,7 @@ download_latest_nessus() {
 }
 
 
-install-apt-packages() {
+install_apt_packages() {
     # List of packages to install
     local packages=(
         "build-essential"
@@ -366,6 +366,7 @@ install-apt-packages() {
         "gedit"
         "gcc"
         "git"
+        "make"
     )
 
     # Update package index
