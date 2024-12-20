@@ -657,15 +657,16 @@ check-ssh-setup() {
 # Set SSH Folder and File Permissions
 set-sshpermissions () {
 	if [ -d "$HOME/.ssh" ]; then
-	  echo "Setting SSH permissions on .ssh folder..."
+	  echo "\nSetting SSH permissions on .ssh folder..."
 	  chmod 700 "$HOME/.ssh"
 	  chmod 600 "$HOME/.ssh"/*
 	  chmod 644 "$HOME/.ssh"/known_hosts
 	  chmod 644 "$HOME/.ssh"/*.pub
-	  echo "SSH permissions set."
+	  echo "SSH permissions set.\n\n\n"
 	else
-	  echo "No .ssh folder found. Skipping permission adjustment."
+	  echo "No .ssh folder found. Skipping permission adjustment.\n\n\n"
 	fi
+    
     check-ssh-setup
 }
 
@@ -675,9 +676,8 @@ start-sshd () {
 	echo "Enabling and Starting SSH service..."
 	sudo systemctl enable ssh
 	sudo systemctl restart ssh
-	echo "SSH Service Enabled and Started."
-    
-    # Check if SSH is enabled (checking if sshd_config exists)
+
+	# Check if SSH is enabled (checking if sshd_config exists)
     if [ -f /etc/ssh/sshd_config ]; then
         echo -e "${GREEN}[+]${RESET} SSH is enabled"
     else
@@ -690,6 +690,7 @@ start-sshd () {
     else
         echo -e "${RED}[-]${RESET} SSH is not running"
     fi
+    echo "SSH Service Enabled and Started."
 }
 
 
