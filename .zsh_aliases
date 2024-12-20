@@ -627,7 +627,7 @@ check-hardware-requirements() {
     fi
 
     # List all available disk drives
-    echo -e "\nChecking disk drives:"
+    echo -e "Checking disk drives:"
     while IFS= read -r line; do
         # Extract drive name and size in bytes
         DRIVE=$(echo "$line" | awk '{print $1}')
@@ -636,7 +636,7 @@ check-hardware-requirements() {
         # Convert size to GB, rounding down due to integer division
         SIZE_GB=$((SIZE_BYTES / 1073741824))
 
-        echo -e "${GREEN}[+]${RESET}${BOLD} Drive: ${DRIVE}\tTotal Size: ${SIZE_GB} GB ${RESET}"
+        echo -e "${GREEN}[+]${RESET}${BOLD} Drive: ${DRIVE}\t Total Size: ${SIZE_GB} GB ${RESET}"
     done < <(lsblk -b -n -d -o NAME,SIZE)
 
     if ! $ALL_GOOD ; then
