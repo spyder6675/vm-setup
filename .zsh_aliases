@@ -567,7 +567,7 @@ check-hardware() {
 check-hardware-requirements() {
     ALL_GOOD=true
 
-    echo -e "${PURPLE}[*]${RESET} Checking implant system requirements:\nCPU >= 4\tRAM >= 8 GB\tDisk >= 100 GB\n"
+    echo -e "${PURPLE}[*]${RESET} Checking implant system requirements:\nCPU >= 4\tRAM >= 8 GB\tDisk >= 60 GB\n"
 
     NUM_CPUS=$(lscpu | grep 'CPU(s):' | head -n 1 | awk '{print $NF}')
     if (( "$NUM_CPUS" < 4 )); then
