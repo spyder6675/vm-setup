@@ -4,7 +4,7 @@ dirsearch
 dnsrecon
 dnstwist
 eyewitness
-feroxbuster
+#feroxbuster
 freerdp2-x11
 gcc
 gedit
@@ -52,6 +52,7 @@ rsh-client
 rsync
 samba
 screen
+#seclists
 sendemail
 silversearcher-ag
 smbclient
@@ -68,15 +69,32 @@ vim-nox
 virtualenv
 whatweb
 xz-utils
+tshark
 
 # GPS Modules #
 gpsd
 gpsd-clients
 gpsd-tools
 python3-gps
+libgps-dev
 
 # WiFi #
+librtlsdr-dev
 aircrack-ng
+bettercap
+python3-smbus
+i2c-tools
+ntfs-3g
+exfat-fuse
+dkms
+nmcli
+hcxpcapngtool
+bc
+mokutil
+libelf-dev
+hcxtools
+net-tools
+rtl-433
 
 # RustHound dependencies #
 gcc-multilib 
