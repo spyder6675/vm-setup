@@ -606,6 +606,7 @@ check-hardware-requirements() {
 
 
 
+
 # Terminal Setup
 # Call the function
 # check-system
