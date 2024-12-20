@@ -603,6 +603,7 @@ check-hardware-requirements() {
     fi
 }
 
+# Cheching SSH Setup
 check_ssh_setup() {
     echo -e "${PURPLE}[*]${RESET} Checking SSH setup:\n"
 
@@ -677,6 +678,7 @@ check_ssh_setup() {
     echo -e "\n${BLUE}[*]${RESET} Non-commented settings in sshd_config:"
     cat /etc/ssh/sshd_config | grep -v '#' | grep -v '^$'
 }
+
 
 
 # Terminal Setup
