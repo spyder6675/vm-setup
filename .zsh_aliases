@@ -666,6 +666,7 @@ set-sshpermissions () {
 	else
 	  echo "No .ssh folder found. Skipping permission adjustment."
 	fi
+    check-ssh-setup
 }
 
 
