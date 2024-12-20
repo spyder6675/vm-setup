@@ -337,7 +337,6 @@ install-with-virtualenv() {
     log_message "INFO: Completed installation for repository ${REPO_NAME}"
 }
 
-
 # Download and Install the latest debian10 Nessus amd64
 download_and_install_latest_nessus() {
     NESSUS_LATEST_URL=$(curl -s https://www.tenable.com/downloads/api/v2/pages/nessus --header 'accept: application/json' | jq -r '.releases.latest' | jq -r '.[][].file_url' | grep 'Nessus-latest-debian10_amd64.deb')
@@ -356,17 +355,83 @@ download_latest_nessus() {
     # cd "${HOME}"
 }
 
-
 install_apt_packages() {
     # List of packages to install
     local packages=(
         "build-essential"
-        "screen"
-        "tmux"
+        "dirsearch"
+        "dnsrecon "
         "gedit"
+        "dnstwist"
+        "eyewitness"
+        "feroxbuster"
         "gcc"
         "git"
+        "golang"
+        "grc"
+        "htop"
+        "httpx-toolkit"
+        "inotify-tools"
+        "ipcalc"
+        "jq"
+        "krb5-config"
+        "libffi-dev"
+        "libkrb5-dev"
+        "libpcap-dev"
+        "libssl-dev"
+        "libxml2-dev"
+        "libxml2-utils"
+        "libxslt1-dev"
         "make"
+        "masscan"
+        "metasploit-framework"
+        "ncat"
+        "onesixtyone"
+        "pipx"
+        "proxychains4"
+        "python-dev-is-python3"
+        "python3"
+        "python3-venv"
+        "python3-virtualenv"
+        "python3-pip"
+        "python3-netifaces"
+        "python3-twisted"
+        "remmina"
+        "remmina-plugin-rdp"
+        "remmina-plugin-secret"
+        "ripgrep"
+        "rlwrap"
+        "rsh-client"
+        "rsync"
+        "samba"
+        "screen"
+        "sendemail"
+        "silversearcher-ag"
+        "smbclient"
+        "smbmap"
+        "snmp-mibs-downloader"
+        "sqlmap"
+        "telnet"
+        "testssl.sh nmap"
+        "tftp-hpa"
+        "tmux"
+        "urlcrazy ntpsec"
+        "vim-nox"
+        "virtualenv"
+        "whatweb"
+        "leafpad"
+        "apt-transport-https"
+        "prips"
+
+        # GPS Modules "
+        "gpsd"
+        "gpsd-clients"
+        "gpsd-tools"
+        "python3-gps"
+
+        # WiFi "
+        "aircrack-ng"
+        
     )
 
     # Update package index
@@ -376,6 +441,20 @@ install_apt_packages() {
     for package in "${packages[@]}"; do
         apt install -y "$package"
     done
+
+    # Bundler Install
+    gem install bundler
+
+    # Python packages
+    python3 -m pip install Cython
+    python3 -m pip install python-libpcap
+    python3 -m pip install netaddr
+    python3 -m pip install fuzzywuzzy
+    python3 -m pip install levenshtein
+    python3 -m pip install pyvirtualdisplay
+
+    # remove outdated packages
+    apt-get autoremove -y
 }
 
 
@@ -400,7 +479,7 @@ create_roottestingdirectories() {
 }
 
 # Function to check APT, GIT and GO
-check-software() {
+check_software() {
     # Check for apt updates
     echo "Checking if apt can update the package repository..."
     sudo apt update > /dev/null 2>&1
@@ -459,7 +538,7 @@ check-software() {
 }
 
 
-check-hardware() {
+check_hardware() {
     ALL_GOOD=true
 
     echo -e "${PURPLE}[*]${RESET} Checking implant system requirements:\nCPU >= 4\tRAM >= 8 GB\tDisk >= 60 GB\n"
@@ -499,7 +578,7 @@ check-hardware() {
 }
 
 # Cheching SSH Setup
-check-sshd () {
+check_sshd () {
     echo -e "${PURPLE}[*]${RESET} Checking SSH setup:\n"
 
     # Check if SSH is enabled (checking if sshd_config exists)
@@ -578,7 +657,7 @@ check-sshd () {
 }
 
 # Set SSH Folder and File Permissions
-set-sshpermissions () {
+set_sshpermissions () {
 	if [ -d "$HOME/.ssh" ]; then
 	  echo "\nSetting SSH permissions on .ssh folder..."
 	  chmod 700 "$HOME/.ssh"
@@ -595,7 +674,7 @@ set-sshpermissions () {
 
 
 # Enable SSH service
-start-sshd () {
+start_sshd () {
 	echo "Enabling and Starting SSH service..."
 	sudo systemctl enable ssh
 	sudo systemctl restart ssh
@@ -616,6 +695,26 @@ start-sshd () {
     echo "SSH Service Enabled and Started."
 }
 
+set_local_terminal_settings() {
+
+    # Set color scheme to Kali-Light
+    sed -i 's/colorScheme=.*/colorScheme=Kali-Light/' ~/.config/qterminal.org/qterminal.ini
+
+    # Set terminal margin to 10
+    sed -i 's/TerminalMargin=.*/TerminalMargin=10/' ~/.config/qterminal.org/qterminal.ini
+
+    # Set terminal transparency to 0 (fully opaque)
+    sed -i 's/TerminalTransparency=.*/TerminalTransparency=0/' ~/.config/qterminal.org/qterminal.ini
+
+    # Set font family to Monospace
+    sed -i 's/fontFamily=.*/fontFamily=Monospace/' ~/.config/qterminal.org/qterminal.ini
+
+    # Set font size to 10
+    sed -i 's/fontSize=.*/fontSize=10/' ~/.config/qterminal.org/qterminal.ini
+
+    # Kill qterminal to apply settings and restart it
+    pkill qterminal && qterminal &
+}
 
 
 
