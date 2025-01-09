@@ -282,6 +282,7 @@ clone-git-repos() {
 
 }
 
+
 configure_terminal() {
 
 cat << 'EOF' >> "${HOME}/.screenrc"
