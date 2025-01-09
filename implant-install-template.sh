@@ -280,6 +280,7 @@ clone-git-repos() {
     # PXEThief is Windows only. We want the Linux version
     [[ ! -d /opt/pxethiefy ]] && git clone https://github.com/csandker/pxethiefy.git /opt/pxethiefy
 
+}
 
 configure_terminal() {
 
