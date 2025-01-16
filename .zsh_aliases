@@ -3,23 +3,22 @@
 donode=
 implantip=
 c2=
-
+#
 # Making wordlists easily accessible as variables
 export raftmediumdir='/usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt'
 export raftmediumfiles='/usr/share/seclists/Discovery/Web-Content/raft-medium-files.txt'
-
 #
 export rockyou='/usr/share/wordlists/rockyou.txt'
-
+#
 # User Agent 
 export useragent='Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:123.0) Gecko/20100101 Firefox/132.0'
-
+#
 ### Aliases ###
 # alias update-rootaliases='rm -rf /root/.zsh_aliases;wget https://raw.githubusercontent.com/spyder6675/vm-setup/main/.zsh_aliases -P /root;echo -e "Updated-Aliases"'
 # alias update-profilealiases='rm -rf /home/kali/.zsh_aliases;wget https://raw.githubusercontent.com/spyder6675/vm-setup/main/.zsh_aliases -P /home/kali;echo -e "Updated-Aliases"'
 alias update-alias='rm -rf ${HOME}/.zsh_aliases; wget https://raw.githubusercontent.com/spyder6675/vm-setup/main/.zsh_aliases -P ${HOME};echo -e "Updated-Aliases"'
 alias szsh='source ~/.zshrc'
-
+#
 # Navigation
 alias ll='ls -lah'
 #alias ..='cd ..'
@@ -95,12 +94,11 @@ alias copy-resolvconf='cp /etc/resolv.conf /root/testing/domain-recon/resolv.con
 # Watch Passwd Spray
 alias watch-pwspray="watch -n 1 'cat *-kerbrute-passwordspray.log| grep '+''"
 #
-
-
+#
 clone-git-repos() {
     # Repos
     # Needed for GoRecon Modules
-    # [[ ! -d /opt/TODO ]] &&  git clone TODO /opt/TODO
+    # [[ ! -d /opt/TODO ]] && git clone TODO /opt/TODO
     [[ ! -d /opt/BloodHound.py ]] && git clone https://github.com/dirkjanm/bloodhound.py /opt/BloodHound.py
     # [[ ! -d /opt/CrackMapExec ]] && git clone https://github.com/byt3bl33d3r/CrackMapExec.git /opt/CrackMapExec
     # [[ ! -d /opt/SecLists ]] && git clone https://github.com/danielmiessler/SecLists.git /opt/SecLists
@@ -118,11 +116,11 @@ clone-git-repos() {
     [[ ! -d /opt/DonPAPI ]] && git clone https://github.com/login-securite/DonPAPI.git /opt/DonPAPI
     [[ ! -d /opt/EyeWitness ]] && git clone https://github.com/RedSiege/EyeWitness.git /opt/EyeWitness
     [[ ! -d /opt/Go365 ]] &&  git clone https://github.com/optiv/Go365.git /opt/Go365
-    [[ ! -d /opt/KrbRelayUp ]] &&  git clone https://github.com/Dec0ne/KrbRelayUp.git /opt/KrbRelayUp
+    [[ ! -d /opt/KrbRelayUp ]] && git clone https://github.com/Dec0ne/KrbRelayUp.git /opt/KrbRelayUp
     [[ ! -d /opt/LdapRelayScan ]] && git clone https://github.com/zyn3rgy/LdapRelayScan.git /opt/LdapRelayScan
     [[ ! -d /opt/MFASweep ]] && git clone https://github.com/dafthack/MFASweep.git /opt/MFASweep
     [[ ! -d /opt/MSOLSpray ]] && git clone https://github.com/dafthack/MSOLSpray.git /opt/MSOLSpray
-    [[ ! -d /opt/MailSniper ]] &&  git clone https://github.com/dafthack/MailSniper.git /opt/MailSniper
+    [[ ! -d /opt/MailSniper ]] && git clone https://github.com/dafthack/MailSniper.git /opt/MailSniper
     [[ ! -d /opt/NetExec ]] && git clone https://github.com/Pennyw0rth/NetExec.git /opt/NetExec
     [[ ! -d /opt/PCredz ]] && git clone https://github.com/lgandx/PCredz.git /opt/PCredz
     [[ ! -d /opt/PKINITtools ]] && git clone https://github.com/dirkjanm/PKINITtools.git /opt/PKINITtools
@@ -130,7 +128,7 @@ clone-git-repos() {
     [[ ! -d /opt/PlumHound ]] && git clone https://github.com/PlumHound/PlumHound.git /opt/PlumHound
     [[ ! -d /opt/PowerUpSQL ]] && git clone https://github.com/NetSPI/PowerUpSQL.git /opt/PowerUpSQL
     [[ ! -d /opt/Responder ]] && git clone https://github.com/lgandx/Responder.git /opt/Responder
-    [[ ! -d /opt/SIGIT ]] &&  git clone https://github.com/termuxhackers-id/SIGIT.git /opt/SIGIT
+    [[ ! -d /opt/SIGIT ]] && git clone https://github.com/termuxhackers-id/SIGIT.git /opt/SIGIT
     [[ ! -d /opt/SQLAutoPwn ]] && git clone https://github.com/Wh1t3Rh1n0/SQLAutoPwn.git /opt/SQLAutoPwn
     [[ ! -d /opt/Spray365 ]] && git clone https://github.com/MarkoH17/Spray365.git /opt/Spray365
     [[ ! -d /opt/SprayingToolkit ]] && git clone https://github.com/byt3bl33d3r/SprayingToolkit.git /opt/SprayingToolkit
@@ -175,7 +173,6 @@ clone-git-repos() {
     [[ ! -d /opt/ssh-audit ]] && git clone https://github.com/mr-pmillz/ssh-audit.git /opt/ssh-audit
     ### pr_SystemDPAPIdump
     wget https://codeload.github.com/clavoillotte/impacket/zip/refs/heads/pr_SystemDPAPIdump -P /opt/pr_SystemDPAPIdump
-    
     #
     # New Adds
     [[ ! -d /opt/redis-rogue-server ]] && git clone https://github.com/n0b0dyCN/redis-rogue-server.git /opt/redis-rogue-server
@@ -273,21 +270,18 @@ alias go-SeeYouCM-Thief='source /root/pyenv/SeeYouCM-Thief/bin/activate;cd /opt/
 alias go-onedrive_user_enum='source /root/pyenv/onedrive_user_enum/bin/activate;cd /opt/onedrive_user_enum'
 alias go-CVE-2018-10933='source /root/pyenv/CVE-2018-10933/bin/activate;cd /opt/CVE-2018-10933'
 
-
+#
 # Deactivate pyenv software
 alias da='deactivate;cd ~/testing'
-
+#
 # Log iptable 
 alias log-iptables='iptables -L OUTPUT | tee -a /root/testing/logs/$(date '+%Y_%m_%d_%H_%M_%S')-IPTables-implant-.log'
-
+#
 #
 alias start-neo4j='cd /usr/bin; ./neo4j console'
 alias check-terminal='grep "colorScheme\|TerminalMargin\|TerminalTransparency\|fontFamily\|fontSize" ~/.config/qterminal.org/qterminal.ini'
 alias get-aliasfunctions="cat .zsh_aliases | grep ') {' | grep -v log_ | cut -d '(' -f1 | sort"
-
-
-
-
+#
 #### Functions ####
 # Install in Python Virtualenv
 #
@@ -303,7 +297,7 @@ alias get-aliasfunctions="cat .zsh_aliases | grep ') {' | grep -v log_ | cut -d 
 #
 # Log Location: /root/testing/logs/install.log
 #
-
+#
 install-with-virtualenv () {
     REPO_NAME="$1"
     PYENV="${HOME}/pyenv"
@@ -352,7 +346,7 @@ install-with-virtualenv () {
 
     log_message "INFO: Completed installation for repository ${REPO_NAME}"
 }
-
+#
 # Download and Install the latest debian10 Nessus amd64
 download_and_install_latest_nessus() {
     NESSUS_LATEST_URL=$(curl -s https://www.tenable.com/downloads/api/v2/pages/nessus --header 'accept: application/json' | jq -r '.releases.latest' | jq -r '.[][].file_url' | grep 'Nessus-latest-debian10_amd64.deb')
@@ -476,7 +470,7 @@ install_apt_packages() {
 
 }
 
-
+#
 create_roottestingdirectories() {
     # Testing Dir
     [[ ! -d "${HOME}/testing" ]] && mkdir "${HOME}/testing"
