@@ -553,7 +553,7 @@ wget https://raw.githubusercontent.com/spyder6675/vm-setup/main/vpnIDs.txt -P /r
 ### Unzip Rockyou ###
 gzip -d /usr/share/wordlists/rockyou.txt.gz
 
-#### 
+####
 
 echo -e "${BLUE}[+]${RESET}${BOLD} Tools installation script completed. ${RESET}"
 echo -e "${BLUE}[+]${RESET}${BOLD} Remember to source your ~/.zshrc file for latest PATH values to take affect ${RESET}"
