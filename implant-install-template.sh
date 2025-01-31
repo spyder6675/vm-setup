@@ -479,19 +479,19 @@ main() {
     install_with_virtualenv Coercer
     install_with_virtualenv mitm6
     install_with_virtualenv sccmhunter
-    # install_with_virtualenv PXEThief
+    install_with_virtualenv pxethiefy
     install_with_virtualenv pre2k
     install_with_virtualenv ldeep
-    # install_with_virtualenv CredMaster
+    install_with_virtualenv ccmpwn
     install_with_virtualenv PKINITtools
     install_with_virtualenv WebclientServiceScanner
     install_with_virtualenv fireprox
     install_with_virtualenv malwoverview
     install_with_virtualenv o365spray
-    #install_with_virtualenv parsuite
+    install_with_virtualenv ciscot7
     install_with_virtualenv pyLAPS
-    # install_with_virtualenv 
-    # install_with_virtualenv 
+    install_with_virtualenv SeeYouCM-Thief
+    install_with_virtualenv SIET
     # install_with_virtualenv 
 
 
