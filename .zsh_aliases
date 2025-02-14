@@ -773,7 +773,7 @@ test_install_apt_packages_fromfile () {
 
 
 tmux_settings() {
-    [ ! -f "~/.tmux.conf" ] && touch "~/.tmux.conf"
+    [ ! -f ~/.tmux.conf ] && touch ~/.tmux.conf 
 }
 
 
