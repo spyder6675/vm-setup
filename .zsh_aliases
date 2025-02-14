@@ -672,7 +672,7 @@ check_sshd () {
 }
 
 # Set SSH Folder and File Permissions
-set_sshpermissions () {
+set_sshpermissions() {
 	if [ -d "$HOME/.ssh" ]; then
 	  echo "\nSetting SSH permissions on .ssh folder..."
 	  chmod 700 "$HOME/.ssh"
@@ -689,7 +689,7 @@ set_sshpermissions () {
 
 
 # Enable SSH service
-start_sshd () {
+start_sshd() {
 	echo "Enabling and Starting SSH service..."
 	sudo systemctl enable ssh
 	sudo systemctl restart ssh
