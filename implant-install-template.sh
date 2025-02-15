@@ -524,11 +524,6 @@ main
 ### Tmux Settings
 echo "set -g mouse on" >> ~/.tmux.conf
 
-tmux_settings() {
-    [ ! -f "~/.tmux.conf" ] && touch "~/.tmux.conf"
-}
-
-
 
 # wget EXEs
 mkdir /root/tools
