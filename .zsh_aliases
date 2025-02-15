@@ -774,7 +774,7 @@ test_install_apt_packages_fromfile () {
 
 tmux_settings() {
     #
-    wget https://raw.githubusercontent.com/spyder6675/vm-setup/main/.tmux.conf
+    # wget https://raw.githubusercontent.com/spyder6675/vm-setup/main/.tmux.conf
     #
     # [ ! -f ~/.tmux.conf ] && touch ~/.tmux.conf
     # echo "set -g mouse on" >> ~/.tmux.conf
