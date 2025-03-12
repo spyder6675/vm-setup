@@ -414,7 +414,7 @@ install_apt_packages() {
         "remmina-plugin-secret"
         "ripgrep"
         "rlwrap"
-        "rsh-client"
+        # "rsh-client"
         "rsync"
         "samba"
         "screen"
@@ -434,7 +434,7 @@ install_apt_packages() {
         "vim-nox"
         "virtualenv"
         "whatweb"
-        "leafpad"
+        # "leafpad"
         "apt-transport-https"
         "prips"
 
