@@ -378,6 +378,7 @@ install_apt_packages() {
         "eyewitness"
         "feroxbuster"
         "gcc"
+        "geany"
         "git"
         "golang"
         "grc"
