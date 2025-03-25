@@ -455,9 +455,9 @@ install_apt_packages() {
     apt-get update -y
 
     # Install each package in the list
-    # for package in "${packages[@]}"; do
-    #    apt install -y "$package"
-    # done
+    for package in "${packages[@]}"; do
+        apt install -y "$package"
+    done
 
     # Bundler Install
     gem install bundler
