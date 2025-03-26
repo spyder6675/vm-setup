@@ -1,0 +1,5 @@
+termcapinfo * ti@:te@
+caption always
+caption string "%{kw}%-w%{wr}%n %t%{-}%+w"
+startup_message off
+defscrollback 1000000
