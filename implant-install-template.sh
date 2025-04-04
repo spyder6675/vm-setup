@@ -525,6 +525,15 @@ main
 echo "set -g mouse on" >> ~/.tmux.conf
 
 
+configure_tux() {
+
+cat << 'EOF' >> "${HOME}/.tmux.conf"
+set -g mouse on
+EOF
+}
+
+
+
 # wget EXEs
 mkdir /root/tools
 wget https://github.com/clymb3r/PowerShell/blob/master/Invoke-Mimikatz/Invoke-Mimikatz.ps1 -P /root/tools
