@@ -484,16 +484,16 @@ create_roottestingdirectories() {
     [[ ! -d "${HOME}/testing/domain-recon" ]] && mkdir "${HOME}/testing/domain-recon"
     # Logs
     [[ ! -d "${HOME}/testing/logs" ]] && mkdir "${HOME}/testing/logs"
-    [[ ! -d "${HOME}/testing/logs/nmap" ]] && mkdir "${HOME}/testing/logs/nmap"
-    [[ ! -d "${HOME}/testing/logs/VirusTotal" ]] && mkdir "${HOME}/testing/logs/VirusTotal"
+    # [[ ! -d "${HOME}/testing/logs/nmap" ]] && mkdir "${HOME}/testing/logs/nmap"
+    # [[ ! -d "${HOME}/testing/logs/VirusTotal" ]] && mkdir "${HOME}/testing/logs/VirusTotal"
     # Reconnaissance
     [[ ! -d "${HOME}/testing/Reconnaissance" ]] && mkdir "${HOME}/testing/Reconnaissance"
-    [[ ! -d "${HOME}/testing/Reconnaissance/squatting-domains.txt" ]] && touch "${HOME}/testing/Reconnaissance/squatting-domains.txt"
+    # [[ ! -d "${HOME}/testing/Reconnaissance/squatting-domains.txt" ]] && touch "${HOME}/testing/Reconnaissance/squatting-domains.txt"
     [[ ! -d "${HOME}/testing/parsed-nessus" ]] && mkdir "${HOME}/testing/parsed-nessus"
     # Masscan
     [[ ! -d "${HOME}/testing/masscan" ]] && mkdir "${HOME}/testing/masscan"
-    [[ ! -d "${HOME}/testing/masscan/externalscope" ]] && touch "${HOME}/testing/masscan/externalscope"
-    [[ ! -d "${HOME}/testing/masscan/internalscope" ]] && touch "${HOME}/testing/masscan/internalscope"
+    # [[ ! -d "${HOME}/testing/masscan/externalscope" ]] && touch "${HOME}/testing/masscan/externalscope"
+    # [[ ! -d "${HOME}/testing/masscan/internalscope" ]] && touch "${HOME}/testing/masscan/internalscope"
 
 }
 
@@ -785,6 +785,12 @@ tmux_settings() {
 }
 
 
+configure_tux() {
+
+cat << 'EOF' >> "${HOME}/.tmux.conf"
+set -g mouse on
+EOF
+}
 
 
 
