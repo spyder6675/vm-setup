@@ -219,7 +219,7 @@ clone_git_repos() {
     [[ ! -d /opt/certsync ]] && git clone https://github.com/zblurx/certsync.git /opt/certsync
     [[ ! -d /opt/ciscot7 ]] && git clone https://github.com/theevilbit/ciscot7.git /opt/ciscot7
     [[ ! -d /opt/dnstwist ]] && git clone https://github.com/elceef/dnstwist.git /opt/dnstwist
-    [[ ! -d /opt/eavesarp ]] && git clone https://github.com/ImpostorKeanu/eavesarp.git /opt/eavesarp
+    # [[ ! -d /opt/eavesarp ]] && git clone https://github.com/ImpostorKeanu/eavesarp.git /opt/eavesarp
     [[ ! -d /opt/enum4linux-ng ]] && git clone https://github.com/cddmp/enum4linux-ng.git /opt/enum4linux-ng
     [[ ! -d /opt/fireprox ]] && git clone https://github.com/ustayready/fireprox.git /opt/fireprox
     [[ ! -d /opt/gitleaks ]] && git clone https://github.com/gitleaks/gitleaks.git /opt/gitleaks
@@ -279,6 +279,8 @@ clone_git_repos() {
     # [[ ! -d /opt/PXEThief ]] && git clone https://github.com/MWR-CyberSec/PXEThief.git /opt/PXEThief
     # PXEThief is Windows only. We want the Linux version
     [[ ! -d /opt/pxethiefy ]] && git clone https://github.com/csandker/pxethiefy.git /opt/pxethiefy
+    [[ ! -d /opt/eavesarp-ng]] &&  git clone https://github.com/ImpostorKeanu/eavesarp-ng.git /opt/eavesarp-ng
+    
 
     }
 
