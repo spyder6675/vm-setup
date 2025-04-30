@@ -206,6 +206,7 @@ clone-git-repos() {
 	[[ ! -d /opt/impacket-interactive-ldap-shadow-creds ]] && wget https://github.com/Tw1sm/impacket/archive/refs/heads/interactive-ldap-shadow-creds.zip -O /opt/interactive-ldap-shadow-creds.zip
 	[[ ! -d /opt/evilrdp ]] && git clone https://github.com/skelsec/evilrdp.git /opt/evilrdp
     [[ ! -d /opt/AutoRDPwn ]] && git clone https://github.com/JoelGMSec/AutoRDPwn.git /opt/AutoRDPwn
+    
 
     }
 
