@@ -279,7 +279,7 @@ clone_git_repos() {
     # [[ ! -d /opt/PXEThief ]] && git clone https://github.com/MWR-CyberSec/PXEThief.git /opt/PXEThief
     # PXEThief is Windows only. We want the Linux version
     [[ ! -d /opt/pxethiefy ]] && git clone https://github.com/csandker/pxethiefy.git /opt/pxethiefy
-    [[ ! -d /opt/eavesarp-ng]] &&  git clone https://github.com/ImpostorKeanu/eavesarp-ng.git /opt/eavesarp-ng
+    [[ ! -d /opt/eavesarp-ng ]] && git clone https://github.com/ImpostorKeanu/eavesarp-ng.git /opt/eavesarp-ng
     
 
     }
