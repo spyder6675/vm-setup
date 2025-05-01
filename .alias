@@ -282,6 +282,7 @@ alias go-onedrive_user_enum='source /root/pyenv/onedrive_user_enum/bin/activate;
 alias go-CVE-2018-10933='source /root/pyenv/CVE-2018-10933/bin/activate;cd /opt/CVE-2018-10933'
 alias go-evilrdp='source /root/pyenv/evilrdp/bin/activate;cd /opt/evilrdp'
 alias go-AutoRDPwn='source /root/pyenv/AutoRDPwn/bin/activate;cd /opt/AutoRDPwn'
+alias go-eavesarp-ng='source /root/pyenv/eavesarp-ng/bin/activate;cd /opt/eavesarp-ng'
 
 
 #
