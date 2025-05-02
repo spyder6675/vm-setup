@@ -1,7 +1,7 @@
 ########################
 # Testing Variables
 donode=
-implantip=
+implantip=100.64.0.3
 c2=
 #
 # Making wordlists easily accessible as variables
@@ -11,7 +11,7 @@ export raftmediumfiles='/usr/share/seclists/Discovery/Web-Content/raft-medium-fi
 export rockyou='/usr/share/wordlists/rockyou.txt'
 #
 # User Agent 
-export useragent='Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:123.0) Gecko/20100101 Firefox/136.0'
+export useragent='Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:123.0) Gecko/20100101 Firefox/138.0'
 #
 ### Aliases ###
 # alias update-rootaliases='rm -rf /root/.zsh_aliases;wget https://raw.githubusercontent.com/spyder6675/vm-setup/main/.zsh_aliases -P /root;echo -e "Updated-Aliases"'
@@ -49,6 +49,11 @@ alias nessus-start='/bin/systemctl start nessusd.service'
 alias nessus-stop='/bin/systemctl stop nessusd.service'
 alias nessus-restart='/bin/systemctl restart nessusd.service'
 alias nessus-status='/bin/systemctl status nessusd.service'
+# postgresql
+alias postgresql-start='/bin/systemctl start postgresql.service'
+alias postgresql-stop='/bin/systemctl stop postgresql.service'
+alias postgresql-restart='/bin/systemctl restart postgresql.service'
+alias postgresql-status='/bin/systemctl status postgresql.service'
 # VPN
 alias start-vpn='sudo openvpn /home/kali/Documents/VPN/profile-861.ovpn'
 # SSH
