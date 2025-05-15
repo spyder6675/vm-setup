@@ -519,7 +519,7 @@ create_roottestingdirectories() {
 check_software() {
     # Check for apt updates
     echo "Checking if apt can update the package repository..."
-    sudo apt update > /dev/null 2>&1
+    sudo apt update -y > /dev/null 2>&1
     if [ $? -eq 0 ]; then
         echo "APT is working: Package repository updated successfully."
     else
