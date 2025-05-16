@@ -871,7 +871,9 @@ download_nmap_scripts () {
 [[ ! -f /usr/share/nmap/scripts/oracle-tns-poison.nse ]] && wget https://raw.githubusercontent.com/bongbongco/CVE-2012-1675/refs/heads/master/oracle-tns-poison.nse -P /usr/share/nmap/scripts
 [[ ! -f /usr/share/nmap/scripts/cisco-siet.nse ]] && wget https://raw.githubusercontent.com/frostbits-security/SIET/refs/heads/master/cisco-siet.nse -P /usr/share/nmap/scripts
 [[ ! -f /usr/share/nmap/scripts/ssh-hassh.nse ]] && wget https://raw.githubusercontent.com/0x4D31/hassh-utils/master/ssh-hassh.nse -P /usr/share/nmap/scripts
-
+#
+[[ ! -f /usr/share/nmap/scripts/cisco-wcl.nse ]] && wget https://raw.githubusercontent.com/spyder6675/vm-setup/main/cisco-wcl.nse -P /usr/share/nmap/scripts
+[[ ! -f /usr/share/nmap/scripts/dell-idrac.nse ]] && wget https://raw.githubusercontent.com/spyder6675/vm-setup/main/dell-idrac.nse -P /usr/share/nmap/scripts
 
 #
 nmap --script-updatedb
