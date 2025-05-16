@@ -281,7 +281,7 @@ clone_git_repos() {
     [[ ! -d /opt/eavesarp-ng ]] && git clone https://github.com/ImpostorKeanu/eavesarp-ng.git /opt/eavesarp-ng
     
 
-    }
+}
 
 
 configure_terminal() {
@@ -522,44 +522,10 @@ main
 ##### My adds ######
 ####################
 
-### Tmux Settings
-echo "set -g mouse on" >> ~/.tmux.conf
 
 
-configure_tux() {
+# [[ ! -d /opt/TODO ]] && git clone TODO /opt/TODO
 
-cat << 'EOF' >> "${HOME}/.tmux.conf"
-set -g mouse on
-EOF
-}
-
-
-
-# wget EXEs
-mkdir /root/tools
-wget https://github.com/clymb3r/PowerShell/blob/master/Invoke-Mimikatz/Invoke-Mimikatz.ps1 -P /root/tools
-wget https://github.com/SnaffCon/Snaffler/releases/download/1.0.146/Snaffler.exe -P /root/tools
-wget https://github.com/hoardd/hoardd-client/releases/download/v0.6.0/hoardd-client_Linux_x86_64.tar.gz -P /root/tools
-tar -xvf /root/tools/hoardd-client_Linux_x86_64.tar.gz -C /root/tools/
-wget https://github.com/ropnop/kerbrute/releases/download/v1.0.3/kerbrute_linux_amd64 -P /root/tools
-
-# ADD 
-wget https://raw.githubusercontent.com/immunityinc/bravestarr/master/bravestarr.py -P /root/tools
-wget https://raw.githubusercontent.com/spyder6675/vm-setup/main/calculate-time.py -P /root/tools
-
-
-# Nmap Scripts
-wget https://raw.githubusercontent.com/nmap/nmap/refs/heads/master/scripts/http-apache-server-status.nse -P /usr/share/nmap/scripts
-wget https://raw.githubusercontent.com/richlamdev/ssh-default-banners/master/ssh-os.nse -P /usr/share/nmap/scripts
-wget https://raw.githubusercontent.com/RootUp/PersonalStuff/master/http-vuln-cve2020-3452.nse -P /usr/share/nmap/scripts
-wget https://raw.githubusercontent.com/bongbongco/CVE-2012-1675/refs/heads/master/oracle-tns-poison.nse -P /usr/share/nmap/scripts
-wget https://raw.githubusercontent.com/frostbits-security/SIET/refs/heads/master/cisco-siet.nse -P /usr/share/nmap/scripts
-wget https://raw.githubusercontent.com/0x4D31/hassh-utils/master/ssh-hassh.nse -P /usr/share/nmap/scripts
-nmap --script-updatedb
-
-# VPN IKE Wordlist
-mkdir /root/tools/vpn-wordlists
-wget https://raw.githubusercontent.com/spyder6675/vm-setup/main/vpnIDs.txt -P /root/tools/vpn-wordlists
 
 ### Unzip Rockyou ###
 gzip -d /usr/share/wordlists/rockyou.txt.gz
