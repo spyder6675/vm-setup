@@ -106,6 +106,10 @@ alias smb-responder-on="cd /usr/share/responder;sed -i 's/SMB      = Off/SMB    
 alias smb-responder-off="cd /usr/share/responder;sed -i 's/SMB      = On/SMB      = Off/g' Responder.conf;sed -i 's/HTTP     = On/HTTP     = Off/g' Responder.conf;head -n 20 Responder.conf"
 #
 #
+
+
+# Clone Git Repos 
+# clone-git-repos - - my_functions
 clone-git-repos () {
     # Repos
     # Needed for GoRecon Modules
