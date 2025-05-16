@@ -304,7 +304,7 @@ alias log-iptables='iptables -L OUTPUT | tee -a /root/testing/logs/IPTables-impl
 #
 alias start-neo4j='cd /usr/bin;./neo4j console'
 alias check-terminal='grep "colorScheme\|TerminalMargin\|TerminalTransparency\|fontFamily\|fontSize" ~/.config/qterminal.org/qterminal.ini'
-alias get-aliasfunctions="cat .alias | grep ') {' | grep -v log_ | cut -d '(' -f1 | sort"
+alias list-myfunctions="cat .alias | grep ') {' | grep -v log_ | cut -d '(' -f1 | sort"
 #
 
 
@@ -893,14 +893,6 @@ nmap --script-updatedb
 rockyou_unzip () {
 
 [[ ! -d /usr/share/wordlists/rockyou.txt ]] && gzip -d /usr/share/wordlists/rockyou.txt.gz
-
-}
-
-
-# List My Functions
-# list-myfunctions - my_functions
-list-myfunctions () {
-cat .alias | grep my_functions | cut -d ' ' -f 2 | sort -uV
 
 }
 
