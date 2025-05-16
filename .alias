@@ -889,7 +889,7 @@ rockyou_unzip () {
 # List My Functions
 # list-myfunctions - my_functions
 list-myfunctions () {
-cat .alias | grep my_functions | cut -d ' ' -f 2
+cat .alias | grep my_functions | cut -d ' ' -f 2 | sort -uV
 
 }
 
