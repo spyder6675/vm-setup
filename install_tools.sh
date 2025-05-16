@@ -183,7 +183,7 @@ clone_git_repos() {
 }
 
 configure_terminal() {
-
+rm "${HOME}/.screenrc"
 cat << 'EOF' >> "${HOME}/.screenrc"
 termcapinfo * ti@:te@
 caption always
