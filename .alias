@@ -302,7 +302,10 @@ alias start-neo4j='cd /usr/bin;./neo4j console'
 alias check-terminal='grep "colorScheme\|TerminalMargin\|TerminalTransparency\|fontFamily\|fontSize" ~/.config/qterminal.org/qterminal.ini'
 alias get-aliasfunctions="cat .alias | grep ') {' | grep -v log_ | cut -d '(' -f1 | sort"
 #
+
+
 #### Functions ####
+#
 # Install in Python Virtualenv
 #
 # Function Name: install_with_virtualenv
@@ -317,7 +320,7 @@ alias get-aliasfunctions="cat .alias | grep ') {' | grep -v log_ | cut -d '(' -f
 #
 # Log Location: /root/testing/logs/install.log
 #
-#
+# install-with-virtualenv - my_functions
 install-with-virtualenv () {
     REPO_NAME="$1"
     PYENV="${HOME}/pyenv"
@@ -366,8 +369,11 @@ install-with-virtualenv () {
 
     log_message "INFO: Completed installation for repository ${REPO_NAME}"
 }
+
+
 #
 # Download and Install the latest debian10 Nessus amd64
+# download_and_install_latest_nessus - my_functions
 download_and_install_latest_nessus () {
     NESSUS_LATEST_URL=$(curl -s https://www.tenable.com/downloads/api/v2/pages/nessus --header 'accept: application/json' | jq -r '.releases.latest' | jq -r '.[][].file_url' | grep 'Nessus-latest-debian10_amd64.deb')
     [[ ! -d "${HOME}/tools" ]] && mkdir "${HOME}/tools"
@@ -376,7 +382,9 @@ download_and_install_latest_nessus () {
     cd "${HOME}"
 }
 
+
 # Download the latest debian10 Nessus amd64
+# download_latest_nessus - my_functions
 download_latest_nessus () {
     NESSUS_LATEST_URL=$(curl -s https://www.tenable.com/downloads/api/v2/pages/nessus --header 'accept: application/json' | jq -r '.releases.latest' | jq -r '.[][].file_url' | grep 'Nessus-latest-debian10_amd64.deb')
     [[ ! -d "${HOME}/tools" ]] && mkdir "${HOME}/tools"
@@ -385,6 +393,9 @@ download_latest_nessus () {
     # cd "${HOME}"
 }
 
+
+# Install apt packages
+# install_apt_packages - my_functions
 install_apt_packages () {
     # List of packages to install
     local packages=(
@@ -470,7 +481,7 @@ install_apt_packages () {
 
     # Update package index
     export DEBIAN_FRONTEND=noninteractive
-    apt-get update -y
+    apt update -y
 
     # Install each package in the list
     for package in "${packages[@]}"; do
@@ -482,11 +493,11 @@ install_apt_packages () {
 
     # Python packages
     # python3 -m pip install Cython # Added to APT section
-    python3 -m pip install python-libpcap
-    python3 -m pip install netaddr
-    python3 -m pip install fuzzywuzzy
-    python3 -m pip install levenshtein
-    python3 -m pip install pyvirtualdisplay
+    # python3 -m pip install python-libpcap
+    # python3 -m pip install netaddr
+    # python3 -m pip install fuzzywuzzy
+    # python3 -m pip install levenshtein
+    # python3 -m pip install pyvirtualdisplay
 
     # remove outdated packages
     apt-get autoremove -y
@@ -494,7 +505,8 @@ install_apt_packages () {
 
 }
 
-#
+# Create Root testing directories
+# create_roottestingdirectories - my_functions
 create_roottestingdirectories () {
     # Testing Dir
     [[ ! -d "${HOME}/testing" ]] && mkdir "${HOME}/testing"
@@ -516,6 +528,7 @@ create_roottestingdirectories () {
 }
 
 # Function to check APT, GIT and GO
+# check_software - my_functions
 check_software () {
     # Check for apt updates
     echo "Checking if apt can update the package repository..."
@@ -574,7 +587,8 @@ check_software () {
     return 0
 }
 
-
+# Check Hardware 
+# check_hardware - my_functions
 check_hardware () {
     ALL_GOOD=true
 
@@ -615,6 +629,7 @@ check_hardware () {
 }
 
 # Cheching SSH Setup
+# check_sshd - my_functions
 check_sshd () {
     echo -e "${PURPLE}[*]${RESET} Checking SSH setup:\n"
 
@@ -694,7 +709,8 @@ check_sshd () {
 }
 
 # Set SSH Folder and File Permissions
-set_sshpermissions_fnt () {
+# set_sshpermissions - my_functions
+set_sshpermissions () {
 	if [ -d "$HOME/.ssh" ]; then
 	  echo "\nSetting SSH permissions on .ssh folder..."
 	  chmod 700 "$HOME/.ssh"
@@ -711,7 +727,8 @@ set_sshpermissions_fnt () {
 
 
 # Enable SSH service
-start_sshd_fnt () {
+# start_sshd - my_functions
+start_sshd () {
 	echo "Enabling and Starting SSH service..."
 	sudo systemctl enable ssh
 	sudo systemctl restart ssh
@@ -732,7 +749,10 @@ start_sshd_fnt () {
     echo "SSH Service Enabled and Started."
 }
 
-set_local_terminal_settings_fnt () {
+
+# Set local terminal settings
+# set_local_terminal_settings - my_functions
+set_local_terminal_settings () {
 
     # Set color scheme to Kali-Light
     sed -i 's/colorScheme=.*/colorScheme=Kali-Light/' ~/.config/qterminal.org/qterminal.ini
@@ -753,7 +773,9 @@ set_local_terminal_settings_fnt () {
     pkill qterminal && qterminal &
 }
 
-test_install_apt_packages_fromfile_fnt () {
+# Test istall apt packages fromfile
+# test_install_apt_packages_fromfile - my_functions
+test_install_apt_packages_fromfile () {
     # Path to the file containing the list of packages to install
     "$HOME/aptlist.txt"
     wget https://raw.githubusercontent.com/spyder6675/vm-setup/refs/heads/main/aptlist.txt
@@ -793,8 +815,9 @@ test_install_apt_packages_fromfile_fnt () {
     cat apt_install_log.txt | grep -i succ
 }
 
-
-tmux_settings_fnt () {
+# tmux configuration file
+# tmux_settings - my_functions
+tmux_settings () {
     #
 	rm -rf "${HOME}/.tmux.conf"
     [ ! -f ~/.tmux.conf ] && wget https://raw.githubusercontent.com/spyder6675/vm-setup/main/.tmux.conf
@@ -824,7 +847,7 @@ download_tools () {
 #
 [[ ! -f /tools/hoardd-client_Linux_x86_64.tar.gz ]] && wget https://github.com/hoardd/hoardd-client/releases/download/v0.6.0/hoardd-client_Linux_x86_64.tar.gz -P /root/tools
 [[ ! -d "${HOME}/tools/hoardd-client" ]] && mkdir "${HOME}/tools/hoardd-client"
-tar -xvf /root/tools/hoardd-client_Linux_x86_64.tar.gz -C /root/tools/hoardd-client
+[[ ! -f "${HOME}/tools/hoardd-client/hoardd-client" ]] && tar -xvf /root/tools/hoardd-client_Linux_x86_64.tar.gz -C /root/tools/hoardd-client
 #
 [[ ! -f /tools/kerbrute_linux_amd64 ]] && wget https://github.com/ropnop/kerbrute/releases/download/v1.0.3/kerbrute_linux_amd64 -P /root/tools
 [[ ! -f /tools/bravestarr.py ]] && wget https://raw.githubusercontent.com/immunityinc/bravestarr/master/bravestarr.py -P /root/tools
