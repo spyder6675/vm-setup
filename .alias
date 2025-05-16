@@ -803,7 +803,7 @@ tmux_settings() {
 }
 
 
-configure_tux() {
+configure_tmux() {
 
 cat << 'EOF' >> "${HOME}/.tmux.conf"
 set -g mouse on
