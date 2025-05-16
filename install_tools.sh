@@ -448,7 +448,7 @@ upgrade_pandas() {
 
 # Configure tmux
 # configure_tmux  - my_functions
-configure_tmux () {
+configure_tmux() {
 rm "${HOME}/.tmux.conf"
 cat << 'EOF' >> "${HOME}/.tmux.conf"
 set -g mouse on
@@ -457,7 +457,7 @@ EOF
 
 # Download Tools to root Dir
 # download_tools - my_functions
-download_tools () {
+download_tools() {
 # [[ ! -d "${HOME}/tools/TODO" ]] && 
 [[ ! -d "${HOME}/tools" ]] && mkdir "${HOME}/tools"
 [[ ! -f "${HOME}/tools/Invoke-Mimikatz.ps1" ]] && wget https://github.com/clymb3r/PowerShell/blob/master/Invoke-Mimikatz/Invoke-Mimikatz.ps1 -P /root/tools
@@ -480,7 +480,7 @@ download_tools () {
 
 # Nmap Scripts
 # download_nmap_scripts - my_functions
-download_nmap_scripts () {
+download_nmap_scripts() {
 # [[ ! -d /usr/share/nmap/scripts ]] &&
 #
 [[ ! -f /usr/share/nmap/scripts/http-apache-server-status.nse ]] && wget https://raw.githubusercontent.com/nmap/nmap/refs/heads/master/scripts/http-apache-server-status.nse -P /usr/share/nmap/scripts
@@ -501,9 +501,9 @@ nmap --script-updatedb
 
 ### Unzip Rockyou ###
 # rockyou_unzip - my_functions
-rockyou_unzip () {
+rockyou_unzip() {
 
-[[ ! -d /usr/share/wordlists/rockyou.txt ]] && gzip -d /usr/share/wordlists/rockyou.txt.gz
+[[ ! -f /usr/share/wordlists/rockyou.txt ]] && gzip -d /usr/share/wordlists/rockyou.txt.gz
 
 }
 
