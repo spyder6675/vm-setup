@@ -180,6 +180,7 @@ clone_git_repos() {
     [[ ! -d /opt/RustHound ]] && git clone https://github.com/NH-RED-TEAM/RustHound.git /opt/RustHound
     [[ ! -d /opt/adidnsdump ]] && git clone https://github.com/dirkjanm/adidnsdump.git /opt/adidnsdump
     [[ ! -d /opt/MANSPIDER ]] && git clone https://github.com/blacklanternsecurity/MANSPIDER.git /opt/MANSPIDER
+	
 }
 
 configure_terminal() {
@@ -443,7 +444,6 @@ upgrade_pandas() {
 }
 
 
-
 ### My Functions ###
 
 # Configure tmux
@@ -499,7 +499,6 @@ nmap --script-updatedb
 }
 
 
-
 ### Unzip Rockyou ###
 # rockyou_unzip - my_functions
 rockyou_unzip () {
@@ -523,7 +522,7 @@ main() {
     fi
 
     # check implant system requirements
-    check_hardware_requirements
+    # check_hardware_requirements
 
     install_apt_packages
     clone_git_repos
@@ -589,7 +588,7 @@ main() {
 	configure_tmux
 	download_tools
 	download_nmap_scripts
-	
+	rockyou_unzip
 
 }
 
