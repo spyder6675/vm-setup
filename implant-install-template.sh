@@ -180,7 +180,6 @@ install_apt_packages() {
 
 clone_git_repos() {
     # Repos
-    # Needed for GoRecon Modules
     # [[ ! -d /opt/TODO ]] &&  git clone TODO /opt/TODO
     [[ ! -d /opt/BloodHound.py ]] && git clone https://github.com/dirkjanm/bloodhound.py /opt/BloodHound.py
     # [[ ! -d /opt/CrackMapExec ]] && git clone https://github.com/byt3bl33d3r/CrackMapExec.git /opt/CrackMapExec
