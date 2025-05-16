@@ -864,9 +864,9 @@ rockyou_unzip () {
 
 
 # List My Functions
-# list_my_functions - my_functions
+# list-myfunctions - my_functions
 list_my_functions () {
-cat .alias | grep my_functions
+cat .alias | grep my_functions | cut -d ' ' -f 2
 
 }
 
