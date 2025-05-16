@@ -465,7 +465,7 @@ install-apt-packages() {
         # "leafpad"
         "apt-transport-https"
         "prips"
-		"nft"
+		"nftables"
 		"conntrack"
 		
 
@@ -855,9 +855,11 @@ download-tools() {
 #
 [[ ! -f "${HOME}/tools/kerbrute_linux_amd64" ]] && wget https://github.com/ropnop/kerbrute/releases/download/v1.0.3/kerbrute_linux_amd64 -P /root/tools
 [[ ! -f "${HOME}/tools/bravestarr.py" ]] && wget https://raw.githubusercontent.com/immunityinc/bravestarr/master/bravestarr.py -P /root/tools
-[[ ! -f "${HOME}/calculate-time.py" ]] && wget https://raw.githubusercontent.com/spyder6675/vm-setup/main/calculate-time.py -P /root/tools
+[[ ! -f "${HOME}/tools/calculate-time.py" ]] && wget https://raw.githubusercontent.com/spyder6675/vm-setup/main/calculate-time.py -P /root/tools
 # NTLMv1 wget the raw file 
 [[ ! -f "${HOME}/tools/ct3_to_ntlm.c" ]] && wget https://github.com/hashcat/hashcat-utils/blob/master/src/ct3_to_ntlm.c -P /root/tools
+# Download Eavesarp-ng
+[[ ! -f "${HOME}/tools/eavesarp" ]] && wget https://github.com/ImpostorKeanu/eavesarp-ng/releases/download/alpha-v0.1.4-release/eavesarp -P /root/tools
 # 
 # VPN IKE Wordlist
 [[ ! -d "${HOME}/tools/vpn-wordlists" ]] && mkdir "${HOME}/tools/vpn-wordlists"
