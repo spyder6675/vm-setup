@@ -804,7 +804,7 @@ tmux_settings() {
 
 
 configure_tmux() {
-
+rm ${HOME}/.tmux.conf
 cat << 'EOF' >> "${HOME}/.tmux.conf"
 set -g mouse on
 EOF
