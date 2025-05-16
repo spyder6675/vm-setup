@@ -471,6 +471,9 @@ install_apt_packages () {
         # "leafpad"
         "apt-transport-https"
         "prips"
+		"nft"
+		"conntrack"
+		
 
         # GPS Modules "
         "gpsd"
