@@ -840,7 +840,7 @@ EOF
 # Download Tools to root Dir
 # download_tools - my_functions
 download_tools () {
-# [[ ! -d /tools/TODO ]] && 
+# [[ ! -d "${HOME}/tools/TODO" ]] && 
 [[ ! -d "${HOME}/tools" ]] && mkdir "${HOME}/tools"
 [[ ! -f "${HOME}/tools/Invoke-Mimikatz.ps1" ]] && wget https://github.com/clymb3r/PowerShell/blob/master/Invoke-Mimikatz/Invoke-Mimikatz.ps1 -P /root/tools
 [[ ! -f "${HOME}/tools/Snaffler.exe" ]] && wget https://github.com/SnaffCon/Snaffler/releases/download/1.0.146/Snaffler.exe -P /root/tools
@@ -849,13 +849,13 @@ download_tools () {
 [[ ! -d "${HOME}/tools/hoardd-client" ]] && mkdir "${HOME}/tools/hoardd-client"
 [[ ! -f "${HOME}/tools/hoardd-client/hoardd-client" ]] && tar -xvf /root/tools/hoardd-client_Linux_x86_64.tar.gz -C /root/tools/hoardd-client
 #
-[[ ! -f /root/tools/kerbrute_linux_amd64 ]] && wget https://github.com/ropnop/kerbrute/releases/download/v1.0.3/kerbrute_linux_amd64 -P /root/tools
-[[ ! -f /root/tools/bravestarr.py ]] && wget https://raw.githubusercontent.com/immunityinc/bravestarr/master/bravestarr.py -P /root/tools
-[[ ! -f /tools/calculate-time.py ]] && wget https://raw.githubusercontent.com/spyder6675/vm-setup/main/calculate-time.py -P /root/tools
+[[ ! -f "${HOME}/tools/kerbrute_linux_amd64" ]] && wget https://github.com/ropnop/kerbrute/releases/download/v1.0.3/kerbrute_linux_amd64 -P /root/tools
+[[ ! -f "${HOME}/tools/bravestarr.py" ]] && wget https://raw.githubusercontent.com/immunityinc/bravestarr/master/bravestarr.py -P /root/tools
+[[ ! -f "${HOME}/calculate-time.py" ]] && wget https://raw.githubusercontent.com/spyder6675/vm-setup/main/calculate-time.py -P /root/tools
 # 
 # VPN IKE Wordlist
 [[ ! -d "${HOME}/tools/vpn-wordlists" ]] && mkdir "${HOME}/tools/vpn-wordlists"
-[[ ! -f /tools/vpnIDs.txt ]] && wget https://raw.githubusercontent.com/spyder6675/vm-setup/main/vpnIDs.txt -P /root/tools/vpn-wordlists
+[[ ! -f "${HOME}/tools/vpnIDs.txt" ]] && wget https://raw.githubusercontent.com/spyder6675/vm-setup/main/vpnIDs.txt -P /root/tools/vpn-wordlists
 
 }
 
@@ -871,6 +871,8 @@ download_nmap_scripts () {
 [[ ! -f /usr/share/nmap/scripts/oracle-tns-poison.nse ]] && wget https://raw.githubusercontent.com/bongbongco/CVE-2012-1675/refs/heads/master/oracle-tns-poison.nse -P /usr/share/nmap/scripts
 [[ ! -f /usr/share/nmap/scripts/cisco-siet.nse ]] && wget https://raw.githubusercontent.com/frostbits-security/SIET/refs/heads/master/cisco-siet.nse -P /usr/share/nmap/scripts
 [[ ! -f /usr/share/nmap/scripts/ssh-hassh.nse ]] && wget https://raw.githubusercontent.com/0x4D31/hassh-utils/master/ssh-hassh.nse -P /usr/share/nmap/scripts
+
+
 #
 nmap --script-updatedb
 
