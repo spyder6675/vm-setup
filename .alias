@@ -106,7 +106,7 @@ alias smb-responder-on="cd /usr/share/responder;sed -i 's/SMB      = Off/SMB    
 alias smb-responder-off="cd /usr/share/responder;sed -i 's/SMB      = On/SMB      = Off/g' Responder.conf;sed -i 's/HTTP     = On/HTTP     = Off/g' Responder.conf;head -n 20 Responder.conf"
 #
 #
-clone-git-repos() {
+clone-git-repos () {
     # Repos
     # Needed for GoRecon Modules
     # [[ ! -d /opt/TODO ]] && git clone TODO /opt/TODO
@@ -368,7 +368,7 @@ install-with-virtualenv () {
 }
 #
 # Download and Install the latest debian10 Nessus amd64
-download_and_install_latest_nessus() {
+download_and_install_latest_nessus () {
     NESSUS_LATEST_URL=$(curl -s https://www.tenable.com/downloads/api/v2/pages/nessus --header 'accept: application/json' | jq -r '.releases.latest' | jq -r '.[][].file_url' | grep 'Nessus-latest-debian10_amd64.deb')
     [[ ! -d "${HOME}/tools" ]] && mkdir "${HOME}/tools"
     cd "${HOME}/tools" && wget "$NESSUS_LATEST_URL" -O "${HOME}/tools/"Nessus-latest-debian10_amd64.deb
@@ -377,7 +377,7 @@ download_and_install_latest_nessus() {
 }
 
 # Download the latest debian10 Nessus amd64
-download_latest_nessus() {
+download_latest_nessus () {
     NESSUS_LATEST_URL=$(curl -s https://www.tenable.com/downloads/api/v2/pages/nessus --header 'accept: application/json' | jq -r '.releases.latest' | jq -r '.[][].file_url' | grep 'Nessus-latest-debian10_amd64.deb')
     [[ ! -d "${HOME}/tools" ]] && mkdir "${HOME}/tools"
     wget "$NESSUS_LATEST_URL" -O "${HOME}/tools/"Nessus-latest-debian10_amd64.deb
@@ -385,7 +385,7 @@ download_latest_nessus() {
     # cd "${HOME}"
 }
 
-install_apt_packages() {
+install_apt_packages () {
     # List of packages to install
     local packages=(
         "build-essential"
@@ -495,7 +495,7 @@ install_apt_packages() {
 }
 
 #
-create_roottestingdirectories() {
+create_roottestingdirectories () {
     # Testing Dir
     [[ ! -d "${HOME}/testing" ]] && mkdir "${HOME}/testing"
     # Domain
@@ -516,7 +516,7 @@ create_roottestingdirectories() {
 }
 
 # Function to check APT, GIT and GO
-check_software() {
+check_software () {
     # Check for apt updates
     echo "Checking if apt can update the package repository..."
     sudo apt update -y > /dev/null 2>&1
@@ -575,7 +575,7 @@ check_software() {
 }
 
 
-check_hardware() {
+check_hardware () {
     ALL_GOOD=true
 
     echo -e "${PURPLE}[*]${RESET} Checking implant system requirements:\nCPU >= 4\tRAM >= 8 GB\tDisk >= 60 GB\n"
@@ -694,7 +694,7 @@ check_sshd () {
 }
 
 # Set SSH Folder and File Permissions
-set_sshpermissions() {
+set_sshpermissions_fnt () {
 	if [ -d "$HOME/.ssh" ]; then
 	  echo "\nSetting SSH permissions on .ssh folder..."
 	  chmod 700 "$HOME/.ssh"
@@ -711,7 +711,7 @@ set_sshpermissions() {
 
 
 # Enable SSH service
-start_sshd() {
+start_sshd_fnt () {
 	echo "Enabling and Starting SSH service..."
 	sudo systemctl enable ssh
 	sudo systemctl restart ssh
@@ -732,7 +732,7 @@ start_sshd() {
     echo "SSH Service Enabled and Started."
 }
 
-set_local_terminal_settings() {
+set_local_terminal_settings_fnt () {
 
     # Set color scheme to Kali-Light
     sed -i 's/colorScheme=.*/colorScheme=Kali-Light/' ~/.config/qterminal.org/qterminal.ini
@@ -753,7 +753,7 @@ set_local_terminal_settings() {
     pkill qterminal && qterminal &
 }
 
-test_install_apt_packages_fromfile () {
+test_install_apt_packages_fromfile_fnt () {
     # Path to the file containing the list of packages to install
     "$HOME/aptlist.txt"
     wget https://raw.githubusercontent.com/spyder6675/vm-setup/refs/heads/main/aptlist.txt
@@ -794,7 +794,7 @@ test_install_apt_packages_fromfile () {
 }
 
 
-tmux_settings() {
+tmux_settings_fnt () {
     #
 	rm -rf "${HOME}/.tmux.conf"
     [ ! -f ~/.tmux.conf ] && wget https://raw.githubusercontent.com/spyder6675/vm-setup/main/.tmux.conf
@@ -804,7 +804,7 @@ tmux_settings() {
 }
 
 
-configure_tmux() {
+configure_tmux_fnt () {
 rm "${HOME}/.tmux.conf"
 cat << 'EOF' >> "${HOME}/.tmux.conf"
 set -g mouse on
@@ -812,7 +812,7 @@ EOF
 }
 
 
-download_tools () {
+download_tools_fnt () {
 # [[ ! -d /tools/TODO ]] && 
 [[ ! -d "${HOME}/tools" ]] && mkdir "${HOME}/tools"
 [[ ! -f /tools/Invoke-Mimikatz.ps1 ]] && wget https://github.com/clymb3r/PowerShell/blob/master/Invoke-Mimikatz/Invoke-Mimikatz.ps1 -P /root/tools
@@ -834,7 +834,7 @@ tar -xvf /root/tools/hoardd-client_Linux_x86_64.tar.gz -C /root/tools/hoardd-cli
 
 
 # Nmap Scripts
-download_nmap_scripts () {
+download_nmap_scripts_fnt () {
 # [[ ! -d /usr/share/nmap/scripts ]] &&
 #
 [[ ! -f /usr/share/nmap/scripts/http-apache-server-status.nse ]] && wget https://raw.githubusercontent.com/nmap/nmap/refs/heads/master/scripts/http-apache-server-status.nse -P /usr/share/nmap/scripts
@@ -845,6 +845,14 @@ download_nmap_scripts () {
 [[ ! -f /usr/share/nmap/scripts/ssh-hassh.nse ]] && wget https://raw.githubusercontent.com/0x4D31/hassh-utils/master/ssh-hassh.nse -P /usr/share/nmap/scripts
 #
 nmap --script-updatedb
+
+}
+
+
+### Unzip Rockyou ###
+rockyou_unzip_fnt () {
+
+[[ ! -d /usr/share/wordlists/rockyou.txt ]] && gzip -d /usr/share/wordlists/rockyou.txt.gz
 
 }
 
