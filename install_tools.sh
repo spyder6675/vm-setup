@@ -442,6 +442,73 @@ upgrade_pandas() {
     fi
 }
 
+
+
+### My Functions ###
+
+# Configure tmux
+# configure_tmux  - my_functions
+configure_tmux () {
+rm "${HOME}/.tmux.conf"
+cat << 'EOF' >> "${HOME}/.tmux.conf"
+set -g mouse on
+EOF
+}
+
+# Download Tools to root Dir
+# download_tools - my_functions
+download_tools () {
+# [[ ! -d "${HOME}/tools/TODO" ]] && 
+[[ ! -d "${HOME}/tools" ]] && mkdir "${HOME}/tools"
+[[ ! -f "${HOME}/tools/Invoke-Mimikatz.ps1" ]] && wget https://github.com/clymb3r/PowerShell/blob/master/Invoke-Mimikatz/Invoke-Mimikatz.ps1 -P /root/tools
+[[ ! -f "${HOME}/tools/Snaffler.exe" ]] && wget https://github.com/SnaffCon/Snaffler/releases/download/1.0.146/Snaffler.exe -P /root/tools
+#
+[[ ! -f "${HOME}/tools/hoardd-client_Linux_x86_64.tar.gz" ]] && wget https://github.com/hoardd/hoardd-client/releases/download/v0.6.0/hoardd-client_Linux_x86_64.tar.gz -P /root/tools
+[[ ! -d "${HOME}/tools/hoardd-client" ]] && mkdir "${HOME}/tools/hoardd-client"
+[[ ! -f "${HOME}/tools/hoardd-client/hoardd-client" ]] && tar -xvf /root/tools/hoardd-client_Linux_x86_64.tar.gz -C /root/tools/hoardd-client
+#
+[[ ! -f "${HOME}/tools/kerbrute_linux_amd64" ]] && wget https://github.com/ropnop/kerbrute/releases/download/v1.0.3/kerbrute_linux_amd64 -P /root/tools
+[[ ! -f "${HOME}/tools/bravestarr.py" ]] && wget https://raw.githubusercontent.com/immunityinc/bravestarr/master/bravestarr.py -P /root/tools
+[[ ! -f "${HOME}/calculate-time.py" ]] && wget https://raw.githubusercontent.com/spyder6675/vm-setup/main/calculate-time.py -P /root/tools
+# 
+# VPN IKE Wordlist
+[[ ! -d "${HOME}/tools/vpn-wordlists" ]] && mkdir "${HOME}/tools/vpn-wordlists"
+[[ ! -f "${HOME}/tools/vpnIDs.txt" ]] && wget https://raw.githubusercontent.com/spyder6675/vm-setup/main/vpnIDs.txt -P /root/tools/vpn-wordlists
+
+}
+
+
+# Nmap Scripts
+# download_nmap_scripts - my_functions
+download_nmap_scripts () {
+# [[ ! -d /usr/share/nmap/scripts ]] &&
+#
+[[ ! -f /usr/share/nmap/scripts/http-apache-server-status.nse ]] && wget https://raw.githubusercontent.com/nmap/nmap/refs/heads/master/scripts/http-apache-server-status.nse -P /usr/share/nmap/scripts
+[[ ! -f /usr/share/nmap/scripts/ssh-os.nse ]] && wget https://raw.githubusercontent.com/richlamdev/ssh-default-banners/master/ssh-os.nse -P /usr/share/nmap/scripts
+[[ ! -f /usr/share/nmap/scripts/http-vuln-cve2020-3452.nse ]] && wget https://raw.githubusercontent.com/RootUp/PersonalStuff/master/http-vuln-cve2020-3452.nse -P /usr/share/nmap/scripts
+[[ ! -f /usr/share/nmap/scripts/oracle-tns-poison.nse ]] && wget https://raw.githubusercontent.com/bongbongco/CVE-2012-1675/refs/heads/master/oracle-tns-poison.nse -P /usr/share/nmap/scripts
+[[ ! -f /usr/share/nmap/scripts/cisco-siet.nse ]] && wget https://raw.githubusercontent.com/frostbits-security/SIET/refs/heads/master/cisco-siet.nse -P /usr/share/nmap/scripts
+[[ ! -f /usr/share/nmap/scripts/ssh-hassh.nse ]] && wget https://raw.githubusercontent.com/0x4D31/hassh-utils/master/ssh-hassh.nse -P /usr/share/nmap/scripts
+#
+[[ ! -f /usr/share/nmap/scripts/cisco-wcl.nse ]] && wget https://raw.githubusercontent.com/spyder6675/vm-setup/main/cisco-wcl.nse -P /usr/share/nmap/scripts
+[[ ! -f /usr/share/nmap/scripts/dell-idrac.nse ]] && wget https://raw.githubusercontent.com/spyder6675/vm-setup/main/dell-idrac.nse -P /usr/share/nmap/scripts
+
+#
+nmap --script-updatedb
+
+}
+
+
+
+### Unzip Rockyou ###
+# rockyou_unzip - my_functions
+rockyou_unzip () {
+
+[[ ! -d /usr/share/wordlists/rockyou.txt ]] && gzip -d /usr/share/wordlists/rockyou.txt.gz
+
+}
+
+
 #############################
 # MAIN ######################
 #############################
@@ -515,6 +582,14 @@ main() {
         echo -e "${BLUE}[+]${RESET}${BOLD} The --install-nessus flag is set. Running the installation function. ${RESET}"
         download_and_install_latest_nessus
     fi
+
+	
+	### My Additions ###
+	
+	configure_tmux
+	download_tools
+	download_nmap_scripts
+	
 
 }
 
