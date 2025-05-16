@@ -110,7 +110,7 @@ alias smb-responder-off="cd /usr/share/responder;sed -i 's/SMB      = On/SMB    
 
 # Clone Git Repos 
 # clone-git-repos - my_functions
-clone-git-repos () {
+clone-git-repos() {
     # Repos
     # Needed for GoRecon Modules
     # [[ ! -d /opt/TODO ]] && git clone TODO /opt/TODO
@@ -325,12 +325,12 @@ alias list-myfunctions="cat .alias | grep ') {' | grep -v log_ | cut -d '(' -f1 
 # Log Location: /root/testing/logs/install.log
 #
 # install-with-virtualenv - my_functions
-install-with-virtualenv () {
+install-with-virtualenv() {
     REPO_NAME="$1"
     PYENV="${HOME}/pyenv"
     LOG_FILE="${REPO_NAME}/install-with-virtualenv-install-${REPO_NAME}.log"
 
-    log_message () {
+    log_message() {
         echo "$(date +'%Y-%m-%d %H:%M:%S') - $1" >> "$LOG_FILE"
     }
 
@@ -378,7 +378,7 @@ install-with-virtualenv () {
 #
 # Download and Install the latest debian10 Nessus amd64
 # download_and_install_latest_nessus - my_functions
-download_and_install_latest_nessus () {
+download_and_install_latest_nessus() {
     NESSUS_LATEST_URL=$(curl -s https://www.tenable.com/downloads/api/v2/pages/nessus --header 'accept: application/json' | jq -r '.releases.latest' | jq -r '.[][].file_url' | grep 'Nessus-latest-debian10_amd64.deb')
     [[ ! -d "${HOME}/tools" ]] && mkdir "${HOME}/tools"
     cd "${HOME}/tools" && wget "$NESSUS_LATEST_URL" -O "${HOME}/tools/"Nessus-latest-debian10_amd64.deb
@@ -389,7 +389,7 @@ download_and_install_latest_nessus () {
 
 # Download the latest debian10 Nessus amd64
 # download_latest_nessus - my_functions
-download_latest_nessus () {
+download_latest_nessus() {
     NESSUS_LATEST_URL=$(curl -s https://www.tenable.com/downloads/api/v2/pages/nessus --header 'accept: application/json' | jq -r '.releases.latest' | jq -r '.[][].file_url' | grep 'Nessus-latest-debian10_amd64.deb')
     [[ ! -d "${HOME}/tools" ]] && mkdir "${HOME}/tools"
     wget "$NESSUS_LATEST_URL" -O "${HOME}/tools/"Nessus-latest-debian10_amd64.deb
@@ -400,7 +400,7 @@ download_latest_nessus () {
 
 # Install apt packages
 # install_apt_packages - my_functions
-install_apt_packages () {
+install_apt_packages() {
     # List of packages to install
     local packages=(
         "build-essential"
@@ -514,7 +514,7 @@ install_apt_packages () {
 
 # Create Root testing directories
 # create_roottestingdirectories - my_functions
-create_roottestingdirectories () {
+create_roottestingdirectories() {
     # Testing Dir
     [[ ! -d "${HOME}/testing" ]] && mkdir "${HOME}/testing"
     # Domain
@@ -536,7 +536,7 @@ create_roottestingdirectories () {
 
 # Function to check APT, GIT and GO
 # check_software - my_functions
-check_software () {
+check_software() {
     # Check for apt updates
     echo "Checking if apt can update the package repository..."
     sudo apt update -y > /dev/null 2>&1
@@ -596,7 +596,7 @@ check_software () {
 
 # Check Hardware 
 # check_hardware - my_functions
-check_hardware () {
+check_hardware() {
     ALL_GOOD=true
 
     echo -e "${PURPLE}[*]${RESET} Checking implant system requirements:\nCPU >= 4\tRAM >= 8 GB\tDisk >= 60 GB\n"
@@ -637,7 +637,7 @@ check_hardware () {
 
 # Cheching SSH Setup
 # check_sshd - my_functions
-check_sshd () {
+check_sshd() {
     echo -e "${PURPLE}[*]${RESET} Checking SSH setup:\n"
 
     # Check if SSH is enabled (checking if sshd_config exists)
@@ -717,7 +717,7 @@ check_sshd () {
 
 # Set SSH Folder and File Permissions
 # set_sshpermissions - my_functions
-set_sshpermissions () {
+set_sshpermissions() {
 	if [ -d "$HOME/.ssh" ]; then
 	  echo "\nSetting SSH permissions on .ssh folder..."
 	  chmod 700 "$HOME/.ssh"
@@ -735,7 +735,7 @@ set_sshpermissions () {
 
 # Enable SSH service
 # start_sshd - my_functions
-start_sshd () {
+start_sshd() {
 	echo "Enabling and Starting SSH service..."
 	sudo systemctl enable ssh
 	sudo systemctl restart ssh
@@ -759,7 +759,7 @@ start_sshd () {
 
 # Set local terminal settings
 # set_local_terminal_settings - my_functions
-set_local_terminal_settings () {
+set_local_terminal_settings() {
 
     # Set color scheme to Kali-Light
     sed -i 's/colorScheme=.*/colorScheme=Kali-Light/' ~/.config/qterminal.org/qterminal.ini
@@ -782,7 +782,7 @@ set_local_terminal_settings () {
 
 # Test istall apt packages fromfile
 # test_install_apt_packages_fromfile - my_functions
-test_install_apt_packages_fromfile () {
+test_install_apt_packages_fromfile() {
     # Path to the file containing the list of packages to install
     "$HOME/aptlist.txt"
     wget https://raw.githubusercontent.com/spyder6675/vm-setup/refs/heads/main/aptlist.txt
@@ -824,7 +824,7 @@ test_install_apt_packages_fromfile () {
 
 # tmux configuration file
 # configure-tmux-from-Git - my_functions
-tmux_settings () {
+tmux_settings() {
     #
 	rm -rf "${HOME}/.tmux.conf"
     [ ! -f ~/.tmux.conf ] && wget https://raw.githubusercontent.com/spyder6675/vm-setup/main/.tmux.conf
@@ -836,7 +836,7 @@ tmux_settings () {
 
 # Configure tmux
 # configure_tmux  - my_functions
-configure_tmux () {
+configure_tmux() {
 rm "${HOME}/.tmux.conf"
 cat << 'EOF' >> "${HOME}/.tmux.conf"
 set -g mouse on
@@ -846,7 +846,7 @@ EOF
 
 # Download Tools to root Dir
 # download_tools - my_functions
-download_tools () {
+download_tools() {
 # [[ ! -d "${HOME}/tools/TODO" ]] && 
 [[ ! -d "${HOME}/tools" ]] && mkdir "${HOME}/tools"
 [[ ! -f "${HOME}/tools/Invoke-Mimikatz.ps1" ]] && wget https://github.com/clymb3r/PowerShell/blob/master/Invoke-Mimikatz/Invoke-Mimikatz.ps1 -P /root/tools
@@ -869,7 +869,7 @@ download_tools () {
 
 # Nmap Scripts
 # download_nmap_scripts - my_functions
-download_nmap_scripts () {
+download_nmap_scripts() {
 # [[ ! -d /usr/share/nmap/scripts ]] &&
 #
 [[ ! -f /usr/share/nmap/scripts/http-apache-server-status.nse ]] && wget https://raw.githubusercontent.com/nmap/nmap/refs/heads/master/scripts/http-apache-server-status.nse -P /usr/share/nmap/scripts
@@ -890,7 +890,7 @@ nmap --script-updatedb
 
 ### Unzip Rockyou ###
 # rockyou_unzip - my_functions
-rockyou_unzip () {
+rockyou_unzip() {
 
 [[ ! -d /usr/share/wordlists/rockyou.txt ]] && gzip -d /usr/share/wordlists/rockyou.txt.gz
 
