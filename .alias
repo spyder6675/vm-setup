@@ -109,7 +109,7 @@ alias smb-responder-off="cd /usr/share/responder;sed -i 's/SMB      = On/SMB    
 
 
 # Clone Git Repos 
-# clone-git-repos - - my_functions
+# clone-git-repos - my_functions
 clone-git-repos () {
     # Repos
     # Needed for GoRecon Modules
@@ -820,7 +820,7 @@ test_install_apt_packages_fromfile () {
 }
 
 # tmux configuration file
-# tmux_settings - my_functions
+# configure-tmux-from-Git - my_functions
 tmux_settings () {
     #
 	rm -rf "${HOME}/.tmux.conf"
