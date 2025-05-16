@@ -111,6 +111,7 @@ alias smb-responder-off="cd /usr/share/responder;sed -i 's/SMB      = On/SMB    
 # Clone Git Repos 
 # clone-git-repos - my_functions
 clone-git-repos() {
+
 	#
 	# Needed for GoRecon Modules
 	# [[ ! -d /opt/SIGIT ]] && git clone https://github.com/termuxhackers-id/SIGIT.git /opt/SIGIT # Git was removed
@@ -209,7 +210,7 @@ clone-git-repos() {
 
 
 
-    }
+}
 
 
 # Activate pyenv software 
