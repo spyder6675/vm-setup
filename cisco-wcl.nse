@@ -1,7 +1,3 @@
-####################
- cisco-wcl.nse
-####################
-
 -- Cisco Wireless LAN Controller (WLC) Version Detection
 -- Extracts the version number from the web interface on port 443
 
@@ -41,4 +37,3 @@ action = function(host, port)
         return "Version information not found in the web interface."
     end
 end
-####################
