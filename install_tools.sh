@@ -405,8 +405,8 @@ install_ruby_tools() {
 # Download and Install the latest debian10 Nessus amd64
 download_and_install_latest_nessus() {
     NESSUS_LATEST_URL=$(curl -s https://www.tenable.com/downloads/api/v2/pages/nessus --header 'accept: application/json' | jq -r '.releases.latest' | jq -r '.[][].file_url' | grep 'Nessus-latest-debian10_amd64.deb')
-    [[ ! -d "${HOME}/Downloads" ]] && mkdir "${HOME}/Downloads"
-    cd "${HOME}/Downloads" && wget "$NESSUS_LATEST_URL" -O Nessus-latest-debian10_amd64.deb
+    [[ ! -d "${HOME}/tools" ]] && mkdir "${HOME}/tools"
+    cd "${HOME}/tools" && wget "$NESSUS_LATEST_URL" -O Nessus-latest-debian10_amd64.deb
     sudo dpkg -i Nessus-latest-debian10_amd64.deb
 }
 
@@ -448,7 +448,7 @@ upgrade_pandas() {
 
 # Configure tmux
 # configure_tmux  - my_functions
-configure_tmux() {
+configure-tmux() {
 rm "${HOME}/.tmux.conf"
 cat << 'EOF' >> "${HOME}/.tmux.conf"
 set -g mouse on
@@ -457,7 +457,7 @@ EOF
 
 # Download Tools to root Dir
 # download_tools - my_functions
-download_tools() {
+download-tools() {
 # [[ ! -d "${HOME}/tools/TODO" ]] && 
 [[ ! -d "${HOME}/tools" ]] && mkdir "${HOME}/tools"
 [[ ! -f "${HOME}/tools/Invoke-Mimikatz.ps1" ]] && wget https://github.com/clymb3r/PowerShell/blob/master/Invoke-Mimikatz/Invoke-Mimikatz.ps1 -P /root/tools
@@ -470,6 +470,8 @@ download_tools() {
 [[ ! -f "${HOME}/tools/kerbrute_linux_amd64" ]] && wget https://github.com/ropnop/kerbrute/releases/download/v1.0.3/kerbrute_linux_amd64 -P /root/tools
 [[ ! -f "${HOME}/tools/bravestarr.py" ]] && wget https://raw.githubusercontent.com/immunityinc/bravestarr/master/bravestarr.py -P /root/tools
 [[ ! -f "${HOME}/calculate-time.py" ]] && wget https://raw.githubusercontent.com/spyder6675/vm-setup/main/calculate-time.py -P /root/tools
+# NTLMv1 wget the raw file 
+[[ ! -f "${HOME}/tools/ct3_to_ntlm.c" ]] && wget https://github.com/hashcat/hashcat-utils/blob/master/src/ct3_to_ntlm.c -P /root/tools
 # 
 # VPN IKE Wordlist
 [[ ! -d "${HOME}/tools/vpn-wordlists" ]] && mkdir "${HOME}/tools/vpn-wordlists"
@@ -480,8 +482,8 @@ download_tools() {
 
 # Nmap Scripts
 # download_nmap_scripts - my_functions
-download_nmap_scripts() {
-# [[ ! -d /usr/share/nmap/scripts ]] &&
+download-nmap-scripts() {
+# [[ ! -f /usr/share/nmap/scripts ]] &&
 #
 [[ ! -f /usr/share/nmap/scripts/http-apache-server-status.nse ]] && wget https://raw.githubusercontent.com/nmap/nmap/refs/heads/master/scripts/http-apache-server-status.nse -P /usr/share/nmap/scripts
 [[ ! -f /usr/share/nmap/scripts/ssh-os.nse ]] && wget https://raw.githubusercontent.com/richlamdev/ssh-default-banners/master/ssh-os.nse -P /usr/share/nmap/scripts
@@ -501,7 +503,7 @@ nmap --script-updatedb
 
 ### Unzip Rockyou ###
 # rockyou_unzip - my_functions
-rockyou_unzip() {
+rockyou-unzip() {
 
 [[ ! -f /usr/share/wordlists/rockyou.txt ]] && gzip -d /usr/share/wordlists/rockyou.txt.gz
 
@@ -585,10 +587,10 @@ main() {
 	
 	### My Additions ###
 	
-	configure_tmux
-	download_tools
-	download_nmap_scripts
-	rockyou_unzip
+	configure-tmux
+	download-tools
+	download-nmap-scripts
+	rockyou-unzip
 
 }
 
