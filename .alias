@@ -10,6 +10,9 @@ export raftmediumfiles='/usr/share/seclists/Discovery/Web-Content/raft-medium-fi
 #
 export rockyou='/usr/share/wordlists/rockyou.txt'
 #
+# Install_tools.sh 
+export PATH="${PATH}:${HOME}/.local/bin"
+#
 # User Agent 
 export useragent='Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:123.0) Gecko/20100101 Firefox/138.0'
 #
@@ -525,6 +528,7 @@ create-roottestingdirectories() {
     [[ ! -d "${HOME}/testing/masscan" ]] && mkdir "${HOME}/testing/masscan"
     # [[ ! -d "${HOME}/testing/masscan/externalscope" ]] && touch "${HOME}/testing/masscan/externalscope"
     # [[ ! -d "${HOME}/testing/masscan/internalscope" ]] && touch "${HOME}/testing/masscan/internalscope"
+    [[ ! -d "${HOME}/testing/Nmap-logs" ]] && mkdir "${HOME}/testing/Nmap-logs"
 
 }
 
