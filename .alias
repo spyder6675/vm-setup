@@ -526,8 +526,10 @@ create-roottestingdirectories() {
     [[ ! -d "${HOME}/testing/parsed-nessus" ]] && mkdir "${HOME}/testing/parsed-nessus"
     # Masscan
     [[ ! -d "${HOME}/testing/masscan" ]] && mkdir "${HOME}/testing/masscan"
-    # [[ ! -d "${HOME}/testing/masscan/externalscope" ]] && touch "${HOME}/testing/masscan/externalscope"
-    # [[ ! -d "${HOME}/testing/masscan/internalscope" ]] && touch "${HOME}/testing/masscan/internalscope"
+    [[ ! -d "${HOME}/testing/masscan/externalscope" ]] && touch "${HOME}/testing/masscan/externalscope"
+    [[ ! -d "${HOME}/testing/masscan/internalscope" ]] && touch "${HOME}/testing/masscan/internalscope"
+    [[ ! -d "${HOME}/testing/masscan/exclusions" ]] && touch "${HOME}/testing/masscan/exclusions"
+    [[ ! -d "${HOME}/testing/internalscope" ]] && touch "${HOME}/testing/internalscope"
     [[ ! -d "${HOME}/testing/Nmap-logs" ]] && mkdir "${HOME}/testing/Nmap-logs"
 
 }
