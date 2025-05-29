@@ -517,7 +517,6 @@ create-roottestingdirectories() {
     [[ ! -d "${HOME}/testing/domain-recon" ]] && mkdir "${HOME}/testing/domain-recon"
     # Logs
     [[ ! -d "${HOME}/testing/logs" ]] && mkdir "${HOME}/testing/logs"
-    # [[ ! -d "${HOME}/testing/logs/nmap" ]] && mkdir "${HOME}/testing/logs/nmap"
     # [[ ! -d "${HOME}/testing/logs/VirusTotal" ]] && mkdir "${HOME}/testing/logs/VirusTotal"
     # Reconnaissance
     [[ ! -d "${HOME}/testing/Reconnaissance" ]] && mkdir "${HOME}/testing/Reconnaissance"
@@ -525,10 +524,8 @@ create-roottestingdirectories() {
     [[ ! -d "${HOME}/testing/parsed-nessus" ]] && mkdir "${HOME}/testing/parsed-nessus"
     # Masscan
     [[ ! -d "${HOME}/testing/masscan" ]] && mkdir "${HOME}/testing/masscan"
-    # [[ ! -d "${HOME}/testing/masscan/externalscope" ]] && touch "${HOME}/testing/masscan/externalscope"
-    # [[ ! -d "${HOME}/testing/masscan/internalscope" ]] && touch "${HOME}/testing/masscan/internalscope"
-    [[ ! -d "${HOME}/testing/scope-exclusions" ]] && touch "${HOME}/testing/scope-exclusions"
-    [[ ! -d "${HOME}/testing/internalscope" ]] && touch "${HOME}/testing/internalscope"
+    [[ ! -f "${HOME}/testing/scope-exclusions.txt" ]] && touch "${HOME}/testing/scope-exclusions.txt"
+    [[ ! -f "${HOME}/testing/internalscope.txt" ]] && touch "${HOME}/testing/internalscope.txt"
     [[ ! -d "${HOME}/testing/Nmap-logs" ]] && mkdir "${HOME}/testing/Nmap-logs"
 
 }
