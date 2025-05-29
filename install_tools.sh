@@ -252,7 +252,7 @@ clone-git-repos() {
 	[[ ! -d /opt/impacket ]] && git clone https://github.com/ThePorgs/impacket.git /opt/ThePorgs-impacket
 	[[ ! -d /opt/impacket ]] && git clone https://github.com/fortra/impacket.git /opt/impacket
 	# Impacket Interactive Shadow Creds Fork
-	[[ ! -d /opt/impacket-interactive-ldap-shadow-creds ]] && wget https://github.com/Tw1sm/impacket/archive/refs/heads/interactive-ldap-shadow-creds.zip -O /opt/interactive-ldap-shadow-creds.zip;unzip /opt/interactive-ldap-shadow-creds.zip -d /opt/impacket-interactive-ldap-shadow-creds
+	[[ ! -d /opt/impacket-interactive-ldap-shadow-creds ]] && wget https://github.com/Tw1sm/impacket/archive/refs/heads/interactive-ldap-shadow-creds.zip -nc -O /opt/interactive-ldap-shadow-creds.zip;unzip /opt/interactive-ldap-shadow-creds.zip -d /opt/impacket-interactive-ldap-shadow-creds
 	[[ ! -d /opt/kerbrute ]] && git clone https://github.com/ropnop/kerbrute.git /opt/kerbrute
 	[[ ! -d /opt/krbrelayx ]] && git clone https://github.com/dirkjanm/krbrelayx.git /opt/krbrelayx
 	[[ ! -d /opt/ldeep ]] && git clone https://github.com/franc-pentest/ldeep /opt/ldeep
