@@ -460,7 +460,7 @@ install-apt-packages() {
         "tftp-hpa"
         "tmux"
         "urlcrazy" 
-        "openntpd"
+        "ntpsec"
         "ntpsec-ntpdate"
         "vim-nox"
         "virtualenv"
