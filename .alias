@@ -856,7 +856,9 @@ internal-cleanup() {
     # kali_zsh_history
     cp /home/kali/.zsh_history /root/testing/logs/cleanup_logs/kali_zsh_history-$(date '+%Y_%m_%d_%H_%M_%S')
     # Bash history
-
+    cp /root/.bash_history /root/testing/logs/cleanup_logs/bash_history-$(date '+%Y_%m_%d_%H_%M_%S')
+    #
+    
     ## IPTABLES
     iptables -L OUTPUT | tee -a /root/testing/logs/cleanup_logs/IPTables-implant-$(date '+%Y_%m_%d_%H_%M_%S').log
     # Nessus Rules file
