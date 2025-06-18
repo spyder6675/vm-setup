@@ -841,6 +841,32 @@ EOF
 
 }
 
+internal-cleanup() {
+
+    # Create Cleanup directory 
+    [[ ! -d "${HOME}/testing/logs/cleanup_logs" ]] && mkdir "${HOME}/testing/logs/cleanup_logs"
+
+    # responder logs
+    cp -r /usr/share/responder/logs /root/testing/logs/cleanup_logs/responder-usrshare-logs-$(date '+%Y_%m_%d_%H_%M_%S')
+    # responder /opt logs
+    cp -r /opt/Responder/logs /root/testing/logs/cleanup_logs/responder-opt-logs-$(date '+%Y_%m_%d_%H_%M_%S')
+
+    # zsh history
+    cp /root/.zsh_history /root/testing/logs/cleanup_logs/zsh_history-log-$(date '+%Y_%m_%d_%H_%M_%S')
+    # kali_zsh_history
+    cp /home/kali/.zsh_history /root/testing/logs/cleanup_logs/kali_zsh_history-$(date '+%Y_%m_%d_%H_%M_%S')
+    # Bash history
+
+    ## IPTABLES
+    iptables -L OUTPUT | tee -a /root/testing/logs/cleanup_logs/IPTables-implant-$(date '+%Y_%m_%d_%H_%M_%S').log
+    # Nessus Rules file
+    cp /opt/nessus/etc/nessus/nessusd.rules /root/testing/logs/cleanup_logs/nessusd.rules-$(date '+%Y_%m_%d_%H_%M_%S')
+    # Metaspoit loot
+    cp -r /root/.msf4/loot /root/testing/logs/cleanup_logs/msf4-loot-$(date '+%Y_%m_%d_%H_%M_%S')
+
+}
+
+
 
 # Download Tools to root Dir
 # download_tools - my_functions
