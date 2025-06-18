@@ -104,7 +104,7 @@ install_apt_packages() {
     apt-get install xz-utils -y -o "Dpkg::Options::=--force-confdef" -o "Dpkg::Options::=--force-confold"
     apt-get install samba onesixtyone snmp-mibs-downloader -y -o "Dpkg::Options::=--force-confdef" -o "Dpkg::Options::=--force-confold"
     apt-get install libkrb5-dev krb5-config -y -o "Dpkg::Options::=--force-confdef" -o "Dpkg::Options::=--force-confold"
-    apt-get install krb5-user openntpd ntpsec-ntpdate -y -o "Dpkg::Options::=--force-confdef" -o "Dpkg::Options::=--force-confold"
+    apt-get install krb5-user ntpsec ntpsec-ntpdate -y -o "Dpkg::Options::=--force-confdef" -o "Dpkg::Options::=--force-confold"
     # RustHound dependencies
     apt-get install gcc-multilib libpq-dev -y -o "Dpkg::Options::=--force-confdef" -o "Dpkg::Options::=--force-confold"
     apt-get install gcc clang libclang-dev libgssapi-krb5-2 libkrb5-dev libsasl2-modules-gssapi-mit musl-tools gcc-mingw-w64-x86-64 -y -o "Dpkg::Options::=--force-confdef" -o "Dpkg::Options::=--force-confold"
