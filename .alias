@@ -64,6 +64,7 @@ alias go-implant='ssh root@'$implantip'' # Go to Implantip
 # Rsync
 alias sync-do='rsync -avz root@'$donode':/root/testing/'*' .'
 alias sync-implant='rsync -avz root@'$implantip':/root/testing/'*' .'
+alias sync-implant02='rsync -avz root@100.64.0.2:/root/testing/'*' .'
 alias sync-implant03='rsync -avz root@100.64.0.3:/root/testing/'*' .'
 alias sync-implant04='rsync -avz root@100.64.0.4:/root/testing/'*' .'
 alias sync-implant05='rsync -avz root@100.64.0.5:/root/testing/'*' .'
