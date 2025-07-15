@@ -150,6 +150,7 @@ alias go-PKINITtools='source /root/pyenv/PKINITtools/bin/activate;cd /opt/PKINIT
 alias go-pxethiefy='source /root/pyenv/pxethiefy/bin/activate;cd /opt/pxethiefy'
 alias go-PetitPotam='cd /opt/PetitPotam'
 alias go-PowerUpSQL='source /root/pyenv/PowerUpSQL/bin/activate;cd /opt/PowerUpSQL'
+alias go-responder='source /root/pyenv/Responder/bin/activate;cd /opt/Responder'
 alias go-SIET='source /root/pyenv/SIET/bin/activate;cd /opt/SIET'
 alias go-SIGIT='source /root/pyenv/SIGIT/bin/activate;cd /opt/SIGIT'
 alias go-SQLAutoPwn='source /root/pyenv/SQLAutoPwn/bin/activate;cd /opt/SQLAutoPwn'
