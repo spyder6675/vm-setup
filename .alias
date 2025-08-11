@@ -16,6 +16,11 @@ export PATH="${PATH}:${HOME}/.local/bin"
 # User Agent 
 export useragent='Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:123.0) Gecko/20100101 Firefox/138.0'
 #
+export passwd=''
+
+
+
+#
 ### Update Aliases ###
 alias update-alias='rm -rf ${HOME}/.alias; wget https://raw.githubusercontent.com/spyder6675/vm-setup/main/.alias -P ${HOME};echo -e "Updated-Alias"'
 alias szsh='source ~/.zshrc'
