@@ -111,6 +111,7 @@ alias watch-pwspray="watch -n 1 'cat *-kerbrute-passwordspray.log| grep '+''"
 # Responder Conf HTTP and SMB on / OFF
 alias smb-responder-on="cd /usr/share/responder;sed -i 's/SMB      = Off/SMB      = On/g' Responder.conf;sed -i 's/HTTP     = Off/HTTP     = On/g' Responder.conf;head -n 20 Responder.conf"
 alias smb-responder-off="cd /usr/share/responder;sed -i 's/SMB      = On/SMB      = Off/g' Responder.conf;sed -i 's/HTTP     = On/HTTP     = Off/g' Responder.conf;head -n 20 Responder.conf"
+alias smb-responder-check="head -n 20 /usr/share/responder/Responder.conf"
 #
 #
 
