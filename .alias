@@ -20,10 +20,12 @@ export PATH="${PATH}:${HOME}/.local/bin"
 # User Agent 
 export useragent='Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:123.0) Gecko/20100101 Firefox/141.0'
 #
-
+# Log File
+export testing_logs='/root/testing/logs'
 #
 # Date Time Stamp
-export date_time=$(date '+%Y_%m_%d__%H_%M_%S')
+export date_time=$(date '+%Y-%m-%d-%H-%M-%S')
+#
 
 
 #
@@ -528,6 +530,11 @@ install-apt-packages() {
 create-roottestingdirectories() {
     # Testing Dir
     [[ ! -d "${HOME}/testing" ]] && mkdir "${HOME}/testing"
+    [[ ! -f "${HOME}/testing/scope-exclusions.txt" ]] && touch "${HOME}/testing/scope-exclusions.txt"
+    [[ ! -f "${HOME}/testing/internalscope.txt" ]] && touch "${HOME}/testing/internalscope.txt"
+    [[ ! -f "${HOME}/testing/myuser.txt" ]] && touch "${HOME}/testing/myuser.txt"
+    [[ ! -f "${HOME}/testing/userlist.txt" ]] && touch "${HOME}/testing/userlist.txt"
+    [[ ! -f "${HOME}/testing/ad-userlist.txt" ]] && touch "${HOME}/testing/ad-userlist.txt"
     # Domain
     [[ ! -d "${HOME}/testing/domain-recon" ]] && mkdir "${HOME}/testing/domain-recon"
     # Logs
@@ -539,8 +546,7 @@ create-roottestingdirectories() {
     [[ ! -d "${HOME}/testing/parsed-nessus" ]] && mkdir "${HOME}/testing/parsed-nessus"
     # Masscan
     [[ ! -d "${HOME}/testing/masscan" ]] && mkdir "${HOME}/testing/masscan"
-    [[ ! -f "${HOME}/testing/scope-exclusions.txt" ]] && touch "${HOME}/testing/scope-exclusions.txt"
-    [[ ! -f "${HOME}/testing/internalscope.txt" ]] && touch "${HOME}/testing/internalscope.txt"
+    # Nmap-Logs
     [[ ! -d "${HOME}/testing/Nmap-logs" ]] && mkdir "${HOME}/testing/Nmap-logs"
 
 }
