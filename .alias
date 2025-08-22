@@ -23,11 +23,7 @@ export useragent='Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:123.0) Gecko/2010
 # Log File
 export testing_logs='/root/testing/logs'
 #
-# Date Time Stamp
-export date_time=$(date '+%Y-%m-%d-%H-%M-%S')
 #
-
-
 #
 ### Update Aliases ###
 alias update-alias='rm -rf ${HOME}/.alias; wget https://raw.githubusercontent.com/spyder6675/vm-setup/main/.alias -P ${HOME};echo -e "Updated-Alias"'
@@ -46,6 +42,9 @@ alias x='exit' #
 alias chx='chmod +x ' 
 #
 alias list-files='ls -p tasks | grep -v /'
+#
+# date time stamp
+alias date_time="date '+%Y_%m_%d_%H_%M_%S'"
 # 
 alias upgrade='sudo apt update -y && sudo apt upgrade -y'
 alias pyweb='python3 -m http.server 8080'
