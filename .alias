@@ -136,7 +136,7 @@ alias list-myfunctions="cat .alias | grep ') {' | grep -v log_ | cut -d '(' -f1 
 #
 # ProxyChains4
 alias check-proxychains4='tail /etc/proxychains4.conf'
-
+alias set-proxychains-socks5-1080="sed -i 's/socks4/#socks4/' /etc/proxychains4.conf;echo -e "socks5\t127.0.0.1 1080" >> /etc/proxychains4.conf;tail /etc/proxychains4.conf"
 
 # Activate pyenv software 
 alias go-mitm6='source /root/pyenv/mitm6/bin/activate;cd /opt/mitm6'
