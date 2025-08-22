@@ -44,7 +44,7 @@ alias chx='chmod +x '
 alias list-files='ls -p tasks | grep -v /'
 #
 # date time stamp
-alias date_time="date '+%Y_%m_%d_%H_%M_%S'"
+alias date_time="date '+%Y-%m-%d-%H-%M-%S'"
 # 
 alias upgrade='sudo apt update -y && sudo apt upgrade -y'
 alias pyweb='python3 -m http.server 8080'
@@ -134,6 +134,8 @@ alias start-neo4j='cd /usr/bin;./neo4j console'
 alias check-terminal='grep "colorScheme\|TerminalMargin\|TerminalTransparency\|fontFamily\|fontSize" ~/.config/qterminal.org/qterminal.ini'
 alias list-myfunctions="cat .alias | grep ') {' | grep -v log_ | cut -d '(' -f1 | sort"
 #
+# ProxyChains4
+alias check-proxychains4='tail /etc/proxychains4.conf'
 
 
 # Activate pyenv software 
