@@ -23,6 +23,8 @@ export useragent='Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:123.0) Gecko/2010
 # Log File
 export testing_logs='/root/testing/logs'
 #
+# eth0 IP Address
+export eth0_ip=$(ip -4 addr show eth0 | grep -oP '(?<=inet\s)\d+(\.\d+){3}')
 #
 #
 ### Update Aliases ###
