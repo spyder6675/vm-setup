@@ -94,7 +94,7 @@ alias nmap-scripts='ls /usr/share/nmap/scripts | grep'
 alias ns='netstat -tuln'
 alias psg='ps aux | grep'
 alias msf='msfconsole -q'
-alias nuclei='nuclei -profile pentest.yml'
+# alias nuclei='nuclei -profile pentest.yml'
 #
 # Copy to clipboard
 alias clp='xclip -selection c -r'
