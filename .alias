@@ -214,7 +214,7 @@ alias go-evilrdp='source /root/pyenv/evilrdp/bin/activate;cd /opt/evilrdp'
 alias go-AutoRDPwn='source /root/pyenv/AutoRDPwn/bin/activate;cd /opt/AutoRDPwn'
 alias go-eavesarp-ng='source /root/pyenv/eavesarp-ng/bin/activate;cd /opt/eavesarp-ng'
 alias go-netexec='source /root/pyenv/netexec/bin/activate;cd /opt/NetExec'
-
+alias go-MANSPIDER='source /root/pyenv/MANSPIDER/bin/activate;cd /opt/MANSPIDER'
 
 
 #### Functions ####
