@@ -318,7 +318,7 @@ clone-git-repos() {
 	[[ ! -d /opt/winshock-test ]] && git clone https://github.com/anexia-it/winshock-test.git /opt/winshock-test
 	[[ ! -d /opt/wpscan ]] && git clone https://github.com/wpscanteam/wpscan.git /opt/wpscan
 	[[ ! -d /tmp/testssl.sh ]] && git clone https://github.com/drwetter/testssl.sh.git /tmp/testssl.sh
-
+    [[ ! -d /opt/ADExplorerSnapshot.py ]] && git clone https://github.com/c3c/ADExplorerSnapshot.py.git /opt/ADExplorerSnapshot.py
 
 
 }
