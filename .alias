@@ -179,7 +179,7 @@ alias go-ciscot7='source /root/pyenv/ciscot7/bin/activate;cd /opt/ciscot7'
 alias go-containerd='source /root/pyenv/containerd/bin/activate;cd /opt/containerd'
 alias go-dnstwist='source /root/pyenv/dnstwist/bin/activate;cd /opt/dnstwist'
 alias go-dockerpython39='source /root/pyenv/docker-python3.9/bin/activate;cd /opt/docker-python3.9'
-alias go-eavesarp='source /root/pyenv/eavesarp/bin/activate;cd /opt/eavesarp'
+# alias go-eavesarp='source /root/pyenv/eavesarp/bin/activate;cd /opt/eavesarp'
 alias go-enum4linux-ng='source /root/pyenv/enum4linux-ng/bin/activate;cd /opt/enum4linux-ng'
 alias go-fireprox='source /root/pyenv/fireprox/bin/activate;cd /opt/fireprox'
 alias go-hardcidr='source /root/pyenv/hardcidr/bin/activate;cd /opt/hardcidr'
@@ -288,7 +288,7 @@ clone-git-repos() {
 	[[ ! -d /opt/impacket ]] && git clone https://github.com/ThePorgs/impacket.git /opt/ThePorgs-impacket
 	[[ ! -d /opt/impacket ]] && git clone https://github.com/fortra/impacket.git /opt/impacket
 	# Impacket Interactive Shadow Creds Fork
-	[[ ! -d /opt/impacket-interactive-ldap-shadow-creds ]] && wget https://github.com/Tw1sm/impacket/archive/refs/heads/interactive-ldap-shadow-creds.zip -O /opt/interactive-ldap-shadow-creds.zip;unzip -o /opt/interactive-ldap-shadow-creds.zip -d /opt/impacket-interactive-ldap-shadow-creds
+	[[ ! -d /opt/impacket-interactive-ldap-shadow-creds ]] && wget https://github.com/Tw1sm/impacket/archive/refs/heads/interactive-ldap-shadow-creds.zip -O /opt/interactive-ldap-shadow-creds.zip;unzip -o /opt/interactive-ldap-shadow-creds.zip -d -o /opt/impacket-interactive-ldap-shadow-creds
 	[[ ! -d /opt/kerbrute ]] && git clone https://github.com/ropnop/kerbrute.git /opt/kerbrute
 	[[ ! -d /opt/krbrelayx ]] && git clone https://github.com/dirkjanm/krbrelayx.git /opt/krbrelayx
 	[[ ! -d /opt/ldeep ]] && git clone https://github.com/franc-pentest/ldeep /opt/ldeep
@@ -322,7 +322,7 @@ clone-git-repos() {
 
 
 }
-
+a
 
 #
 # Install in Python Virtualenv
