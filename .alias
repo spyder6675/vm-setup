@@ -217,8 +217,11 @@ alias go-netexec='source /root/pyenv/netexec/bin/activate;cd /opt/NetExec'
 alias go-MANSPIDER='source /root/pyenv/MANSPIDER/bin/activate;cd /opt/MANSPIDER'
 
 
-#### Functions ####
+### Fix Alias Commands ###
+alias fix-vmtools='sudo apt install -y open-vm-tools open-vm-tools-desktop --reinstall'
 
+
+#### Functions ####
 
 
 # Clone Git Repos 
