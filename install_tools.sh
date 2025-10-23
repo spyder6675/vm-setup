@@ -204,7 +204,7 @@ clone-git-repos() {
 	[[ ! -d /opt/CeWL ]] && git clone https://github.com/digininja/CeWL.git /opt/CeWL
 	[[ ! -d /opt/Certipy ]] && git clone https://github.com/ly4k/Certipy.git /opt/Certipy
 	[[ ! -d /opt/Coercer ]] && git clone https://github.com/p0dalirius/Coercer.git /opt/Coercer
-	[[ ! -d /opt/CredMaster ]] && git clone https://github.com/knavesec/CredMaster.git /opt/CredMaster
+	[[ ! -d /opt/CredMaster ]] && git clone https://github.com/mr-pmillz/CredMaster.git /opt/CredMaster
 	[[ ! -d /opt/DPAT ]] && git clone https://github.com/clr2of8/DPAT.git /opt/DPAT
 	[[ ! -d /opt/DomainPasswordSpray ]] && git clone https://github.com/dafthack/DomainPasswordSpray.git /opt/DomainPasswordSpray
 	[[ ! -d /opt/DonPAPI ]] && git clone https://github.com/login-securite/DonPAPI.git /opt/DonPAPI
