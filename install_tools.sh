@@ -481,12 +481,12 @@ install_eyewitness() {
     [[ ! -d "${HOME}/pyenv" ]] && mkdir "${HOME}/pyenv"
     PYENV="${HOME}/pyenv"
     if [ -d "/opt/EyeWitness" ]; then
-        cd /opt/EyeWitness/Python/setup || exit 1
+        cd /opt/EyeWitness/setup || exit 1
         virtualenv -p python3 "${PYENV}/EyeWitness"
         . "${PYENV}/EyeWitness/bin/activate"
         python3 -m pip install -U wheel setuptools
         # ensure that requirements.txt deps are installed.
-        [[ -f /opt/EyeWitness/Python/setup/requirements.txt ]] && python3 -m pip install -r requirements.txt
+        [[ -f /opt/EyeWitness/setup/requirements.txt ]] && python3 -m pip install -r requirements.txt
 
         deactivate || echo -e "[-] could not deactivate virtualenv.."
 
