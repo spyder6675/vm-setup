@@ -89,8 +89,8 @@ alias sync-implant04='rsync -avz root@100.64.0.4:/root/testing/'*' .'
 alias sync-implant05='rsync -avz root@100.64.0.5:/root/testing/'*' .'
 alias sync-implant06='rsync -avz root@100.64.0.6:/root/testing/'*' .'
 # Tailscale 
-alias tss='tailscale status'
-alias wtss='watch -n 1 tailscale status'
+alias tss='tailscale status | sort'
+alias wtss='watch -n 1 tailscale status | sort'
 alias rtss='sudo systemctl restart tailscaled.service'
 # Nmap
 alias nmap-scripts='ls /usr/share/nmap/scripts | grep'
