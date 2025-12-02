@@ -75,6 +75,11 @@ alias start-vpn='sudo openvpn /home/kali/Documents/VPN/profile-861.ovpn'
 alias nessus-ssh='ssh -L 8834:'$implantip':8834 root@'$implantip''  
 alias go-do='ssh root@'$donode'' # Go to Do Node
 alias go-implant='ssh root@'$implantip'' # Go to Implantip
+alias go-implant02='ssh root@100.64.0.2'
+alias go-implant03='ssh root@100.64.0.3'
+alias go-implant04='ssh root@100.64.0.4'
+alias go-implant05='ssh root@100.64.0.5'
+alias go-implant06='ssh root@100.64.0.6'
 # Rsync
 alias sync-do='rsync -avz root@'$donode':/root/testing/'*' .'
 alias sync-implant='rsync -avz root@'$implantip':/root/testing/'*' .'
@@ -82,6 +87,7 @@ alias sync-implant02='rsync -avz root@100.64.0.2:/root/testing/'*' .'
 alias sync-implant03='rsync -avz root@100.64.0.3:/root/testing/'*' .'
 alias sync-implant04='rsync -avz root@100.64.0.4:/root/testing/'*' .'
 alias sync-implant05='rsync -avz root@100.64.0.5:/root/testing/'*' .'
+alias sync-implant06='rsync -avz root@100.64.0.6:/root/testing/'*' .'
 # Tailscale 
 alias tss='tailscale status'
 alias wtss='watch -n 1 tailscale status'
