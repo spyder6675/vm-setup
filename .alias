@@ -499,6 +499,7 @@ install-apt-packages() {
         "prips"
 		"nftables"
 		"conntrack"
+        "fping"
 		
 
         # GPS Modules "
