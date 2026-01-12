@@ -148,7 +148,7 @@ clone_git_repos() {
     [[ ! -d /opt/impacket ]] && git clone https://github.com/ThePorgs/impacket.git /opt/ThePorgs-impacket
     # Impacket Interactive Shadow Creds Fork
     [[ ! -d /opt/impacket-interactive-ldap-shadow-creds ]] && wget https://github.com/Tw1sm/impacket/archive/refs/heads/interactive-ldap-shadow-creds.zip -O /opt/interactive-ldap-shadow-creds.zip
-    unzip /opt/interactive-ldap-shadow-creds.zip -d /opt/impacket-interactive-ldap-shadow-creds
+    unzip -o /opt/interactive-ldap-shadow-creds.zip -d /opt/impacket-interactive-ldap-shadow-creds
     [[ ! -d /opt/pywhisker ]] && git clone https://github.com/ShutdownRepo/pywhisker.git /opt/pywhisker
     [[ ! -d /opt/PKINITtools ]] && git clone https://github.com/dirkjanm/PKINITtools.git /opt/PKINITtools
     [[ ! -d /opt/krbrelayx ]] && git clone https://github.com/dirkjanm/krbrelayx.git /opt/krbrelayx
