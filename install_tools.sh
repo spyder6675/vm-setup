@@ -1,20 +1,20 @@
 #!/usr/bin/env bash
-
+#
 # implant_install_tools.sh
 # This script assumes that the user is running as root.
 # Designed for kali image implants
-
+#
 # Check if user is root
 if [[ $EUID -ne 0 ]]; then
     echo "This script must be run as root" 1>&2
     exit 1
 fi
-
+#
 # Initialize a variable to track the flag status
 INSTALL_NESSUS=0
 USE_OPERATOR_PROXY=0
 UPDATE_APT_SOURCES=0
-
+#
 # Loop through all the arguments
 for arg in "$@"
 do
@@ -33,7 +33,7 @@ do
       ;;
   esac
 done
-
+#
 #####[ Colors ]######
 RED='\033[1;38;5;196m'
 ORANGE='\033[1;38;5;1m'
@@ -42,7 +42,7 @@ BLUE='\033[1;38;5;32m'
 GREEN='\033[1;92m'
 BOLD='\033[1m'
 RESET='\033[0m'
-
+#
 check_hardware_requirements() {
     ALL_GOOD=true
 
@@ -631,7 +631,8 @@ install_pcredz() {
         virtualenv -p python3 "${PYENV}/PCredz"
         . "${PYENV}/PCredz/bin/activate"
 		# Install Prereqs
-		apt install python3-pip && sudo apt-get install libpcap-dev && pip3 install Cython && pip3 install python-libpcap
+		apt install -y python3-pip && sudo apt-get -y install libpcap-dev && pip3 install Cython && pip3 install python-libpcap
+        pip3 install pcapy-ng
 		# deactivate
 		deactivate
 		#
