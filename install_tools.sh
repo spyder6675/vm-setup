@@ -616,6 +616,33 @@ rockyou-unzip() {
 }
 
 
+# Install PCredz
+# ignore shellcheck warnings for source commands
+# shellcheck source=/dev/null
+install_pcredz() {
+	echo -e "${BLUE}[+]${RESET}${BOLD} Installing PCredz ${RESET}"
+	#
+	[[ ! -d "${HOME}/pyenv" ]] && mkdir "${HOME}/pyenv"
+	#
+	PYENV="${HOME}/pyenv"
+	#
+	if [ -d "/opt/PCredz" ]; then
+	    cd /opt/PCredz || exit 1
+        virtualenv -p python3 "${PYENV}/PCredz"
+        . "${PYENV}/PCredz/bin/activate"
+		# Install Prereqs
+		apt install python3-pip && sudo apt-get install libpcap-dev && pip3 install Cython && pip3 install python-libpcap
+		# deactivate
+		deactivate
+		#
+		cd - &>/dev/null || exit 1
+		#
+	else
+        echo -e "PCredz does not exist."
+    fi
+}
+
+
 #############################
 # MAIN ######################
 #############################
@@ -679,6 +706,9 @@ main() {
     install_ruby_tools
     install_rust
     install_rusthound
+
+    # Install PCredz
+    install_pcredz
 
     # NetExec requires rust to properly install the bleeding edge version. Ensure NetExec install happens after rust install...
     install_netexec
