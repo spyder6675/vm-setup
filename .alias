@@ -456,6 +456,7 @@ install-apt-packages() {
         "make"
         "masscan"
         "metasploit-framework"
+        "net-tools"
         "ncat"
         "onesixtyone"
         "pipx"
@@ -500,6 +501,7 @@ install-apt-packages() {
 		"nftables"
 		"conntrack"
         "fping"
+        "zip"
 		
 
         # GPS Modules "
