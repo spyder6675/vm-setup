@@ -917,7 +917,6 @@ download-tools() {
 [[ ! -d "${HOME}/tools/scripts" ]] && mkdir "${HOME}/tools/scripts"
 # PowerShell Scripts
 [[ ! -f "${HOME}/tools/scripts/Invoke-Mimikatz.ps1" ]] && wget https://github.com/clymb3r/PowerShell/blob/master/Invoke-Mimikatz/Invoke-Mimikatz.ps1 -P /root/tools/scripts
-
 #
 [[ ! -f "${HOME}/tools/Snaffler.exe" ]] && wget https://github.com/SnaffCon/Snaffler/releases/download/1.0.146/Snaffler.exe -P /root/tools
 #
@@ -944,7 +943,7 @@ download-tools() {
 # Nmap Scripts
 # download_nmap_scripts - my_functions
 download-nmap-scripts() {
-
+#
 # [[ ! -f /usr/share/nmap/scripts ]] &&
 #
 [[ ! -f /usr/share/nmap/scripts/http-apache-server-status.nse ]] && wget https://raw.githubusercontent.com/nmap/nmap/refs/heads/master/scripts/http-apache-server-status.nse -P /usr/share/nmap/scripts
@@ -956,7 +955,6 @@ download-nmap-scripts() {
 #
 [[ ! -f /usr/share/nmap/scripts/cisco-wcl.nse ]] && wget https://raw.githubusercontent.com/spyder6675/vm-setup/main/cisco-wcl.nse -P /usr/share/nmap/scripts
 [[ ! -f /usr/share/nmap/scripts/dell-idrac.nse ]] && wget https://raw.githubusercontent.com/spyder6675/vm-setup/main/dell-idrac.nse -P /usr/share/nmap/scripts
-
 #
 nmap --script-updatedb
 
