@@ -930,7 +930,7 @@ download-tools() {
 # NTLMv1 wget the raw file 
 [[ ! -f "${HOME}/tools/ct3_to_ntlm.c" ]] && wget https://github.com/hashcat/hashcat-utils/blob/master/src/ct3_to_ntlm.c -P /root/tools
 # Download Eavesarp-ng
-[[ ! -f "${HOME}/tools/eavesarp" ]] && wget https://github.com/ImpostorKeanu/eavesarp-ng/releases/download/alpha-v0.1.4-release/eavesarp -P /root/tools
+[[ ! -f "${HOME}/tools/eavesarp" ]] && wget https://github.com/ImpostorKeanu/eavesarp-ng/releases/download/alpha-v0.1.5-release/eavesarp -P /root/tools
 # 
 # VPN IKE Wordlist
 [[ ! -d "${HOME}/tools/vpn-wordlists" ]] && mkdir "${HOME}/tools/vpn-wordlists"
