@@ -18,7 +18,7 @@ export rockyou='/usr/share/wordlists/rockyou.txt'
 export PATH="${PATH}:${HOME}/.local/bin"
 #
 # User Agent 
-export useragent='Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:123.0) Gecko/20100101 Firefox/141.0'
+export useragent='Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:147.0) Gecko/20100101 Firefox/147.0'
 #
 # Log File
 export testing_logs='/root/testing/logs'
