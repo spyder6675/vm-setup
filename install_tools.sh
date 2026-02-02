@@ -730,7 +730,6 @@ main() {
 	download-tools
 	download-nmap-scripts
 	rockyou-unzip
-    install_pcredz
 
     install_with_virtualenv CredMaster
 
