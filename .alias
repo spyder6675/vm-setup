@@ -234,13 +234,13 @@ alias fix-vmtools='sudo apt install -y open-vm-tools open-vm-tools-desktop --rei
 # clone-git-repos - my_functions
 clone-git-repos() {
 	#
-	# Needed for GoRecon Modules
-	# [[ ! -d /opt/SIGIT ]] && git clone https://github.com/termuxhackers-id/SIGIT.git /opt/SIGIT # Git was removed
+	# [[ ! -d /opt/CrackMapExec ]] && git clone https://github.com/byt3bl33d3r/CrackMapExec.git /opt/CrackMapExec
+	# [[ ! -d /opt/PXEThief ]] && git clone https://github.com/MWR-CyberSec/PXEThief.git /opt/PXEThief
 	# [[ ! -d /opt/SecLists ]] && git clone https://github.com/danielmiessler/SecLists.git /opt/SecLists
-	# [[ ! -d /opt/TODO ]] && git clone TODO /opt/TODO
 	# [[ ! -d /opt/TODO ]] && git clone TODO /opt/TODO
 	[[ ! -d /opt/AADInternals ]] && git clone https://github.com/Gerenios/AADInternals.git /opt/AADInternals
 	[[ ! -d /opt/ADCSync ]] && git clone https://github.com/JPG0mez/ADCSync.git /opt/ADCSync
+	[[ ! -d /opt/ADExplorerSnapshot.py ]] && git clone https://github.com/c3c/ADExplorerSnapshot.py.git /opt/ADExplorerSnapshot.py
 	[[ ! -d /opt/Active-Directory-Spotlights ]] && git clone https://github.com/sse-secure-systems/Active-Directory-Spotlights.git /opt/Active-Directory-Spotlights
 	[[ ! -d /opt/AutoRDPwn ]] && git clone https://github.com/JoelGMSec/AutoRDPwn.git /opt/AutoRDPwn
 	[[ ! -d /opt/BloodHound.py ]] && git clone https://github.com/dirkjanm/bloodhound.py /opt/BloodHound.py
@@ -276,6 +276,7 @@ clone-git-repos() {
 	[[ ! -d /opt/SnafflerParser ]] && git clone https://github.com/zh54321/SnafflerParser.git /opt/SnafflerParser
 	[[ ! -d /opt/Spray365 ]] && git clone https://github.com/MarkoH17/Spray365.git /opt/Spray365
 	[[ ! -d /opt/SprayingToolkit ]] && git clone https://github.com/byt3bl33d3r/SprayingToolkit.git /opt/SprayingToolkit
+	[[ ! -d /opt/WebclientServiceScanner ]] && git clone https://github.com/Hackndo/WebclientServiceScanner.git /opt/WebclientServiceScanner
 	[[ ! -d /opt/adidnsdump ]] && git clone https://github.com/dirkjanm/adidnsdump.git /opt/adidnsdump
 	[[ ! -d /opt/bloodyAD ]] && git clone https://github.com/CravateRouge/bloodyAD.git /opt/bloodyAD
 	[[ ! -d /opt/ccat ]] && git clone https://github.com/frostbits-security/ccat.git /opt/ccat
@@ -323,11 +324,15 @@ clone-git-repos() {
 	[[ ! -d /opt/testssl.sh ]] && git clone --depth 1 https://github.com/drwetter/testssl.sh.git /opt/testssl.sh
 	[[ ! -d /opt/trufflehog ]] && git clone https://github.com/trufflesecurity/trufflehog.git /opt/trufflehog
 	[[ ! -d /opt/usernamer ]] && git clone https://github.com/jseidl/usernamer.git /opt/usernamer
-	[[ ! -d /opt/WebclientServiceScanner ]] && git clone https://github.com/Hackndo/WebclientServiceScanner.git /opt/WebclientServiceScanner
+	[[ ! -d /opt/webclientservicescanner ]] && git clone https://github.com/Hackndo/WebclientServiceScanner.git /opt/webclientservicescanner
 	[[ ! -d /opt/winshock-test ]] && git clone https://github.com/anexia-it/winshock-test.git /opt/winshock-test
 	[[ ! -d /opt/wpscan ]] && git clone https://github.com/wpscanteam/wpscan.git /opt/wpscan
 	[[ ! -d /tmp/testssl.sh ]] && git clone https://github.com/drwetter/testssl.sh.git /tmp/testssl.sh
-    [[ ! -d /opt/ADExplorerSnapshot.py ]] && git clone https://github.com/c3c/ADExplorerSnapshot.py.git /opt/ADExplorerSnapshot.py
+	[[ ! -d /opt/gophish ]] && wget https://github.com/gophish/gophish/releases/download/v0.12.1/gophish-v0.12.1-linux-64bit.zip -O /opt/gophish-v0.12.1-linux-64bit.zip;unzip -o gophish-v0.12.1-linux-64bit.zip -d gophish
+	[[ ! -d /opt/statistically-likely-usernames ]] && git clone https://github.com/insidetrust/statistically-likely-usernames.git /opt/statistically-likely-usernames
+	[[ ! -d /opt/Misconfiguration-Manager ]] && git clone https://github.com/subat0mik/Misconfiguration-Manager.git /opt/Misconfiguration-Manager
+	[[ ! -d /opt/FunWithMacros ]] && git clone https://github.com/aut0m8r/FunWithMacros.git /opt/FunWithMacros
+	[[ ! -d /opt/gophlare ]] && git clone https://github.com/mr-pmillz/gophlare.git /opt/gophlare
 
 
 }
