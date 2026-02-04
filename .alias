@@ -1,12 +1,12 @@
-########################
-# Testing Variables
+#############################
+##### Testing Variables #####
+#
 donode=
 implantip=
 c2=
 #
 # Creds
 export passwd=''
-
 #
 # Making wordlists easily accessible as variables
 export raftmediumdir='/usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt'
@@ -20,11 +20,21 @@ export PATH="${PATH}:${HOME}/.local/bin"
 # User Agent 
 export useragent='Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:147.0) Gecko/20100101 Firefox/147.0'
 #
+# Testing file path
+export $testingpath='/root/testing'
+#
 # Log File
 export testing_logs='/root/testing/logs'
 #
+# manspider loot dir
+export manspiderlootdir='/root/testing/loot/manspider'
+#
+#
 # eth0 IP Address
 export eth0_ip=$(ip -4 addr show eth0 | grep -oP '(?<=inet\s)\d+(\.\d+){3}')
+
+#
+##### Alias ##### 
 #
 #
 ### Update Aliases ###
@@ -133,6 +143,8 @@ alias smb-responder-check="head -n 20 /usr/share/responder/Responder.conf"
 #
 # Deactivate pyenv software
 alias da='deactivate;cd ~/testing'
+# Tools folder
+alias go-tools='cd ~/tools'
 #
 # Log iptable 
 alias log-iptables='iptables -L OUTPUT | tee -a /root/testing/logs/IPTables-implant-$(date '+%Y_%m_%d_%H_%M_%S').log'
@@ -146,81 +158,100 @@ alias list-myfunctions="cat .alias | grep ') {' | grep -v log_ | cut -d '(' -f1 
 alias check-proxychains4='tail /etc/proxychains4.conf'
 alias set-proxychains-socks5-1080="sed -i 's/socks4/#socks4/' /etc/proxychains4.conf;echo -e "socks5\t127.0.0.1 1080" >> /etc/proxychains4.conf;tail /etc/proxychains4.conf"
 
-# Activate pyenv software 
-alias go-mitm6='source /root/pyenv/mitm6/bin/activate;cd /opt/mitm6'
-alias go-webclientServiceScanner='source /root/pyenv/WebclientServiceScanner/bin/activate;cd /opt/WebclientServiceScanner'
-alias go-impacket='source /root/pyenv/impacket/bin/activate;cd /opt/impacket/examples/'
-alias go-BloodHoundpy='source /root/pyenv/BloodHound.py/bin/activate;cd /opt/BloodHound.py'
-alias go-Certipy='source /root/pyenv/Certipy/bin/activate;cd /opt/Certipy/'
-alias go-pre2k='source /root/pyenv/pre2k/bin/activate;cd /opt/pre2k'
+# Activate pyenv software
+# alias go-SOFTWARE='source /root/pyenv/SOFTWARE/bin/activate;cd /opt/SOFTWARE'
 alias go-AADInternals='source /root/pyenv/AADInternals/bin/activate;cd /opt/AADInternals'
 alias go-ADCSync='source /root/pyenv/ADCSync/bin/activate;cd /opt/ADCSync'
+alias go-ADExplorerSnapshot.py='source /root/pyenv/ADExplorerSnapshot.py/bin/activate;cd /opt/ADExplorerSnapshot.py'
+alias go-Active-Directory-Spotlights='source /root/pyenv/Active-Directory-Spotlights/bin/activate;cd /opt/Active-Directory-Spotlights'
+alias go-AutoRDPwn='source /root/pyenv/AutoRDPwn/bin/activate;cd /opt/AutoRDPwn'
+alias go-BloodHoundpy='source /root/pyenv/BloodHound.py/bin/activate;cd /opt/BloodHound.py'
 alias go-BruteLoops='source /root/pyenv/BruteLoops/bin/activate;cd /opt/BruteLoops'
+alias go-CVE-2017-12542='source /root/pyenv/CVE-2017-12542/bin/activate;cd /opt/CVE-2017-12542'
 alias go-CeWL='source /root/pyenv/CeWL/bin/activate;cd /opt/CeWL'
+alias go-Certipy='source /root/pyenv/Certipy/bin/activate;cd /opt/Certipy'
 alias go-Coercer='source /root/pyenv/Coercer/bin/activate;cd /opt/Coercer'
 alias go-CredMaster='source /root/pyenv/CredMaster/bin/activate;cd /opt/CredMaster'
 alias go-DPAT='source /root/pyenv/DPAT/bin/activate;cd /opt/DPAT'
 alias go-DomainPasswordSpray='source /root/pyenv/DomainPasswordSpray/bin/activate;cd /opt/DomainPasswordSpray'
 alias go-DonPAPI='source /root/pyenv/DonPAPI/bin/activate;cd /opt/DonPAPI'
 alias go-EyeWitness='source /root/pyenv/EyeWitness/bin/activate;cd /opt/EyeWitness'
+alias go-GPOddity='source /root/pyenv/GPOddity/bin/activate;cd /opt/GPOddity'
 alias go-Go365='source /root/pyenv/Go365/bin/activate;cd /opt/Go365'
 alias go-KrbRelayUp='source /root/pyenv/KrbRelayUp/bin/activate;cd /opt/KrbRelayUp'
 alias go-LdapRelayScan='source /root/pyenv/LdapRelayScan/bin/activate;cd /opt/LdapRelayScan'
+alias go-MANSPIDER='source /root/pyenv/MANSPIDER/bin/activate;cd /opt/MANSPIDER'
 alias go-MFASweep='source /root/pyenv/MFASweep/bin/activate;cd /opt/MFASweep'
 alias go-MSOLSpray='source /root/pyenv/MSOLSpray/bin/activate;cd /opt/MSOLSpray'
 alias go-MailSniper='source /root/pyenv/MailSniper/bin/activate;cd /opt/MailSniper'
+alias go-NetExec='source /root/pyenv/NetExec/bin/activate;cd /opt/NetExec'
 alias go-PCredz='source /root/pyenv/PCredz/bin/activate;cd /opt/PCredz'
 alias go-PKINITtools='source /root/pyenv/PKINITtools/bin/activate;cd /opt/PKINITtools'
-alias go-pxethiefy='source /root/pyenv/pxethiefy/bin/activate;cd /opt/pxethiefy'
-alias go-PetitPotam='cd /opt/PetitPotam'
+alias go-PetitPotam='source /root/pyenv/PetitPotam/bin/activate;cd /opt/PetitPotam'
+alias go-PlumHound='source /root/pyenv/PlumHound/bin/activate;cd /opt/PlumHound'
 alias go-PowerUpSQL='source /root/pyenv/PowerUpSQL/bin/activate;cd /opt/PowerUpSQL'
-alias go-responder='source /root/pyenv/Responder/bin/activate;cd /opt/Responder'
+alias go-Responder='source /root/pyenv/Responder/bin/activate;cd /opt/Responder'
+alias go-RustHound='source /root/pyenv/RustHound/bin/activate;cd /opt/RustHound'
 alias go-SIET='source /root/pyenv/SIET/bin/activate;cd /opt/SIET'
-alias go-SIGIT='source /root/pyenv/SIGIT/bin/activate;cd /opt/SIGIT'
 alias go-SQLAutoPwn='source /root/pyenv/SQLAutoPwn/bin/activate;cd /opt/SQLAutoPwn'
+alias go-SeeYouCM-Thief='source /root/pyenv/SeeYouCM-Thief/bin/activate;cd /opt/SeeYouCM-Thief'
+alias go-SnafflerParser='source /root/pyenv/SnafflerParser/bin/activate;cd /opt/SnafflerParser'
 alias go-Spray365='source /root/pyenv/Spray365/bin/activate;cd /opt/Spray365'
 alias go-SprayingToolkit='source /root/pyenv/SprayingToolkit/bin/activate;cd /opt/SprayingToolkit'
+alias go-WebclientServiceScanner='source /root/pyenv/WebclientServiceScanner/bin/activate;cd /opt/WebclientServiceScanner'
+alias go-adidnsdump='source /root/pyenv/adidnsdump/bin/activate;cd /opt/adidnsdump'
+alias go-bloodyAD='source /root/pyenv/bloodyAD/bin/activate;cd /opt/bloodyAD'
+alias go-ccat='source /root/pyenv/ccat/bin/activate;cd /opt/ccat'
+alias go-ccmpwn='source /root/pyenv/ccmpwn/bin/activate;cd /opt/ccmpwn'
 alias go-certsync='source /root/pyenv/certsync/bin/activate;cd /opt/certsync'
 alias go-ciscot7='source /root/pyenv/ciscot7/bin/activate;cd /opt/ciscot7'
-alias go-containerd='source /root/pyenv/containerd/bin/activate;cd /opt/containerd'
+alias go-dns-triage='source /root/pyenv/dns-triage/bin/activate;cd /opt/dns-triage'
 alias go-dnstwist='source /root/pyenv/dnstwist/bin/activate;cd /opt/dnstwist'
-alias go-dockerpython39='source /root/pyenv/docker-python3.9/bin/activate;cd /opt/docker-python3.9'
-# alias go-eavesarp='source /root/pyenv/eavesarp/bin/activate;cd /opt/eavesarp'
+alias go-dploot='source /root/pyenv/dploot/bin/activate;cd /opt/dploot'
+alias go-eavesarp-ng='source /root/pyenv/eavesarp-ng/bin/activate;cd /opt/eavesarp-ng'
 alias go-enum4linux-ng='source /root/pyenv/enum4linux-ng/bin/activate;cd /opt/enum4linux-ng'
+alias go-evilrdp='source /root/pyenv/evilrdp/bin/activate;cd /opt/evilrdp'
 alias go-fireprox='source /root/pyenv/fireprox/bin/activate;cd /opt/fireprox'
+alias go-gitleaks='source /root/pyenv/gitleaks/bin/activate;cd /opt/gitleaks'
+alias go-hakrevdns='source /root/pyenv/hakrevdns/bin/activate;cd /opt/hakrevdns'
 alias go-hardcidr='source /root/pyenv/hardcidr/bin/activate;cd /opt/hardcidr'
-alias go-ikeforce='source /root/pyenv/ikeforce/bin/activate;cd /opt/ikeforce'
 alias go-ike-scan='source /root/pyenv/ike-scan/bin/activate;cd /opt/ike-scan'
+alias go-ikeforce='source /root/pyenv/ikeforce/bin/activate;cd /opt/ikeforce'
+alias go-impacket='source /root/pyenv/impacket/bin/activate;cd /opt/impacket'
+alias go-impacket-interactive-ldap-shadow-creds='source /root/pyenv/impacket-interactive-ldap-shadow-creds/bin/activate;cd /opt/impacket-interactive-ldap-shadow-creds'
 alias go-kerbrute='source /root/pyenv/kerbrute/bin/activate;cd /opt/kerbrute'
 alias go-krbrelayx='source /root/pyenv/krbrelayx/bin/activate;cd /opt/krbrelayx'
 alias go-ldeep='source /root/pyenv/ldeep/bin/activate;cd /opt/ldeep'
 alias go-malwoverview='source /root/pyenv/malwoverview/bin/activate;cd /opt/malwoverview'
+alias go-masscan='source /root/pyenv/masscan/bin/activate;cd /opt/masscan'
+alias go-mitm6='source /root/pyenv/mitm6/bin/activate;cd /opt/mitm6'
 alias go-ntlmv1-multi='source /root/pyenv/ntlmv1-multi/bin/activate;cd /opt/ntlmv1-multi'
 alias go-o365spray='source /root/pyenv/o365spray/bin/activate;cd /opt/o365spray'
+alias go-onedrive_user_enum='source /root/pyenv/onedrive_user_enum/bin/activate;cd /opt/onedrive_user_enum'
 alias go-parsuite='source /root/pyenv/parsuite/bin/activate;cd /opt/parsuite'
 alias go-pr_SystemDPAPIdump='source /root/pyenv/pr_SystemDPAPIdump/bin/activate;cd /opt/pr_SystemDPAPIdump'
+alias go-pre2k='source /root/pyenv/pre2k/bin/activate;cd /opt/pre2k'
+alias go-pxethiefy='source /root/pyenv/pxethiefy/bin/activate;cd /opt/pxethiefy'
+alias go-pyGPOAbuse='source /root/pyenv/pyGPOAbuse/bin/activate;cd /opt/pyGPOAbuse'
 alias go-pyLAPS='source /root/pyenv/pyLAPS/bin/activate;cd /opt/pyLAPS'
 alias go-pymeta='source /root/pyenv/pymeta/bin/activate;cd /opt/pymeta'
-alias go-saltstack='source /root/pyenv/saltstack/bin/activate;cd /opt/saltstack'
+alias go-pywhisker='source /root/pyenv/pywhisker/bin/activate;cd /opt/pywhisker'
+alias go-rdp-sec-check='source /root/pyenv/rdp-sec-check/bin/activate;cd /opt/rdp-sec-check'
+alias go-redis-rogue-server='source /root/pyenv/redis-rogue-server/bin/activate;cd /opt/redis-rogue-server'
 alias go-sccmhunter='source /root/pyenv/sccmhunter/bin/activate;cd /opt/sccmhunter'
 alias go-ssh-audit='source /root/pyenv/ssh-audit/bin/activate;cd /opt/ssh-audit'
 alias go-sslscan='source /root/pyenv/sslscan/bin/activate;cd /opt/sslscan'
 alias go-testsslsh='source /root/pyenv/testssl.sh/bin/activate;cd /opt/testssl.sh'
+alias go-trufflehog='source /root/pyenv/trufflehog/bin/activate;cd /opt/trufflehog'
 alias go-usernamer='source /root/pyenv/usernamer/bin/activate;cd /opt/usernamer'
 alias go-winshock-test='source /root/pyenv/winshock-test/bin/activate;cd /opt/winshock-test'
 alias go-wpscan='source /root/pyenv/wpscan/bin/activate;cd /opt/wpscan'
-alias go-trufflehog='source /root/pyenv/trufflehog/bin/activate;cd /opt/trufflehog'
-alias go-redis-rogue-server='source /root/pyenv/redis-rogue-server/bin/activate;cd /opt/redis-rogue-server'
-alias go-hakrevdns='source /root/pyenv/hakrevdns/bin/activate;cd /opt/hakrevdns'
-alias go-ccat='source /root/pyenv/ccat/bin/activate;cd /opt/ccat'
-alias go-SeeYouCM-Thief='source /root/pyenv/SeeYouCM-Thief/bin/activate;cd /opt/SeeYouCM-Thief'
-alias go-onedrive_user_enum='source /root/pyenv/onedrive_user_enum/bin/activate;cd /opt/onedrive_user_enum'
-alias go-CVE-2018-10933='source /root/pyenv/CVE-2018-10933/bin/activate;cd /opt/CVE-2018-10933'
-alias go-evilrdp='source /root/pyenv/evilrdp/bin/activate;cd /opt/evilrdp'
-alias go-AutoRDPwn='source /root/pyenv/AutoRDPwn/bin/activate;cd /opt/AutoRDPwn'
-alias go-eavesarp-ng='source /root/pyenv/eavesarp-ng/bin/activate;cd /opt/eavesarp-ng'
-alias go-netexec='source /root/pyenv/netexec/bin/activate;cd /opt/NetExec'
-alias go-MANSPIDER='source /root/pyenv/MANSPIDER/bin/activate;cd /opt/MANSPIDER'
+alias go-testssl.sh='source /root/pyenv/testssl.sh/bin/activate;cd /opt/testssl.sh'
+alias go-gophish='source /root/pyenv/gophish/bin/activate;cd /opt/gophish'
+alias go-statistically-likely-usernames='source /root/pyenv/statistically-likely-usernames/bin/activate;cd /opt/statistically-likely-usernames'
+alias go-Misconfiguration-Manager='source /root/pyenv/Misconfiguration-Manager/bin/activate;cd /opt/Misconfiguration-Manager'
+alias go-FunWithMacros='source /root/pyenv/FunWithMacros/bin/activate;cd /opt/FunWithMacros'
+alias go-gophlare='source /root/pyenv/gophlare/bin/activate;cd /opt/gophlare'
 
 
 ### Fix Alias Commands ###
@@ -295,7 +326,7 @@ clone-git-repos() {
 	[[ ! -d /opt/hardcidr ]] && git clone https://github.com/trustedsec/hardcidr.git /opt/hardcidr
 	[[ ! -d /opt/ike-scan ]] && git clone https://github.com/royhills/ike-scan.git /opt/ike-scan
 	[[ ! -d /opt/ikeforce ]] && git clone https://github.com/SpiderLabs/ikeforce.git /opt/ikeforce
-	[[ ! -d /opt/impacket ]] && git clone https://github.com/ThePorgs/impacket.git /opt/ThePorgs-impacket
+	[[ ! -d /opt/ThePorgs-impacket ]] && git clone https://github.com/ThePorgs/impacket.git /opt/ThePorgs-impacket
 	[[ ! -d /opt/impacket ]] && git clone https://github.com/fortra/impacket.git /opt/impacket
 	# Impacket Interactive Shadow Creds Fork
 	[[ ! -d /opt/impacket-interactive-ldap-shadow-creds ]] && wget https://github.com/Tw1sm/impacket/archive/refs/heads/interactive-ldap-shadow-creds.zip -O /opt/interactive-ldap-shadow-creds.zip;unzip -o /opt/interactive-ldap-shadow-creds.zip -d /opt/impacket-interactive-ldap-shadow-creds
@@ -335,7 +366,6 @@ clone-git-repos() {
 
 
 }
-
 
 #
 # Install in Python Virtualenv
@@ -542,8 +572,8 @@ install-apt-packages() {
     # remove outdated packages
     apt-get autoremove -y
 
-
 }
+
 
 # Create Root testing directories
 # create_roottestingdirectories - my_functions
@@ -571,6 +601,7 @@ create-roottestingdirectories() {
     [[ ! -d "${HOME}/testing/Nmap-logs" ]] && mkdir "${HOME}/testing/Nmap-logs"
 
 }
+
 
 # Function to check APT, GIT and GO
 # check_software - my_functions
@@ -630,7 +661,9 @@ check-software() {
 
     echo "All checks passed!"
     return 0
+	
 }
+
 
 # Check Hardware 
 # check_hardware - my_functions
@@ -672,6 +705,7 @@ check-hardware() {
         echo -e "${BLUE}[+]${RESET}${BOLD} All systems good to go! ${RESET}"
     fi
 }
+
 
 # Cheching SSH Setup
 # check_sshd - my_functions
@@ -753,6 +787,7 @@ check-sshd() {
     cat /etc/ssh/sshd_config | grep -v '#' | grep -v '^$'
 }
 
+
 # Set SSH Folder and File Permissions
 # set_sshpermissions - my_functions
 set-ssh-permissions() {
@@ -817,6 +852,7 @@ set-local-terminal-settings() {
     # Kill qterminal to apply settings and restart it
     pkill qterminal && qterminal &
 }
+
 
 # Test istall apt packages fromfile
 # test_install_apt_packages_fromfile - my_functions
@@ -887,27 +923,34 @@ internal-cleanup() {
 
     # Create Cleanup directory 
     [[ ! -d "${HOME}/testing/logs/cleanup_logs" ]] && mkdir "${HOME}/testing/logs/cleanup_logs"
-
+	#
     # responder logs
     cp -r /usr/share/responder/logs /root/testing/logs/cleanup_logs/responder-usrshare-logs-$(date '+%Y_%m_%d_%H_%M_%S')
+	#
     # responder /opt logs
     cp -r /opt/Responder/logs /root/testing/logs/cleanup_logs/responder-opt-logs-$(date '+%Y_%m_%d_%H_%M_%S')
 
     # zsh history
     cp /root/.zsh_history /root/testing/logs/cleanup_logs/zsh_history-log-$(date '+%Y_%m_%d_%H_%M_%S')
+	#
     # kali_zsh_history
     cp /home/kali/.zsh_history /root/testing/logs/cleanup_logs/kali_zsh_history-$(date '+%Y_%m_%d_%H_%M_%S')
+	#
     # Bash history
     cp /root/.bash_history /root/testing/logs/cleanup_logs/bash_history-$(date '+%Y_%m_%d_%H_%M_%S')
     #
-    
-    ## IPTABLES
+        ## IPTABLES
     iptables -L OUTPUT | tee -a /root/testing/logs/cleanup_logs/IPTables-implant-$(date '+%Y_%m_%d_%H_%M_%S').log
+	#
     # Nessus Rules file
     cp /opt/nessus/etc/nessus/nessusd.rules /root/testing/logs/cleanup_logs/nessusd.rules-$(date '+%Y_%m_%d_%H_%M_%S')
+	#
     # Metaspoit loot
     cp -r /root/.msf4/loot /root/testing/logs/cleanup_logs/msf4-loot-$(date '+%Y_%m_%d_%H_%M_%S')
-
+	#
+	# NetExec
+	cp -r /root/.nxc/logs /root/testing/logs/cleanup_logs/nxc-logs-$(date '+%Y_%m_%d_%H_%M_%S')
+	# cp -r /root/.nxc/loot /root/testing/logs/cleanup_logs/nxc-loot-$(date '+%Y_%m_%d_%H_%M_%S')
 }
 
 
@@ -919,6 +962,7 @@ download-tools() {
 # [[ ! -d "${HOME}/tools/TODO" ]] && 
 [[ ! -d "${HOME}/tools" ]] && mkdir "${HOME}/tools"
 [[ ! -d "${HOME}/tools/scripts" ]] && mkdir "${HOME}/tools/scripts"
+#
 # PowerShell Scripts
 [[ ! -f "${HOME}/tools/scripts/Invoke-Mimikatz.ps1" ]] && wget https://github.com/clymb3r/PowerShell/blob/master/Invoke-Mimikatz/Invoke-Mimikatz.ps1 -P /root/tools/scripts
 #
@@ -939,7 +983,6 @@ download-tools() {
 # VPN IKE Wordlist
 [[ ! -d "${HOME}/tools/vpn-wordlists" ]] && mkdir "${HOME}/tools/vpn-wordlists"
 [[ ! -f "${HOME}/tools/vpnIDs.txt" ]] && wget https://raw.githubusercontent.com/spyder6675/vm-setup/main/vpnIDs.txt -P /root/tools/vpn-wordlists
-
 
 }
 
