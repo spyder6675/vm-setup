@@ -24,7 +24,7 @@ export useragent='Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:147.0) Gecko/2010
 export test_path='/root/testing'
 #
 # Log File
-export testing_logs='/root/testing/logs'
+export test_logs='/root/testing/logs'
 #
 # manspider loot dir
 export manspiderlootdir='/root/testing/loot/manspider'
