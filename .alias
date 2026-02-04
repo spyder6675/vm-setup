@@ -508,7 +508,7 @@ install-apt-packages() {
         "remmina-plugin-secret"
         "ripgrep"
         "rlwrap"
-        # "rsh-client"
+        #"rsh-client"
         "rsync"
         "samba"
         "screen"
