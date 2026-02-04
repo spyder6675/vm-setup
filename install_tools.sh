@@ -140,62 +140,14 @@ install_apt_packages() {
 }
 
 clone_git_repos() {
-    # Repos
-    [[ ! -d /opt/EyeWitness ]] && git clone https://github.com/RedSiege/EyeWitness.git /opt/EyeWitness
-    [[ ! -d /opt/testssl.sh ]] && git clone --depth 1 https://github.com/drwetter/testssl.sh.git /opt/testssl.sh
-    [[ ! -d /opt/Responder ]] && git clone https://github.com/lgandx/Responder.git /opt/Responder
-    [[ ! -d /opt/impacket ]] && git clone https://github.com/fortra/impacket.git /opt/impacket
-    [[ ! -d /opt/impacket ]] && git clone https://github.com/ThePorgs/impacket.git /opt/ThePorgs-impacket
-    # Impacket Interactive Shadow Creds Fork
-    [[ ! -d /opt/impacket-interactive-ldap-shadow-creds ]] && wget https://github.com/Tw1sm/impacket/archive/refs/heads/interactive-ldap-shadow-creds.zip -O /opt/interactive-ldap-shadow-creds.zip
-    unzip -o /opt/interactive-ldap-shadow-creds.zip -d /opt/impacket-interactive-ldap-shadow-creds
-    [[ ! -d /opt/pywhisker ]] && git clone https://github.com/ShutdownRepo/pywhisker.git /opt/pywhisker
-    [[ ! -d /opt/PKINITtools ]] && git clone https://github.com/dirkjanm/PKINITtools.git /opt/PKINITtools
-    [[ ! -d /opt/krbrelayx ]] && git clone https://github.com/dirkjanm/krbrelayx.git /opt/krbrelayx
-    [[ ! -d /opt/BloodHound.py ]] && git clone https://github.com/dirkjanm/bloodhound.py /opt/BloodHound.py
-    [[ ! -d /opt/pyGPOAbuse ]] && git clone https://github.com/Hackndo/pyGPOAbuse.git /opt/pyGPOAbuse
-    [[ ! -d /opt/GPOddity ]] && git clone https://github.com/synacktiv/GPOddity.git /opt/GPOddity
-    [[ ! -d /opt/bloodyAD ]] && git clone https://github.com/CravateRouge/bloodyAD.git /opt/bloodyAD
-    [[ ! -d /opt/Certipy ]] && git clone https://github.com/ly4k/Certipy.git /opt/Certipy
-    [[ ! -d /opt/Coercer ]] && git clone https://github.com/p0dalirius/Coercer.git /opt/Coercer
-    [[ ! -d /opt/PetitPotam ]] && git clone https://github.com/topotam/PetitPotam.git /opt/PetitPotam
-    [[ ! -d /opt/mitm6 ]] && git clone https://github.com/dirkjanm/mitm6.git /opt/mitm6
-    [[ ! -d /opt/webclientservicescanner ]] && git clone https://github.com/Hackndo/WebclientServiceScanner.git /opt/webclientservicescanner
-    [[ ! -d /opt/PCredz ]] && git clone https://github.com/lgandx/PCredz.git /opt/PCredz
-    [[ ! -d /opt/certsync ]] && git clone https://github.com/zblurx/certsync.git /opt/certsync
-    [[ ! -d /opt/pyLAPS ]] && git clone https://github.com/p0dalirius/pyLAPS.git /opt/pyLAPS
-    # [[ ! -d /opt/CrackMapExec ]] && git clone https://github.com/byt3bl33d3r/CrackMapExec.git /opt/CrackMapExec
-    [[ ! -d /opt/NetExec ]] && git clone https://github.com/Pennyw0rth/NetExec.git /opt/NetExec
-    [[ ! -d /opt/enum4linux-ng ]] && git clone https://github.com/cddmp/enum4linux-ng.git /opt/enum4linux-ng
-    [[ ! -d /opt/DonPAPI ]] && git clone https://github.com/login-securite/DonPAPI.git /opt/DonPAPI
-    [[ ! -d /opt/dploot ]] && git clone https://github.com/zblurx/dploot.git /opt/dploot
-    [[ ! -d /opt/sccmhunter ]] && git clone https://github.com/garrettfoster13/sccmhunter.git /opt/sccmhunter
-    [[ ! -d /opt/ccmpwn ]] && git clone https://github.com/mandiant/ccmpwn.git /opt/ccmpwn
-    # [[ ! -d /opt/PXEThief ]] && git clone https://github.com/MWR-CyberSec/PXEThief.git /opt/PXEThief
-    # PXEThief is Windows only. We want the Linux version
-    [[ ! -d /opt/pxethiefy ]] && git clone https://github.com/csandker/pxethiefy.git /opt/pxethiefy
-    [[ ! -d /opt/masscan ]] && git clone https://github.com/robertdavidgraham/masscan.git /opt/masscan
-    [[ ! -d /opt/pre2k ]] && git clone https://github.com/garrettfoster13/pre2k.git /opt/pre2k
-    [[ ! -d /opt/ldeep ]] && git clone https://github.com/franc-pentest/ldeep /opt/ldeep
-    [[ ! -d /opt/RustHound ]] && git clone https://github.com/NH-RED-TEAM/RustHound.git /opt/RustHound
-    [[ ! -d /opt/adidnsdump ]] && git clone https://github.com/dirkjanm/adidnsdump.git /opt/adidnsdump
-    [[ ! -d /opt/MANSPIDER ]] && git clone https://github.com/blacklanternsecurity/MANSPIDER.git /opt/MANSPIDER
-	
-}
-
-
-
-# Clone Git Repos 
-# clone-git-repos - my_functions
-clone-git-repos() {
 	#
-	# Needed for GoRecon Modules
-	# [[ ! -d /opt/SIGIT ]] && git clone https://github.com/termuxhackers-id/SIGIT.git /opt/SIGIT # Git was removed
+	# [[ ! -d /opt/CrackMapExec ]] && git clone https://github.com/byt3bl33d3r/CrackMapExec.git /opt/CrackMapExec
+	# [[ ! -d /opt/PXEThief ]] && git clone https://github.com/MWR-CyberSec/PXEThief.git /opt/PXEThief
 	# [[ ! -d /opt/SecLists ]] && git clone https://github.com/danielmiessler/SecLists.git /opt/SecLists
-	# [[ ! -d /opt/TODO ]] && git clone TODO /opt/TODO
 	# [[ ! -d /opt/TODO ]] && git clone TODO /opt/TODO
 	[[ ! -d /opt/AADInternals ]] && git clone https://github.com/Gerenios/AADInternals.git /opt/AADInternals
 	[[ ! -d /opt/ADCSync ]] && git clone https://github.com/JPG0mez/ADCSync.git /opt/ADCSync
+	[[ ! -d /opt/ADExplorerSnapshot.py ]] && git clone https://github.com/c3c/ADExplorerSnapshot.py.git /opt/ADExplorerSnapshot.py
 	[[ ! -d /opt/Active-Directory-Spotlights ]] && git clone https://github.com/sse-secure-systems/Active-Directory-Spotlights.git /opt/Active-Directory-Spotlights
 	[[ ! -d /opt/AutoRDPwn ]] && git clone https://github.com/JoelGMSec/AutoRDPwn.git /opt/AutoRDPwn
 	[[ ! -d /opt/BloodHound.py ]] && git clone https://github.com/dirkjanm/bloodhound.py /opt/BloodHound.py
@@ -231,6 +183,7 @@ clone-git-repos() {
 	[[ ! -d /opt/SnafflerParser ]] && git clone https://github.com/zh54321/SnafflerParser.git /opt/SnafflerParser
 	[[ ! -d /opt/Spray365 ]] && git clone https://github.com/MarkoH17/Spray365.git /opt/Spray365
 	[[ ! -d /opt/SprayingToolkit ]] && git clone https://github.com/byt3bl33d3r/SprayingToolkit.git /opt/SprayingToolkit
+	[[ ! -d /opt/WebclientServiceScanner ]] && git clone https://github.com/Hackndo/WebclientServiceScanner.git /opt/WebclientServiceScanner
 	[[ ! -d /opt/adidnsdump ]] && git clone https://github.com/dirkjanm/adidnsdump.git /opt/adidnsdump
 	[[ ! -d /opt/bloodyAD ]] && git clone https://github.com/CravateRouge/bloodyAD.git /opt/bloodyAD
 	[[ ! -d /opt/ccat ]] && git clone https://github.com/frostbits-security/ccat.git /opt/ccat
@@ -249,7 +202,7 @@ clone-git-repos() {
 	[[ ! -d /opt/hardcidr ]] && git clone https://github.com/trustedsec/hardcidr.git /opt/hardcidr
 	[[ ! -d /opt/ike-scan ]] && git clone https://github.com/royhills/ike-scan.git /opt/ike-scan
 	[[ ! -d /opt/ikeforce ]] && git clone https://github.com/SpiderLabs/ikeforce.git /opt/ikeforce
-	[[ ! -d /opt/impacket ]] && git clone https://github.com/ThePorgs/impacket.git /opt/ThePorgs-impacket
+	[[ ! -d /opt/ThePorgs-impacket ]] && git clone https://github.com/ThePorgs/impacket.git /opt/ThePorgs-impacket
 	[[ ! -d /opt/impacket ]] && git clone https://github.com/fortra/impacket.git /opt/impacket
 	# Impacket Interactive Shadow Creds Fork
 	[[ ! -d /opt/impacket-interactive-ldap-shadow-creds ]] && wget https://github.com/Tw1sm/impacket/archive/refs/heads/interactive-ldap-shadow-creds.zip -O /opt/interactive-ldap-shadow-creds.zip;unzip -o /opt/interactive-ldap-shadow-creds.zip -d /opt/impacket-interactive-ldap-shadow-creds
@@ -278,14 +231,18 @@ clone-git-repos() {
 	[[ ! -d /opt/testssl.sh ]] && git clone --depth 1 https://github.com/drwetter/testssl.sh.git /opt/testssl.sh
 	[[ ! -d /opt/trufflehog ]] && git clone https://github.com/trufflesecurity/trufflehog.git /opt/trufflehog
 	[[ ! -d /opt/usernamer ]] && git clone https://github.com/jseidl/usernamer.git /opt/usernamer
-	[[ ! -d /opt/WebclientServiceScanner ]] && git clone https://github.com/Hackndo/WebclientServiceScanner.git /opt/WebclientServiceScanner
 	[[ ! -d /opt/winshock-test ]] && git clone https://github.com/anexia-it/winshock-test.git /opt/winshock-test
 	[[ ! -d /opt/wpscan ]] && git clone https://github.com/wpscanteam/wpscan.git /opt/wpscan
 	[[ ! -d /tmp/testssl.sh ]] && git clone https://github.com/drwetter/testssl.sh.git /tmp/testssl.sh
-
+	[[ ! -d /opt/gophish ]] && wget https://github.com/gophish/gophish/releases/download/v0.12.1/gophish-v0.12.1-linux-64bit.zip -O /opt/gophish-v0.12.1-linux-64bit.zip;unzip -o /opt/gophish-v0.12.1-linux-64bit.zip -d /opt/gophish
+	[[ ! -d /opt/statistically-likely-usernames ]] && git clone https://github.com/insidetrust/statistically-likely-usernames.git /opt/statistically-likely-usernames
+	[[ ! -d /opt/Misconfiguration-Manager ]] && git clone https://github.com/subat0mik/Misconfiguration-Manager.git /opt/Misconfiguration-Manager
+	[[ ! -d /opt/FunWithMacros ]] && git clone https://github.com/aut0m8r/FunWithMacros.git /opt/FunWithMacros
+	[[ ! -d /opt/gophlare ]] && git clone https://github.com/mr-pmillz/gophlare.git /opt/gophlare
 
 
 }
+
 
 
 
@@ -550,9 +507,8 @@ upgrade_pandas() {
 }
 
 
-### My Functions ###
+##### My Functions #####
 
-# Configure tmux
 # configure_tmux  - my_functions
 configure-tmux() {
 rm "${HOME}/.tmux.conf"
@@ -600,7 +556,6 @@ download-nmap-scripts() {
 #
 [[ ! -f /usr/share/nmap/scripts/cisco-wcl.nse ]] && wget https://raw.githubusercontent.com/spyder6675/vm-setup/main/cisco-wcl.nse -P /usr/share/nmap/scripts
 [[ ! -f /usr/share/nmap/scripts/dell-idrac.nse ]] && wget https://raw.githubusercontent.com/spyder6675/vm-setup/main/dell-idrac.nse -P /usr/share/nmap/scripts
-
 #
 nmap --script-updatedb
 
@@ -644,8 +599,6 @@ install_pcredz() {
 }
 
 
-
-
 #############################
 # MAIN ######################
 #############################
@@ -664,7 +617,6 @@ main() {
 
     install_apt_packages
     clone_git_repos
-    clone-git-repos
     configure_terminal
     install_go_tools
 
@@ -710,9 +662,6 @@ main() {
     install_rust
     install_rusthound
 
-    # Install PCredz
-    install_pcredz
-
     # NetExec requires rust to properly install the bleeding edge version. Ensure NetExec install happens after rust install...
     install_netexec
 
@@ -732,10 +681,11 @@ main() {
 	download-tools
 	download-nmap-scripts
 	rockyou-unzip
-
     install_with_virtualenv CredMaster
+	
 
-
+    # Install PCredz
+    install_pcredz
 
 }
 
