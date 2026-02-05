@@ -6,11 +6,11 @@ implantip=
 c2=
 #
 # Creds
-export passwd=''
+export passwd=""
 #
 # Making wordlists easily accessible as variables
-export raftmediumdir='/usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt'
-export raftmediumfiles='/usr/share/seclists/Discovery/Web-Content/raft-medium-files.txt'
+export raftmediumdir="/usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt"
+export raftmediumfiles="/usr/share/seclists/Discovery/Web-Content/raft-medium-files.txt"
 #
 export rockyou='/usr/share/wordlists/rockyou.txt'
 #
