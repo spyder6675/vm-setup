@@ -18,20 +18,20 @@ export rockyou='/usr/share/wordlists/rockyou.txt'
 export PATH="${PATH}:${HOME}/.local/bin"
 #
 # User Agent 
-export useragent='Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:147.0) Gecko/20100101 Firefox/147.0'
+export useragent="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:147.0) Gecko/20100101 Firefox/147.0"
 #
 # Testing file path
-export test_path='/root/testing'
+export test_path="/root/testing"
 #
 # Log File
-export test_logs='/root/testing/logs'
+export test_logs="/root/testing/logs"
 #
 # manspider loot dir
-export manspiderlootdir='/root/testing/loot/manspider'
+export manspiderlootdir="/root/testing/loot/manspider"
 #
 #
 # eth0 IP Address
-export eth0_ip=$(ip -4 addr show eth0 | grep -oP '(?<=inet\s)\d+(\.\d+){3}')
+export eth0_ip="$(ip -4 addr show eth0 | grep -oP '(?<=inet\s)\d+(\.\d+){3}')"
 
 #
 ##### Alias ##### 
