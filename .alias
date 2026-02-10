@@ -80,7 +80,7 @@ alias postgresql-stop='/bin/systemctl stop postgresql.service'
 alias postgresql-restart='/bin/systemctl restart postgresql.service'
 alias postgresql-status='/bin/systemctl status postgresql.service'
 # VPN
-alias start-vpn='sudo openvpn /home/kali/Documents/VPN/profile-861.ovpn'
+alias start-vpn='sudo openvpn /home/kali/Documents/vpn/profile-861.ovpn'
 # SSH
 alias nessus-ssh='ssh -L 8834:'$implantip':8834 root@'$implantip''  
 alias go-do='ssh root@'$donode'' # Go to Do Node
