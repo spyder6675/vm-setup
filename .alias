@@ -38,7 +38,7 @@ export eth0_ip="$(ip -4 addr show eth0 | grep -oP '(?<=inet\s)\d+(\.\d+){3}')"
 #
 #
 ### Update Aliases ###
-alias update-alias='rm -rf ${HOME}/.alias; wget https://raw.githubusercontent.com/spyder6675/vm-setup/main/.alias -P ${HOME};echo -e "Updated-Alias"'
+alias update-alias='rm -rf ${HOME}/.alias;wget https://raw.githubusercontent.com/spyder6675/vm-setup/main/.alias -P ${HOME};echo -e "Updated-Alias"'
 alias szsh='source ~/.zshrc'
 #
 # Navigation
