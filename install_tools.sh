@@ -239,6 +239,7 @@ clone_git_repos() {
 	[[ ! -d /opt/Misconfiguration-Manager ]] && git clone https://github.com/subat0mik/Misconfiguration-Manager.git /opt/Misconfiguration-Manager
 	[[ ! -d /opt/FunWithMacros ]] && git clone https://github.com/aut0m8r/FunWithMacros.git /opt/FunWithMacros
 	[[ ! -d /opt/gophlare ]] && git clone https://github.com/mr-pmillz/gophlare.git /opt/gophlare
+    [[ ! -d /opt/ADScan ]] && git clone https://github.com/dehobbs/ADScan.git /opt/ADScan
 
 
 }
@@ -646,6 +647,7 @@ main() {
     configure_openssl_dependency pre2k
     install_with_virtualenv ldeep
     install_with_virtualenv adidnsdump
+    install_with_virtualenv ADScan
 
     install_pipx
     add_pipx_bin_to_path
