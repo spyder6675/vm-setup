@@ -252,6 +252,7 @@ alias go-statistically_likely_usernames='source /root/pyenv/statistically-likely
 alias go-Misconfiguration_Manager='source /root/pyenv/Misconfiguration-Manager/bin/activate;cd /opt/Misconfiguration-Manager'
 alias go-FunWithMacros='source /root/pyenv/FunWithMacros/bin/activate;cd /opt/FunWithMacros'
 alias go-gophlare='source /root/pyenv/gophlare/bin/activate;cd /opt/gophlare'
+alias go-ADScan='source /root/pyenv/ADScan/bin/activate;cd /opt/ADScan'
 
 
 ### Fix Alias Commands ###
@@ -363,6 +364,7 @@ clone-git-repos() {
 	[[ ! -d /opt/Misconfiguration-Manager ]] && git clone https://github.com/subat0mik/Misconfiguration-Manager.git /opt/Misconfiguration-Manager
 	[[ ! -d /opt/FunWithMacros ]] && git clone https://github.com/aut0m8r/FunWithMacros.git /opt/FunWithMacros
 	[[ ! -d /opt/gophlare ]] && git clone https://github.com/mr-pmillz/gophlare.git /opt/gophlare
+    [[ ! -d /opt/ADScan ]] && git clone https://github.com/dehobbs/ADScan.git /opt/ADScan
 
 
 }
