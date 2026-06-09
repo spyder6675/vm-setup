@@ -90,6 +90,7 @@ alias go-implant03='ssh root@100.64.0.3'
 alias go-implant04='ssh root@100.64.0.4'
 alias go-implant05='ssh root@100.64.0.5'
 alias go-implant06='ssh root@100.64.0.6'
+alias go-c2='ssh root@'$c2''
 # Rsync
 alias sync-do='rsync -avz root@'$donode':/root/testing/'*' .'
 alias sync-implant='rsync -avz root@'$implantip':/root/testing/'*' .'
