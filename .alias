@@ -7,6 +7,7 @@ c2=
 #
 # Creds
 export passwd=""
+export domain=""
 #
 # Making wordlists easily accessible as variables
 export raftmediumdir="/usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt"
@@ -196,6 +197,7 @@ alias go-RustHound='source /root/pyenv/RustHound/bin/activate;cd /opt/RustHound'
 alias go-SIET='source /root/pyenv/SIET/bin/activate;cd /opt/SIET'
 alias go-SQLAutoPwn='source /root/pyenv/SQLAutoPwn/bin/activate;cd /opt/SQLAutoPwn'
 alias go-SeeYouCM_Thief='source /root/pyenv/SeeYouCM-Thief/bin/activate;cd /opt/SeeYouCM-Thief'
+alias go-Snaffler='source /root/pyenv/Snaffler/bin/activate;cd /opt/Snaffler'
 alias go-SnafflerParser='source /root/pyenv/SnafflerParser/bin/activate;cd /opt/SnafflerParser'
 alias go-Spray365='source /root/pyenv/Spray365/bin/activate;cd /opt/Spray365'
 alias go-SprayingToolkit='source /root/pyenv/SprayingToolkit/bin/activate;cd /opt/SprayingToolkit'
