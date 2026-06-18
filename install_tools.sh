@@ -524,7 +524,7 @@ download-tools() {
 # [[ ! -d "${HOME}/tools/TODO" ]] && 
 [[ ! -d "${HOME}/tools" ]] && mkdir "${HOME}/tools"
 [[ ! -f "${HOME}/tools/Invoke-Mimikatz.ps1" ]] && wget https://github.com/clymb3r/PowerShell/blob/master/Invoke-Mimikatz/Invoke-Mimikatz.ps1 -P /root/tools
-[[ ! -f "${HOME}/tools/Snaffler.exe" ]] && wget https://github.com/SnaffCon/Snaffler/releases/download/1.0.146/Snaffler.exe -P /root/tools
+#[[ ! -f "${HOME}/tools/Snaffler.exe" ]] && wget https://github.com/SnaffCon/Snaffler/releases/download/1.0.244/Snaffler.exe -P /root/tools
 #
 [[ ! -f "${HOME}/tools/hoardd-client_Linux_x86_64.tar.gz" ]] && wget https://github.com/hoardd/hoardd-client/releases/download/v0.6.0/hoardd-client_Linux_x86_64.tar.gz -P /root/tools
 [[ ! -d "${HOME}/tools/hoardd-client" ]] && mkdir "${HOME}/tools/hoardd-client"
