@@ -240,11 +240,10 @@ clone_git_repos() {
 	[[ ! -d /opt/FunWithMacros ]] && git clone https://github.com/aut0m8r/FunWithMacros.git /opt/FunWithMacros
 	[[ ! -d /opt/gophlare ]] && git clone https://github.com/mr-pmillz/gophlare.git /opt/gophlare
     [[ ! -d /opt/ADScan ]] && git clone https://github.com/dehobbs/ADScan.git /opt/ADScan
-
+    # [[ ! -d /opt/kali-linux-wallpapers ]] && git clone https://github.com/dorianpro/kali-linux-wallpapers.git /opt/kali-linux-wallpapers
+    [[ ! -d /opt/houseofkeys ]] && git clone https://github.com/sec-consult/houseofkeys.git /opt/houseofkeys
 
 }
-
-
 
 
 configure_terminal() {
@@ -539,6 +538,9 @@ download-tools() {
 # VPN IKE Wordlist
 [[ ! -d "${HOME}/tools/vpn-wordlists" ]] && mkdir "${HOME}/tools/vpn-wordlists"
 [[ ! -f "${HOME}/tools/vpnIDs.txt" ]] && wget https://raw.githubusercontent.com/spyder6675/vm-setup/main/vpnIDs.txt -P /root/tools/vpn-wordlists
+#
+#
+[[ ! -f "${HOME}/tools/kali-wallpaper.jpg" ]] && wget https://github.com/hashcat/hashcat-utils/blob/master/src/kali-wallpaper.jpg -P /root/tools
 
 }
 
