@@ -3,7 +3,7 @@
 #
 donode=
 implantip=
-c2=
+c2node=
 #
 # Creds
 export passwd=""
@@ -91,9 +91,10 @@ alias go-implant03='ssh root@100.64.0.3'
 alias go-implant04='ssh root@100.64.0.4'
 alias go-implant05='ssh root@100.64.0.5'
 alias go-implant06='ssh root@100.64.0.6'
-alias go-c2='ssh root@'$c2''
+alias go-c2='ssh root@'$c2node''
 # Rsync
 alias sync-do='rsync -avz root@'$donode':/root/testing/'*' .'
+alias sync-c2='rsync -avz root@'$c2node':/root/testing/'*' .'
 alias sync-implant='rsync -avz root@'$implantip':/root/testing/'*' .'
 alias sync-implant02='rsync -avz root@100.64.0.2:/root/testing/'*' .'
 alias sync-implant03='rsync -avz root@100.64.0.3:/root/testing/'*' .'
@@ -368,7 +369,8 @@ clone-git-repos() {
 	[[ ! -d /opt/FunWithMacros ]] && git clone https://github.com/aut0m8r/FunWithMacros.git /opt/FunWithMacros
 	[[ ! -d /opt/gophlare ]] && git clone https://github.com/mr-pmillz/gophlare.git /opt/gophlare
     [[ ! -d /opt/ADScan ]] && git clone https://github.com/dehobbs/ADScan.git /opt/ADScan
-
+    #[[ ! -d /opt/kali-linux-wallpapers ]] && git clone https://github.com/dorianpro/kali-linux-wallpapers.git /opt/kali-linux-wallpapers
+    [[ ! -d /opt/houseofkeys ]] && git clone https://github.com/sec-consult/houseofkeys.git /opt/houseofkeys
 
 }
 
@@ -990,6 +992,9 @@ download-tools() {
 	# VPN IKE Wordlist
 	[[ ! -d "${HOME}/tools/vpn-wordlists" ]] && mkdir "${HOME}/tools/vpn-wordlists"
 	[[ ! -f "${HOME}/tools/vpnIDs.txt" ]] && wget https://raw.githubusercontent.com/spyder6675/vm-setup/main/vpnIDs.txt -P /root/tools/vpn-wordlists
+    #
+    #
+    [[ ! -f "${HOME}/tools/kali-wallpaper.jpg" ]] && wget https://github.com/hashcat/hashcat-utils/blob/master/src/kali-wallpaper.jpg -P /root/tools
 
 }
 
