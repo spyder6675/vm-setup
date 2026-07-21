@@ -994,7 +994,7 @@ download-tools() {
 	[[ ! -f "${HOME}/tools/vpnIDs.txt" ]] && wget https://raw.githubusercontent.com/spyder6675/vm-setup/main/vpnIDs.txt -P /root/tools/vpn-wordlists
     #
     #
-    [[ ! -f "${HOME}/tools/kali-wallpaper.jpg" ]] && wget https://github.com/hashcat/hashcat-utils/blob/master/src/kali-wallpaper.jpg -P /root/tools
+    [[ ! -f "${HOME}/tools/kali-wallpaper.jpg" ]] && wget https://raw.githubusercontent.com/spyder6675/vm-setup/main/kali-wallpaper.jpg -P /root/tools
 
 }
 
