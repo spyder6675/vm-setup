@@ -1039,7 +1039,6 @@ set_hostname() {
         return 1
     fi
 
-    # Validate: lowercase letters, digits, hyphens; no leading/trailing hyphens
     if [[ ! "$new_hostname" =~ ^[a-zA-Z0-9]([a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?$ ]]; then
         echo "Error: Invalid hostname '$new_hostname'"
         return 1
@@ -1049,18 +1048,25 @@ set_hostname() {
     local old_hostname
     old_hostname=$(hostname)
 
-    # Change hostname immediately
+    # Apply immediately + persist /etc/hostname
     sudo hostnamectl set-hostname "$new_hostname"
-
-    # Persist across reboots
     echo "$new_hostname" | sudo tee /etc/hostname > /dev/null
 
-    # Now the old name is still valid for the substitution
+    # Update /etc/hosts
     sudo sed -i "s/\b${old_hostname}\b/${new_hostname}/g" /etc/hosts
+
+    # If cloud-init manages /etc/hosts, update the template too so reboots don't revert it
+    local cloud_tmpl="/etc/cloud/templates/hosts.debian.tmpl"
+    if [[ -f "$cloud_tmpl" ]]; then
+        sudo sed -i "s/\b${old_hostname}\b/${new_hostname}/g" "$cloud_tmpl"
+        echo "Updated cloud-init template: $cloud_tmpl"
+    fi
 
     echo "Hostname changed: '${old_hostname}' → '${new_hostname}'"
     echo "Open a new shell (or run 'exec bash') to see the updated prompt."
 }
+
+
 
 #
 ### End of Functions ### 
