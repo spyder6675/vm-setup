@@ -545,6 +545,7 @@ install-apt-packages() {
         "fping"
         "zip"
         "certbot"
+        "wireguard-tools"
 		
 
         # GPS Modules "
