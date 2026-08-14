@@ -4,6 +4,8 @@
 donode=
 implantip=
 c2node=
+dropbox01=
+dropbox02=
 #
 # Creds
 export passwd=""
@@ -92,6 +94,8 @@ alias go-implant04='ssh root@100.64.0.4'
 alias go-implant05='ssh root@100.64.0.5'
 alias go-implant06='ssh root@100.64.0.6'
 alias go-c2='ssh root@'$c2node''
+alias go-dropbox01='ssh root@'$dropbox01''
+alias go-dropbox02='ssh root@'$dropbox02''
 # Rsync
 alias sync-do='rsync -avz root@'$donode':/root/testing/'*' .'
 alias sync-c2='rsync -avz root@'$c2node':/root/testing/'*' .'
