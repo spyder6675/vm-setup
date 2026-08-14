@@ -1029,7 +1029,36 @@ rockyou-unzip() {
 }
 
 
+# Set Hostname 
+#
+set_hostname() {
+    local new_hostname="$1"
 
+    if [[ -z "$new_hostname" ]]; then
+        echo "Usage: set_hostname <new-hostname>"
+        return 1
+    fi
+
+    # Validate: lowercase letters, digits, hyphens; no leading/trailing hyphens
+    if [[ ! "$new_hostname" =~ ^[a-zA-Z0-9]([a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?$ ]]; then
+        echo "Error: Invalid hostname '$new_hostname'"
+        return 1
+    fi
+
+    # Change hostname immediately (survives until reboot without the file change)
+    sudo hostnamectl set-hostname "$new_hostname"
+
+    # Persist across reboots
+    echo "$new_hostname" | sudo tee /etc/hostname > /dev/null
+
+    # Update /etc/hosts so 'sudo' and other tools don't complain
+    local old_hostname
+    old_hostname=$(hostname)
+    sudo sed -i "s/\b${old_hostname}\b/${new_hostname}/g" /etc/hosts
+
+    echo "Hostname changed: '${old_hostname}' → '${new_hostname}'"
+    echo "Open a new shell (or run 'exec bash') to see the updated prompt."
+}
 
 
 
