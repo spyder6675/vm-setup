@@ -1045,22 +1045,22 @@ set_hostname() {
         return 1
     fi
 
-    # Change hostname immediately (survives until reboot without the file change)
+    # Capture BEFORE making any changes
+    local old_hostname
+    old_hostname=$(hostname)
+
+    # Change hostname immediately
     sudo hostnamectl set-hostname "$new_hostname"
 
     # Persist across reboots
     echo "$new_hostname" | sudo tee /etc/hostname > /dev/null
 
-    # Update /etc/hosts so 'sudo' and other tools don't complain
-    local old_hostname
-    old_hostname=$(hostname)
+    # Now the old name is still valid for the substitution
     sudo sed -i "s/\b${old_hostname}\b/${new_hostname}/g" /etc/hosts
 
     echo "Hostname changed: '${old_hostname}' → '${new_hostname}'"
     echo "Open a new shell (or run 'exec bash') to see the updated prompt."
 }
-
-
 
 #
 ### End of Functions ### 
