@@ -264,6 +264,9 @@ alias go-ADScan='source /root/pyenv/ADScan/bin/activate;cd /opt/ADScan'
 alias fix-vmtools='sudo apt install -y open-vm-tools open-vm-tools-desktop --reinstall'
 
 
+### Go Get Git Package ###
+alias go-get-dropbox='git clone https://github.com/spyder6675/dropbox.git'
+
 #### Functions ####
 
 
