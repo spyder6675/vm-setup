@@ -43,45 +43,6 @@ GREEN='\033[1;92m'
 BOLD='\033[1m'
 RESET='\033[0m'
 #
-check_hardware_requirements() {
-    ALL_GOOD=true
-
-    echo -e "${PURPLE}[*]${RESET} Checking if implant system requirements meet the following criteria:\nCPU >= 4\tRAM >= 8 GB\tDisk Space >= 40GB\n"
-
-    NUM_CPUS=$(lscpu | grep 'CPU(s):' | head -n 1 | awk '{print $NF}')
-    if (( "$NUM_CPUS" < 4 )); then
-        ALL_GOOD=false
-        echo -e "${RED}[-]${RESET}${BOLD} Implant has INSUFFICIENT CPUs! CPU(s): ${NUM_CPUS} REACH OUT TO CUSTOMER ${RESET}"
-    else
-        echo -e "${GREEN}[+]${RESET}${BOLD} CPU(s): ${NUM_CPUS} ${RESET}"
-    fi
-
-    TOTAL_RAM=$(grep MemTotal /proc/meminfo | awk '{print $2}')
-    if (( "$TOTAL_RAM" < 8000000 )); then
-        ALL_GOOD=false
-        echo -e "${RED}[-]${RESET}${BOLD} Implant has INSUFFICIENT MEMORY.. Total Ram: ${TOTAL_RAM} kB. REACH OUT TO CUSTOMER ${RESET}"
-    else
-        echo -e "${GREEN}[+]${RESET}${BOLD} Total RAM: ${TOTAL_RAM} kB ${RESET}"
-    fi
-
-    # Get total available disk space in kB
-    TOTAL_AVAILABLE_DISKSPACE=$(df --total | grep 'total' | awk '{print $4}')
-
-    if (( TOTAL_AVAILABLE_DISKSPACE < 40000000 )); then
-        ALL_GOOD=false
-        echo -e "${RED}[-]${RESET}${BOLD} Implant has INSUFFICIENT Disk space.. Available Storage: ${TOTAL_AVAILABLE_DISKSPACE} kB. REACH OUT TO CUSTOMER ${RESET}"
-    else
-        echo -e "${GREEN}[+]${RESET}${BOLD} Available Storage: ${TOTAL_AVAILABLE_DISKSPACE} kB. ${RESET}"
-    fi
-
-    if ! $ALL_GOOD ; then
-        echo -e "${ORANGE}[!]${RESET}${BOLD} You must construct additional pylons ${RESET}"
-        echo -e "${RED}[-]${RESET}${BOLD} Exiting with non-zero status code ${RESET}"
-        exit 1
-    else
-        echo -e "${BLUE}[+]${RESET}${BOLD} All systems good to go! ${RESET}"
-    fi
-}
 
 install_apt_packages() {
     # apt packages
@@ -523,7 +484,7 @@ download-tools() {
     
     # [[ ! -d "${HOME}/tools/TODO" ]] && 
     [[ ! -d "${HOME}/tools" ]] && mkdir "${HOME}/tools"
-    [[ ! -f "${HOME}/tools/Invoke-Mimikatz.ps1" ]] && wget https://github.com/clymb3r/PowerShell/blob/master/Invoke-Mimikatz/Invoke-Mimikatz.ps1 -P /root/tools
+    [[ ! -f "${HOME}/tools/Invoke-Mimikatz.ps1" ]] && wget https://raw.githubusercontent.com/clymb3r/PowerShell/refs/heads/master/Invoke-Mimikatz/Invoke-Mimikatz.ps1 -P /root/tools
     #[[ ! -f "${HOME}/tools/Snaffler.exe" ]] && wget https://github.com/SnaffCon/Snaffler/releases/download/1.0.244/Snaffler.exe -P /root/tools
     #
     [[ ! -f "${HOME}/tools/hoardd-client_Linux_x86_64.tar.gz" ]] && wget https://github.com/hoardd/hoardd-client/releases/download/v0.6.0/hoardd-client_Linux_x86_64.tar.gz -P /root/tools
@@ -534,7 +495,7 @@ download-tools() {
     [[ ! -f "${HOME}/tools/bravestarr.py" ]] && wget https://raw.githubusercontent.com/immunityinc/bravestarr/master/bravestarr.py -P /root/tools
     [[ ! -f "${HOME}/tools/calculate-time.py" ]] && wget https://raw.githubusercontent.com/spyder6675/vm-setup/main/calculate-time.py -P /root/tools
     # NTLMv1 wget the raw file 
-    [[ ! -f "${HOME}/tools/ct3_to_ntlm.c" ]] && wget https://github.com/hashcat/hashcat-utils/blob/master/src/ct3_to_ntlm.c -P /root/tools
+    [[ ! -f "${HOME}/tools/ct3_to_ntlm.c" ]] && wget https://raw.githubusercontent.com/hashcat/hashcat-utils/refs/heads/master/src/ct3_to_ntlm.c -P /root/tools
     # 
     # VPN IKE Wordlist
     [[ ! -d "${HOME}/tools/vpn-wordlists" ]] && mkdir "${HOME}/tools/vpn-wordlists"
@@ -616,8 +577,6 @@ main() {
         export https_proxy="http://100.64.0.1:3128"
     fi
 
-    # check implant system requirements
-    # check_hardware_requirements
 
     install_apt_packages
     clone_git_repos
