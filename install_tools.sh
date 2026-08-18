@@ -166,7 +166,7 @@ clone_git_repos() {
 	[[ ! -d /opt/ThePorgs-impacket ]] && git clone https://github.com/ThePorgs/impacket.git /opt/ThePorgs-impacket
 	[[ ! -d /opt/impacket ]] && git clone https://github.com/fortra/impacket.git /opt/impacket
 	# Impacket Interactive Shadow Creds Fork
-	[[ ! -d /opt/impacket-interactive-ldap-shadow-creds ]] && wget https://github.com/Tw1sm/impacket/archive/refs/heads/interactive-ldap-shadow-creds.zip -O /opt/interactive-ldap-shadow-creds.zip;unzip -o /opt/interactive-ldap-shadow-creds.zip -d /opt/impacket-interactive-ldap-shadow-creds
+	[[ ! -d /opt/impacket-interactive-ldap-shadow-creds ]] && wget https://github.com/Tw1sm/impacket/archive/refs/heads/interactive-ldap-shadow-creds.zip -O /opt/interactive-ldap-shadow-creds.zip && unzip -o /opt/interactive-ldap-shadow-creds.zip -d /opt/impacket-interactive-ldap-shadow-creds
 	[[ ! -d /opt/kerbrute ]] && git clone https://github.com/ropnop/kerbrute.git /opt/kerbrute
 	[[ ! -d /opt/krbrelayx ]] && git clone https://github.com/dirkjanm/krbrelayx.git /opt/krbrelayx
 	[[ ! -d /opt/ldeep ]] && git clone https://github.com/franc-pentest/ldeep /opt/ldeep
@@ -177,7 +177,8 @@ clone_git_repos() {
 	[[ ! -d /opt/o365spray ]] && git clone https://github.com/0xZDH/o365spray.git /opt/o365spray
 	[[ ! -d /opt/onedrive_user_enum ]] && git clone https://github.com/nyxgeek/onedrive_user_enum.git /opt/onedrive_user_enum
 	[[ ! -d /opt/parsuite ]] && git clone https://github.com/arch4ngel/parsuite.git /opt/parsuite
-	[[ ! -d /opt/pr_SystemDPAPIdump ]] && wget https://codeload.github.com/clavoillotte/impacket/zip/refs/heads/pr_SystemDPAPIdump -P /opt/pr_SystemDPAPIdump
+	# [[ ! -d /opt/pr_SystemDPAPIdump ]] && wget https://codeload.github.com/clavoillotte/impacket/zip/refs/heads/pr_SystemDPAPIdump -P /opt/pr_SystemDPAPIdump
+    [[ ! -d /opt/pr_SystemDPAPIdump ]] && mkdir -p /opt/pr_SystemDPAPIdump && wget https://codeload.github.com/clavoillotte/impacket/zip/refs/heads/pr_SystemDPAPIdump -P /opt/pr_SystemDPAPIdump && unzip -o /opt/pr_SystemDPAPIdump/pr_SystemDPAPIdump -d /opt/pr_SystemDPAPIdump
 	[[ ! -d /opt/pre2k ]] && git clone https://github.com/garrettfoster13/pre2k.git /opt/pre2k
 	[[ ! -d /opt/pxethiefy ]] && git clone https://github.com/csandker/pxethiefy.git /opt/pxethiefy
 	[[ ! -d /opt/pyGPOAbuse ]] && git clone https://github.com/Hackndo/pyGPOAbuse.git /opt/pyGPOAbuse
@@ -195,7 +196,7 @@ clone_git_repos() {
 	[[ ! -d /opt/winshock-test ]] && git clone https://github.com/anexia-it/winshock-test.git /opt/winshock-test
 	[[ ! -d /opt/wpscan ]] && git clone https://github.com/wpscanteam/wpscan.git /opt/wpscan
 	[[ ! -d /tmp/testssl.sh ]] && git clone https://github.com/drwetter/testssl.sh.git /tmp/testssl.sh
-	[[ ! -d /opt/gophish ]] && wget https://github.com/gophish/gophish/releases/download/v0.12.1/gophish-v0.12.1-linux-64bit.zip -O /opt/gophish-v0.12.1-linux-64bit.zip;unzip -o /opt/gophish-v0.12.1-linux-64bit.zip -d /opt/gophish
+	[[ ! -d /opt/gophish ]] && wget https://github.com/gophish/gophish/releases/download/v0.12.1/gophish-v0.12.1-linux-64bit.zip -O /opt/gophish-v0.12.1-linux-64bit.zip && unzip -o /opt/gophish-v0.12.1-linux-64bit.zip -d /opt/gophish
 	[[ ! -d /opt/statistically-likely-usernames ]] && git clone https://github.com/insidetrust/statistically-likely-usernames.git /opt/statistically-likely-usernames
 	[[ ! -d /opt/Misconfiguration-Manager ]] && git clone https://github.com/subat0mik/Misconfiguration-Manager.git /opt/Misconfiguration-Manager
 	[[ ! -d /opt/FunWithMacros ]] && git clone https://github.com/aut0m8r/FunWithMacros.git /opt/FunWithMacros
@@ -285,7 +286,11 @@ install_with_virtualenv() {
 }
 
 install_masscan() {
-    [[ -d /opt/masscan ]] && cd /opt/masscan || exit 1
+    if [[ -d /opt/masscan ]]; then cd /opt/masscan || exit 1;
+    else
+        echo -e "[-] /opt/masscan does not exist. Please check the git clone step."
+        return 1
+    fi
     make
     make install
 }
@@ -313,7 +318,11 @@ fi
 }
 
 install_rusthound() {
-    [[ -d /opt/RustHound ]] && cd /opt/RustHound || exit 1
+    if [[ -d /opt/RustHound ]]; then cd /opt/RustHound || exit 1;
+    else
+        echo -e "[-] /opt/RustHound does not exist. Please check the git clone step."
+        return 1
+    fi
     # run cargo update to resolve funky error[E0282]: type annotations needed for `Box<_>`
     # https://github.com/NH-RED-TEAM/RustHound/issues/32
     "${HOME}/.cargo/bin/cargo" update -p time
@@ -343,9 +352,9 @@ install_pipx() {
         python_version=$(echo "$python_version_output" | awk '{print $2}' | cut -d '.' -f 1,2)
 
         if [ "$python_version" == "3.10" ] || [ "$python_version" == "3.11" ] || [ "$python_version" == "3.12" ]; then
-            python3 -m pip install pipx --break-system-packages || apt-get update -y ; apt-get install pipx -y
+            python3 -m pip install pipx --break-system-packages || { apt-get update -y ; apt-get install pipx -y ; }
         else
-            python3 -m pip install pipx --user || apt-get update -y ; apt-get install pipx -y
+            python3 -m pip install pipx --user || { apt-get update -y ; apt-get install pipx -y ; }
         fi
     fi
 }
