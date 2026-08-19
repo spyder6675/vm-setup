@@ -4,6 +4,9 @@
 donode=
 implantip=
 c2node=
+
+#
+vpsip=
 dropbox1ip=
 dropbox2ip=
 #
@@ -90,6 +93,9 @@ alias go-implant04='ssh root@100.64.0.4'
 alias go-implant05='ssh root@100.64.0.5'
 alias go-implant06='ssh root@100.64.0.6'
 alias go-c2='ssh root@'$c2node''
+
+#
+alias go-vps='ssh root@'$vpsip''
 alias go-dropbox01='ssh root@'$dropbox1ip''
 alias go-dropbox02='ssh root@'$dropbox2ip''
 # Rsync
