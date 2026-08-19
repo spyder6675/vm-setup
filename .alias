@@ -272,6 +272,7 @@ alias fix-vmtools='sudo apt install -y open-vm-tools open-vm-tools-desktop --rei
 
 ### Go Get Git Package ###
 alias go-get-dropbox='git clone https://github.com/spyder6675/dropbox.git'
+alias clone-dropbox='[[ ! -d /opt/dropbox ]] && git clone https://github.com/spyder6675/dropbox.git /opt/dropbox'
 
 #### Functions ####
 
