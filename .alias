@@ -306,7 +306,7 @@ clone-git-repos() {
 	[[ ! -d /opt/KrbRelayUp ]] && git clone https://github.com/Dec0ne/KrbRelayUp.git /opt/KrbRelayUp
 	[[ ! -d /opt/LdapRelayScan ]] && git clone https://github.com/zyn3rgy/LdapRelayScan.git /opt/LdapRelayScan
 	[[ ! -d /opt/MANSPIDER ]] && git clone https://github.com/blacklanternsecurity/MANSPIDER.git /opt/MANSPIDER
-	[[ ! -d /opt/MFASweep ]] && git clone https://github.com/dafthack/MFASweep.git /opt/MFASweep
+	# [[ ! -d /opt/MFASweep ]] && git clone https://github.com/dafthack/MFASweep.git /opt/MFASweep
 	[[ ! -d /opt/MSOLSpray ]] && git clone https://github.com/dafthack/MSOLSpray.git /opt/MSOLSpray
 	[[ ! -d /opt/MailSniper ]] && git clone https://github.com/dafthack/MailSniper.git /opt/MailSniper
 	[[ ! -d /opt/NetExec ]] && git clone https://github.com/Pennyw0rth/NetExec.git /opt/NetExec
@@ -547,7 +547,6 @@ install-apt-packages() {
         "vim-nox"
         "virtualenv"
         "whatweb"
-        # "leafpad"
         "apt-transport-https"
         "prips"
 		"nftables"
