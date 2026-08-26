@@ -555,6 +555,9 @@ install-apt-packages() {
         "zip"
         "certbot"
         "wireguard-tools"
+        "lm-sensors"
+        "usbutils"
+        "pciutils"
 		
 
         # GPS Modules "
@@ -731,7 +734,7 @@ check-hardware() {
 #   bash: source this file from ~/.bashrc, then run: sysinfo
 #   zsh:  source this file from ~/.zshrc,  then run: sysinfo
 
-sysinfo() {
+check-sysinfo() {
     echo "================================================"
     echo "           SYSTEM RESOURCE SUMMARY"
     echo "================================================"
