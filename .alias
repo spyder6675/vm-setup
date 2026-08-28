@@ -11,8 +11,8 @@ dropbox1ip=
 dropbox2ip=
 #
 # Creds
-export passwd=""
-export domain=""
+export passwd=
+export domain=
 #
 # Making wordlists easily accessible as variables
 export raftmediumdir="/usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt"
