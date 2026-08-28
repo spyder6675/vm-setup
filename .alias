@@ -728,7 +728,6 @@ check-hardware() {
     fi
 }
 
-
 # sysinfo — hardware/resource recon for Kali dropboxes and engagement hosts
 # Compatible with bash and zsh (no bash-only syntax used).
 #   bash: source this file from ~/.bashrc, then run: sysinfo
@@ -804,6 +803,13 @@ check-sysinfo() {
         printf "%-20s %-10s %-10s %-10s %-8s (%s)\n" "$fs" "$size" "$used" "$avail" "$pct" "$mount"
     done
 
+    # Totals across all real filesystems, for the summary section (raw bytes, deduped by filesystem)
+    local fs_total_bytes fs_avail_bytes fs_total_gb fs_avail_gb
+    fs_total_bytes=$(df -B1 -x tmpfs -x devtmpfs -x squashfs -x overlay 2>/dev/null | tail -n +2 | awk '{sum+=$2} END{print sum+0}')
+    fs_avail_bytes=$(df -B1 -x tmpfs -x devtmpfs -x squashfs -x overlay 2>/dev/null | tail -n +2 | awk '{sum+=$4} END{print sum+0}')
+    fs_total_gb=$(awk -v b="$fs_total_bytes" 'BEGIN{printf "%.2f", b/1024/1024/1024}')
+    fs_avail_gb=$(awk -v b="$fs_avail_bytes" 'BEGIN{printf "%.2f", b/1024/1024/1024}')
+
     echo -e "\n[ BLOCK DEVICES ]"
     if command -v lsblk >/dev/null 2>&1; then
         lsblk -o NAME,SIZE,TYPE,ROTA,TRAN,MOUNTPOINT 2>/dev/null | sed 's/^/  /'
@@ -812,14 +818,18 @@ check-sysinfo() {
 
     # --- Network Interfaces ---
     echo -e "\n[ NETWORK INTERFACES ]"
+    local iface_summary=""
     if command -v ip >/dev/null 2>&1; then
         ip -brief link show 2>/dev/null | while read -r iface state mac rest; do
             printf "  %-12s %-10s %s\n" "$iface" "$state" "$mac"
         done
         echo ""
         ip -brief addr show 2>/dev/null | sed 's/^/  /'
+        # Build "name(state)" list for the summary, e.g. eth0(UP), wlan0(DOWN)
+        iface_summary=$(ip -brief link show 2>/dev/null | awk '{printf "%s(%s), ", $1, $2}' | sed 's/, $//')
     else
         ifconfig -a 2>/dev/null | grep -E "^[a-z]|inet " | sed 's/^/  /'
+        iface_summary=$(ifconfig -a 2>/dev/null | awk '/^[a-zA-Z]/{printf "%s, ", $1}' | sed 's/, $//' | tr -d ':')
     fi
 
     # --- USB Devices ---
@@ -848,17 +858,28 @@ check-sysinfo() {
 
     # --- OS / Kernel / Uptime ---
     echo -e "\n[ SYSTEM ]"
-    echo "  Hostname             : $(hostname)"
-    echo "  Kernel               : $(uname -r)"
-    echo "  Architecture         : $(uname -m)"
-    if [[ -f /etc/os-release ]]; then
-        echo "  OS                   : $(grep PRETTY_NAME /etc/os-release | cut -d= -f2 | tr -d '\"')"
-    fi
+    local hn kern arch os_pretty
+    hn=$(hostname)
+    kern=$(uname -r)
+    arch=$(uname -m)
+    [[ -f /etc/os-release ]] && os_pretty=$(grep PRETTY_NAME /etc/os-release | cut -d= -f2 | tr -d '"')
+    echo "  Hostname             : ${hn}"
+    echo "  Kernel               : ${kern}"
+    echo "  Architecture         : ${arch}"
+    echo "  OS                   : ${os_pretty:-Unknown}"
     echo "  Uptime               : $(uptime -p 2>/dev/null || uptime)"
 
+    # --- SUMMARY ---
     echo -e "\n================================================"
+    echo "                  SUMMARY"
+    echo "================================================"
+    echo "SYSTEM                 : ${hn}  |  ${os_pretty:-Unknown}  |  ${arch}"
+    echo "Total Processors       : ${total_physical_cores:-N/A} physical  /  ${logical_cpus} logical"
+    echo "Total Memory           : ${mem_gb} GB  (${mem_mb} MB)"
+    echo "Total Filesystem       : ${fs_total_gb} GB total  /  ${fs_avail_gb} GB available"
+    echo "Network Interfaces     : ${iface_summary:-N/A}"
+    echo "================================================"
 }
-
 
 
 # Cheching SSH Setup
