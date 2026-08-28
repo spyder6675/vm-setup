@@ -728,11 +728,11 @@ check-hardware() {
     fi
 }
 
-
+#!/bin/bash
 # sysinfo — hardware/resource recon for Kali dropboxes and engagement hosts
 # Works in bash and zsh. Source it, then run: sysinfo
 
-check-sysinfo() {
+sysinfo() {
     local sep="================================================"
     echo "$sep"; echo "           SYSTEM RESOURCE SUMMARY"; echo "$sep"
 
@@ -772,11 +772,10 @@ check-sysinfo() {
     awk -v k="$swap_kb" -v f="$swap_free_kb" 'BEGIN{printf "Swap (total/free)      : %.2f GB / %.2f GB\n", k/1048576, f/1048576}'
 
     # Disks
-    local dfexcl="-x tmpfs -x devtmpfs -x squashfs -x overlay"
     echo -e "\n[ DISKS ]"
-    df -hT $dfexcl 2>/dev/null | sed 's/^/  /'
+    df -hT -x tmpfs -x devtmpfs -x squashfs -x overlay 2>/dev/null | sed 's/^/  /'
     local fs_total_gb fs_avail_gb
-    read -r fs_total_gb fs_avail_gb <<< "$(df -B1 $dfexcl 2>/dev/null | tail -n +2 | \
+    read -r fs_total_gb fs_avail_gb <<< "$(df -B1 -x tmpfs -x devtmpfs -x squashfs -x overlay 2>/dev/null | tail -n +2 | \
         awk '{t+=$2; a+=$4} END{printf "%.2f %.2f", t/1073741824, a/1073741824}')"
 
     # Block devices
@@ -831,7 +830,6 @@ check-sysinfo() {
     fi
     echo "$sep"
 }
-
 
 # Cheching SSH Setup
 # check_sshd - my_functions
