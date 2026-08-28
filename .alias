@@ -728,158 +728,110 @@ check-hardware() {
     fi
 }
 
+
 # sysinfo — hardware/resource recon for Kali dropboxes and engagement hosts
-# Compatible with bash and zsh (no bash-only syntax used).
-#   bash: source this file from ~/.bashrc, then run: sysinfo
-#   zsh:  source this file from ~/.zshrc,  then run: sysinfo
+# Works in bash and zsh. Source it, then run: sysinfo
 
-check-sysinfo() {
-    echo "================================================"
-    echo "           SYSTEM RESOURCE SUMMARY"
-    echo "================================================"
+get-sysinfo() {
+    local sep="================================================"
+    echo "$sep"; echo "           SYSTEM RESOURCE SUMMARY"; echo "$sep"
 
-    # --- CPU Info ---
-    echo -e "\n[ CPU ]"
-    local logical_cpus
-    logical_cpus=$(nproc --all)
-
-    local sockets cores_per_socket threads_per_core total_physical_cores model
-    if command -v lscpu >/dev/null 2>&1; then
-        model=$(lscpu | grep -m1 "Model name:" | sed 's/Model name:\s*//')
-        sockets=$(lscpu | awk -F: '/^Socket\(s\)/{gsub(/ /,"",$2); print $2}')
-        cores_per_socket=$(lscpu | awk -F: '/Core\(s\) per socket/{gsub(/ /,"",$2); print $2}')
-        threads_per_core=$(lscpu | awk -F: '/Thread\(s\) per core/{gsub(/ /,"",$2); print $2}')
-        [[ -n "$sockets" && -n "$cores_per_socket" ]] && total_physical_cores=$((sockets * cores_per_socket))
+    # CPU
+    local cpu logical=$(nproc --all) model sockets cps tpc physical="N/A"
+    if cpu=$(lscpu 2>/dev/null); then
+        model=$(awk -F: '/Model name:/{gsub(/^ /,"",$2); print $2; exit}' <<< "$cpu")
+        sockets=$(awk -F: '/^Socket\(s\)/{gsub(/ /,"",$2); print $2}' <<< "$cpu")
+        cps=$(awk -F: '/Core\(s\) per socket/{gsub(/ /,"",$2); print $2}' <<< "$cpu")
+        tpc=$(awk -F: '/Thread\(s\) per core/{gsub(/ /,"",$2); print $2}' <<< "$cpu")
+        [[ -n "$sockets" && -n "$cps" ]] && physical=$((sockets * cps))
     fi
-
+    echo -e "\n[ CPU ]"
     echo "Model                  : ${model:-Unknown}"
-    echo "Total Processors       : ${total_physical_cores:-N/A}   (physical cores)"
-    echo "Logical Processors     : ${logical_cpus}   (incl. hyperthreads)"
-    echo "Sockets                : ${sockets:-N/A}"
-    echo "Cores/Socket           : ${cores_per_socket:-N/A}"
-    echo "Threads/Core           : ${threads_per_core:-N/A}"
+    echo "Total Processors       : ${physical}   (physical cores)"
+    echo "Logical Processors     : ${logical}   (incl. hyperthreads)"
+    echo "Sockets / Cores/Skt / Threads/Core : ${sockets:-N/A} / ${cps:-N/A} / ${tpc:-N/A}"
 
-    # --- CPU Temperature ---
+    # Thermal
     echo -e "\n[ THERMAL ]"
-    if command -v sensors >/dev/null 2>&1; then
+    if command -v sensors &>/dev/null; then
         sensors 2>/dev/null | grep -E "Core|Package|temp1" | sed 's/^/  /'
     elif [[ -f /sys/class/thermal/thermal_zone0/temp ]]; then
-        local temp_raw temp_c
-        temp_raw=$(cat /sys/class/thermal/thermal_zone0/temp)
-        temp_c=$(awk -v t="$temp_raw" 'BEGIN{printf "%.1f", t/1000}')
-        echo "  CPU Temp             : ${temp_c}°C  (Pi thermal_zone0)"
+        awk '{printf "  CPU Temp             : %.1f°C (thermal_zone0)\n", $1/1000}' /sys/class/thermal/thermal_zone0/temp
     else
-        echo "  No temperature sensors found (install lm-sensors: apt install lm-sensors)"
+        echo "  No sensors found (apt install lm-sensors)"
     fi
 
-    # --- Memory Info ---
+    # Memory (all from /proc/meminfo in one read)
+    local mem; mem=$(awk '/MemTotal|MemAvailable|SwapTotal|SwapFree/{print $2}' /proc/meminfo)
+    local mem_kb avail_kb swap_kb swap_free_kb
+    read -r mem_kb avail_kb swap_kb swap_free_kb <<< "$(tr '\n' ' ' <<< "$mem")"
+    local mem_gb=$(awk -v k="$mem_kb" 'BEGIN{printf "%.2f", k/1048576}')
     echo -e "\n[ MEMORY ]"
-    local mem_kb mem_mb mem_gb
-    mem_kb=$(awk '/MemTotal/{print $2}' /proc/meminfo)
-    mem_mb=$(awk -v kb="$mem_kb" 'BEGIN{printf "%.2f", kb/1024}')
-    mem_gb=$(awk -v kb="$mem_kb" 'BEGIN{printf "%.2f", kb/1024/1024}')
-    echo "Total Memory           : ${mem_mb} MB  (${mem_gb} GB)"
+    echo "Total Memory           : ${mem_gb} GB"
+    awk -v k="$avail_kb" 'BEGIN{printf "Available Memory       : %.2f GB\n", k/1048576}'
+    awk -v k="$swap_kb" -v f="$swap_free_kb" 'BEGIN{printf "Swap (total/free)      : %.2f GB / %.2f GB\n", k/1048576, f/1048576}'
 
-    local avail_kb avail_mb avail_gb
-    avail_kb=$(awk '/MemAvailable/{print $2}' /proc/meminfo)
-    avail_mb=$(awk -v kb="$avail_kb" 'BEGIN{printf "%.2f", kb/1024}')
-    avail_gb=$(awk -v kb="$avail_kb" 'BEGIN{printf "%.2f", kb/1024/1024}')
-    echo "Available Memory       : ${avail_mb} MB  (${avail_gb} GB)"
-
-    local swap_kb swap_mb swap_gb swap_free_kb swap_free_mb
-    swap_kb=$(awk '/SwapTotal/{print $2}' /proc/meminfo)
-    swap_free_kb=$(awk '/SwapFree/{print $2}' /proc/meminfo)
-    swap_mb=$(awk -v kb="$swap_kb" 'BEGIN{printf "%.2f", kb/1024}')
-    swap_gb=$(awk -v kb="$swap_kb" 'BEGIN{printf "%.2f", kb/1024/1024}')
-    swap_free_mb=$(awk -v kb="$swap_free_kb" 'BEGIN{printf "%.2f", kb/1024}')
-    echo "Total Swap             : ${swap_mb} MB  (${swap_gb} GB)"
-    echo "Free Swap              : ${swap_free_mb} MB"
-
-    # --- Disk Info ---
+    # Disks
+    local dfexcl="-x tmpfs -x devtmpfs -x squashfs -x overlay"
     echo -e "\n[ DISKS ]"
-    printf "%-20s %-10s %-10s %-10s %-8s\n" "Filesystem" "Size" "Used" "Avail" "Use%"
-    df -hT -x tmpfs -x devtmpfs -x squashfs -x overlay 2>/dev/null | tail -n +2 | \
-    while read -r fs type size used avail pct mount; do
-        printf "%-20s %-10s %-10s %-10s %-8s (%s)\n" "$fs" "$size" "$used" "$avail" "$pct" "$mount"
-    done
+    df -hT $dfexcl 2>/dev/null | sed 's/^/  /'
+    local fs_total_gb fs_avail_gb
+    read -r fs_total_gb fs_avail_gb <<< "$(df -B1 $dfexcl 2>/dev/null | tail -n +2 | \
+        awk '{t+=$2; a+=$4} END{printf "%.2f %.2f", t/1073741824, a/1073741824}')"
 
-    # Totals across all real filesystems, for the summary section (raw bytes, deduped by filesystem)
-    local fs_total_bytes fs_avail_bytes fs_total_gb fs_avail_gb
-    fs_total_bytes=$(df -B1 -x tmpfs -x devtmpfs -x squashfs -x overlay 2>/dev/null | tail -n +2 | awk '{sum+=$2} END{print sum+0}')
-    fs_avail_bytes=$(df -B1 -x tmpfs -x devtmpfs -x squashfs -x overlay 2>/dev/null | tail -n +2 | awk '{sum+=$4} END{print sum+0}')
-    fs_total_gb=$(awk -v b="$fs_total_bytes" 'BEGIN{printf "%.2f", b/1024/1024/1024}')
-    fs_avail_gb=$(awk -v b="$fs_avail_bytes" 'BEGIN{printf "%.2f", b/1024/1024/1024}')
-
-    echo -e "\n[ BLOCK DEVICES ]"
-    if command -v lsblk >/dev/null 2>&1; then
+    # Block devices
+    if command -v lsblk &>/dev/null; then
+        echo -e "\n[ BLOCK DEVICES ]"
         lsblk -o NAME,SIZE,TYPE,ROTA,TRAN,MOUNTPOINT 2>/dev/null | sed 's/^/  /'
-        echo "  (ROTA=1 spinning disk/SD, ROTA=0 SSD/flash; TRAN=usb/sata/nvme/mmc)"
     fi
 
-    # --- Network Interfaces ---
+    # Network interfaces
     echo -e "\n[ NETWORK INTERFACES ]"
-    local iface_summary=""
-    if command -v ip >/dev/null 2>&1; then
-        ip -brief link show 2>/dev/null | while read -r iface state mac rest; do
-            printf "  %-12s %-10s %s\n" "$iface" "$state" "$mac"
-        done
-        echo ""
+    local iface_summary
+    if command -v ip &>/dev/null; then
         ip -brief addr show 2>/dev/null | sed 's/^/  /'
-        # Build "name(state)" list for the summary, e.g. eth0(UP), wlan0(DOWN)
-        iface_summary=$(ip -brief link show 2>/dev/null | awk '{printf "%s(%s), ", $1, $2}' | sed 's/, $//')
+        iface_summary=$(ip -brief addr show 2>/dev/null | \
+            awk '{ips=$3; for(i=4;i<=NF;i++) ips=ips","$i; printf "%s(%s):%s\n", $1, $2, (ips==""?"no-ip":ips)}')
     else
-        ifconfig -a 2>/dev/null | grep -E "^[a-z]|inet " | sed 's/^/  /'
-        iface_summary=$(ifconfig -a 2>/dev/null | awk '/^[a-zA-Z]/{printf "%s, ", $1}' | sed 's/, $//' | tr -d ':')
+        ifconfig -a 2>/dev/null | sed 's/^/  /'
+        iface_summary=$(ifconfig -a 2>/dev/null | awk '
+            /^[a-zA-Z]/{if(n) printf "%s(UP):%s\n", n, (ip?ip:"no-ip"); n=$1; sub(/:$/,"",n); ip=""}
+            /inet /{for(i=1;i<=NF;i++) if($i=="inet") ip=(ip?ip","$(i+1):$(i+1))}
+            END{if(n) printf "%s(UP):%s\n", n, (ip?ip:"no-ip")}')
     fi
 
-    # --- USB Devices ---
+    # USB / PCI / GPU
     echo -e "\n[ USB DEVICES ]"
-    if command -v lsusb >/dev/null 2>&1; then
-        lsusb | sed 's/^/  /'
-    else
-        echo "  lsusb not found (apt install usbutils)"
+    command -v lsusb &>/dev/null && lsusb | sed 's/^/  /' || echo "  lsusb not found (apt install usbutils)"
+
+    if command -v lspci &>/dev/null; then
+        echo -e "\n[ PCI DEVICES ]"; lspci | sed 's/^/  /'
+        local gpu; gpu=$(lspci | grep -iE "vga|3d|display")
+        [[ -n "$gpu" ]] && { echo -e "\n[ GPU ]"; echo "$gpu" | sed 's/^/  /'; }
     fi
 
-    # --- PCI Devices (skip on Pi/ARM, useful on x86 laptops/VMs) ---
-    if command -v lspci >/dev/null 2>&1; then
-        echo -e "\n[ PCI DEVICES ]"
-        lspci | sed 's/^/  /'
-    fi
-
-    # --- GPU (mostly relevant on x86 for hashcat) ---
-    if command -v lspci >/dev/null 2>&1; then
-        local gpu
-        gpu=$(lspci | grep -iE "vga|3d|display")
-        if [[ -n "$gpu" ]]; then
-            echo -e "\n[ GPU ]"
-            echo "$gpu" | sed 's/^/  /'
-        fi
-    fi
-
-    # --- OS / Kernel / Uptime ---
+    # System
+    local hn=$(hostname) kern=$(uname -r) arch=$(uname -m)
+    local os=$(awk -F= '/PRETTY_NAME/{gsub(/"/,"",$2); print $2}' /etc/os-release 2>/dev/null)
     echo -e "\n[ SYSTEM ]"
-    local hn kern arch os_pretty
-    hn=$(hostname)
-    kern=$(uname -r)
-    arch=$(uname -m)
-    [[ -f /etc/os-release ]] && os_pretty=$(grep PRETTY_NAME /etc/os-release | cut -d= -f2 | tr -d '"')
-    echo "  Hostname             : ${hn}"
-    echo "  Kernel               : ${kern}"
-    echo "  Architecture         : ${arch}"
-    echo "  OS                   : ${os_pretty:-Unknown}"
+    echo "  Hostname / OS / Arch / Kernel : ${hn} / ${os:-Unknown} / ${arch} / ${kern}"
     echo "  Uptime               : $(uptime -p 2>/dev/null || uptime)"
 
-    # --- SUMMARY ---
-    echo -e "\n================================================"
-    echo "                  SUMMARY"
-    echo "================================================"
-    echo "SYSTEM                 : ${hn}  |  ${os_pretty:-Unknown}  |  ${arch}"
-    echo "Total Processors       : ${total_physical_cores:-N/A} physical  /  ${logical_cpus} logical"
-    echo "Total Memory           : ${mem_gb} GB  (${mem_mb} MB)"
+    # Summary
+    echo -e "\n$sep"; echo "                  SUMMARY"; echo "$sep"
+    echo "SYSTEM                 : ${hn}  |  ${os:-Unknown}  |  ${arch}"
+    echo "Total Processors       : ${physical} physical"
+    echo "Total Memory           : ${mem_gb} GB"
     echo "Total Filesystem       : ${fs_total_gb} GB total  /  ${fs_avail_gb} GB available"
-    echo "Network Interfaces     : ${iface_summary:-N/A}"
-    echo "================================================"
+    echo "Network Interfaces     :"
+    if [[ -n "$iface_summary" ]]; then
+        sed 's/^/  - /' <<< "$iface_summary"
+    else
+        echo "  N/A"
+    fi
+    echo "$sep"
 }
+
 
 
 # Cheching SSH Setup
