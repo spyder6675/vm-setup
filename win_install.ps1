@@ -65,7 +65,7 @@
 
 $ErrorActionPreference = 'Stop'
 
-$logDir  = Get-Location
+$logDir  = if ($PSScriptRoot) { $PSScriptRoot } else { (Get-Location).Path }
 $logFile = Join-Path $logDir "win_install_$(Get-Date -Format 'yyyyMMdd_HHmmss').log"
 
 function Write-Log {
@@ -75,7 +75,12 @@ function Write-Log {
         [string]$Level = 'INFO'
     )
     $line = "[{0}] [{1}] {2}" -f (Get-Date -Format 'yyyy-MM-dd HH:mm:ss'), $Level, $Message
-    Add-Content -Path $logFile -Value $line
+    try {
+        Add-Content -Path $logFile -Value $line -ErrorAction Stop
+    }
+    catch {
+        Write-Host "Could not write to log file $logFile : $($_.Exception.Message)" -ForegroundColor Yellow
+    }
     switch ($Level) {
         'ERROR' { Write-Host $line -ForegroundColor Red }
         'WARN'  { Write-Host $line -ForegroundColor Yellow }
@@ -166,14 +171,23 @@ function Install-RSAT {
     }
 }
 
+function Get-ShellFolder {
+    param([string]$Namespace)
+    $shell = New-Object -ComObject Shell.Application
+    return $shell.Namespace($Namespace)
+}
+
+function Find-Verb {
+    param($Item, [string]$Pattern)
+    return $Item.Verbs() | Where-Object { ($_.Name -replace '&', '') -match $Pattern }
+}
+
 function Remove-TaskbarPin {
     param([string[]]$AppNames)
 
     Write-Log "---- Unpinning apps from taskbar ----"
     try {
-        $taskbarPath = "shell:::{4234d49b-0245-4df3-b780-3893943456e1}"
-        $shell = New-Object -ComObject Shell.Application
-        $folder = $shell.Namespace($taskbarPath)
+        $folder = Get-ShellFolder -Namespace "shell:::{4234d49b-0245-4df3-b780-3893943456e1}"
         if (-not $folder) {
             Write-Log "Could not access the taskbar-pinned items shell folder." -Level 'WARN'
             return
@@ -182,14 +196,14 @@ function Remove-TaskbarPin {
         $items = $folder.Items()
 
         foreach ($appName in $AppNames) {
-            $matches = $items | Where-Object { $_.Name -like "*$appName*" }
-            if (-not $matches) {
+            $matchedItems = $items | Where-Object { $_.Name -like "*$appName*" }
+            if (-not $matchedItems) {
                 Write-Log "$appName is not pinned to the taskbar. Skipping."
                 continue
             }
 
-            foreach ($item in $matches) {
-                $verb = $item.Verbs() | Where-Object { ($_.Name -replace '&', '') -match 'Unpin from taskbar' }
+            foreach ($item in $matchedItems) {
+                $verb = Find-Verb -Item $item -Pattern 'Unpin from taskbar'
                 if ($verb) {
                     Write-Log "Unpinning '$($item.Name)' from the taskbar."
                     $verb.DoIt()
@@ -206,14 +220,10 @@ function Remove-TaskbarPin {
     }
 }
 
-function Get-StartAppsFolder {
-    return (New-Object -ComObject Shell.Application).Namespace('shell:AppsFolder')
-}
-
 function Remove-AllStartPins {
     Write-Log "---- Unpinning all apps from Start menu ----"
     try {
-        $folder = Get-StartAppsFolder
+        $folder = Get-ShellFolder -Namespace 'shell:AppsFolder'
         if (-not $folder) {
             Write-Log "Could not access the shell:AppsFolder namespace." -Level 'WARN'
             return
@@ -224,7 +234,7 @@ function Remove-AllStartPins {
 
         $unpinnedCount = 0
         foreach ($item in $items) {
-            $verb = $item.Verbs() | Where-Object { ($_.Name -replace '&', '') -match 'Unpin from Start' }
+            $verb = Find-Verb -Item $item -Pattern 'Unpin from Start'
             if ($verb) {
                 Write-Log "Unpinning '$($item.Name)' from Start menu."
                 $verb.DoIt()
@@ -249,7 +259,7 @@ function Add-StartPins {
 
     Write-Log "---- Pinning selected apps to Start menu ----"
     try {
-        $folder = Get-StartAppsFolder
+        $folder = Get-ShellFolder -Namespace 'shell:AppsFolder'
         if (-not $folder) {
             Write-Log "Could not access the shell:AppsFolder namespace." -Level 'WARN'
             return
@@ -261,11 +271,12 @@ function Add-StartPins {
             $display = $target.Display
             $search  = $target.Search
 
-            $match = $items | Where-Object { $_.Name -eq $search }
+            $match = $items | Where-Object { $_.Name -eq $search } | Select-Object -First 1
             if (-not $match) {
-                $match = $items | Where-Object { $_.Name -like "*$search*" }
-                if ($match) {
-                    Write-Log "No exact name match for '$display'. Using fuzzy match: '$($match[0].Name)'." -Level 'WARN'
+                $candidates = $items | Where-Object { $_.Name -like "*$search*" } | Sort-Object { $_.Name.Length }
+                if ($candidates) {
+                    $match = $candidates | Select-Object -First 1
+                    Write-Log "No exact name match for '$display'. Using closest fuzzy match: '$($match.Name)' (out of $(@($candidates).Count) candidate(s))." -Level 'WARN'
                 }
             }
 
@@ -274,8 +285,7 @@ function Add-StartPins {
                 continue
             }
 
-            $match = $match | Select-Object -First 1
-            $verb = $match.Verbs() | Where-Object { ($_.Name -replace '&', '') -match 'Pin to Start' }
+            $verb = Find-Verb -Item $match -Pattern 'Pin to Start'
             if ($verb) {
                 Write-Log "Pinning '$($match.Name)' to Start menu."
                 $verb.DoIt()
