@@ -728,10 +728,8 @@ check-hardware() {
     fi
 }
 
-#!/bin/bash
 # sysinfo — hardware/resource recon for Kali dropboxes and engagement hosts
 # Works in bash and zsh. Source it, then run: sysinfo
-
 sysinfo() {
     local sep="================================================"
     echo "$sep"; echo "           SYSTEM RESOURCE SUMMARY"; echo "$sep"
