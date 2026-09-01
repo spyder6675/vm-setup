@@ -99,14 +99,14 @@ alias go-vps='ssh root@'$vpsip''
 alias go-dropbox01='ssh root@'$dropbox1ip''
 alias go-dropbox02='ssh root@'$dropbox2ip''
 # Rsync
-alias sync-do='rsync -avz root@'$donode':/root/testing/'*' .'
-alias sync-c2='rsync -avz root@'$c2node':/root/testing/'*' .'
-alias sync-implant='rsync -avz root@'$implantip':/root/testing/'*' .'
-alias sync-implant02='rsync -avz root@100.64.0.2:/root/testing/'*' .'
-alias sync-implant03='rsync -avz root@100.64.0.3:/root/testing/'*' .'
-alias sync-implant04='rsync -avz root@100.64.0.4:/root/testing/'*' .'
-alias sync-implant05='rsync -avz root@100.64.0.5:/root/testing/'*' .'
-alias sync-implant06='rsync -avz root@100.64.0.6:/root/testing/'*' .'
+alias sync-do="rsync -avz root@${donode}:/root/testing/* ."
+alias sync-c2="rsync -avz root@${c2node}:/root/testing/* ."
+alias sync-implant="rsync -avz root@${implantip}:/root/testing/* ."
+alias sync-implant02="rsync -avz root@100.64.0.2:/root/testing/* ."
+alias sync-implant03="rsync -avz root@100.64.0.3:/root/testing/* ."
+alias sync-implant04="rsync -avz root@100.64.0.4:/root/testing/* ."
+alias sync-implant05="rsync -avz root@100.64.0.5:/root/testing/* ."
+alias sync-implant06="rsync -avz root@100.64.0.6:/root/testing/* ."
 # Tailscale 
 alias tss='tailscale status | sort'
 alias wtss='watch -n 1 tailscale status'
