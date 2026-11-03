@@ -85,8 +85,8 @@ install_apt_packages() {
     apt-get install libpcap-dev -y -o "Dpkg::Options::=--force-confdef" -o "Dpkg::Options::=--force-confold"
 
     if [ $USE_OPERATOR_PROXY -eq 1 ]; then
-        echo -e "[+] using http://100.64.0.1:3128 to install ruby gem bundler dep for latest metasploit"
-        gem install --http-proxy http://100.64.0.1:3128 bundler
+        echo -e "[+] using http://100.64.0.1:8080 to install ruby gem bundler dep for latest metasploit"
+        gem install --http-proxy http://100.64.0.1:8080 bundler
     else
         gem install bundler
     fi
@@ -582,8 +582,8 @@ main() {
     if [ $USE_OPERATOR_PROXY -eq 1 ]; then
         echo -e "${BLUE}[+]${RESET}${BOLD} The --use-operator-proxy flag is set ${RESET}"
         echo -e "${BLUE}[+]${RESET}${BOLD} exporting http_proxy and https_proxy env vars.. ${RESET}"
-        export http_proxy="http://100.64.0.1:3128"
-        export https_proxy="http://100.64.0.1:3128"
+        export http_proxy="http://100.64.0.1:8080"
+        export https_proxy="http://100.64.0.1:8080"
     fi
 
 
