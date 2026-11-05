@@ -573,6 +573,26 @@ install_pcredz() {
 }
 
 
+install_claude() {
+
+    curl -fsSL https://claude.ai/install.sh | bash
+
+    
+
+    mkdir /root/.claude/skills
+
+    #
+    mkdir /root/.claude/skills/pentest-data-analyzer
+
+    # create the settings.local.json file 
+    touch /root/.claude/settings.local.json
+
+}
+
+
+
+
+
 #############################
 # MAIN ######################
 #############################
@@ -650,6 +670,7 @@ main() {
 	
 	### My Additions ###
 	
+    install_claude
 	configure-tmux
 	download-tools
 	download-nmap-scripts

@@ -620,7 +620,7 @@ create-roottestingdirectories() {
     [[ ! -d "${HOME}/testing/masscan" ]] && mkdir "${HOME}/testing/masscan"
     [[ ! -f "${HOME}/testing/masscan/masscan.conf" ]] && touch "${HOME}/testing/masscan/masscan.conf"
     # Nmap-Logs
-    [[ ! -d "${HOME}/testing/Nmap-logs" ]] && mkdir "${HOME}/testing/Nmap-logs"
+    [[ ! -d "${HOME}/testing/logs/Nmap-logs" ]] && mkdir "${HOME}/testing/logs/Nmap-logs"
 
 }
 
